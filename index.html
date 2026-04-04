@@ -1705,7 +1705,7 @@ a.btn-outline:active {
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#found">The Search</a></li>
     <li><a href="#press">Press</a></li>
-    <li><a href="lyrics.html" target="_blank">Lyrics</a></li>
+    <li><a href="lyrics.html">Lyrics</a></li>
     <li><a href="#wake" class="nav-cta">Join The Wake</a></li>
   </ul>
 </nav>
@@ -2115,7 +2115,7 @@ a.btn-outline:active {
     document.getElementById('modal-track-num').textContent = data.num;
     document.getElementById('modal-track-title').textContent = data.title;
     var body = document.getElementById('modal-lyrics-body');
-    body.innerHTML = data.html + '<a class="lyr-full-link" href="lyrics.html" target="_blank">View Full Lyrics Page →</a>';
+    body.innerHTML = data.html + '<a class="lyr-full-link" href="lyrics.html">View Full Lyrics Page →</a>';
     body.scrollTop = 0;
     document.getElementById('lyr-modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
