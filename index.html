@@ -176,19 +176,15 @@ body {
   font-family: 'Arial Narrow', Arial, sans-serif;
   font-size: 7px; font-weight: 400;
   letter-spacing: 0.38em; text-transform: uppercase;
-  color: #7da8a8;
-  border: 0.5px solid rgba(125,168,168,0.3);
-  padding: 0.3rem 0.75rem 0.3rem 0.55rem;
+  color: #677380;
+  border: 0.5px solid rgba(103,115,128,0.3);
+  padding: 0.3rem 0.75rem;
   margin-bottom: 1.6rem;
   width: fit-content;
   opacity: 0; animation: glitch-in-small 1.0s steps(1) 1.5s both;
 }
 .hero-eyebrow::before {
-  content: '';
-  width: 5px; height: 5px;
-  background: #7da8a8;
-  border-radius: 50%;
-  flex-shrink: 0;
+  content: none;
 }
 
 .hero-band {
@@ -208,15 +204,15 @@ body {
 }
 
 .hero-subtitle {
-  font-family: 'Arial Black', 'Impact', Arial, sans-serif;
-  font-size: clamp(1.3rem, 3.2vw, 2.6rem);
-  letter-spacing: 0.22em;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: clamp(0.72rem, 1.4vw, 1rem);
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #7da8a8;
-  margin: 0.6rem 0 1.6rem;
+  color: #505a62;
+  margin: 0.7rem 0 1.6rem;
   opacity: 0; animation: glitch-in-subtitle 1.4s steps(1) 2.4s both;
 }
-.hero-subtitle strong { font-weight: 900; color: #7da8a8; }
+.hero-subtitle strong { font-weight: 700; color: #7da8a8; }
 
 .hero-desc {
   font-family: 'Georgia', serif;
@@ -271,31 +267,31 @@ body {
 .cd-label {
   font-family: 'Arial Narrow', Arial, sans-serif;
   font-size: 6px; letter-spacing: 0.32em; text-transform: uppercase;
-  color: #2e333b; margin-bottom: 0.4rem;
+  color: #505a62; margin-bottom: 0.5rem;
 }
 .countdown { display: flex; align-items: flex-end; gap: 0.15rem; }
 .cd-unit { display: flex; flex-direction: column; align-items: center; gap: 0.12rem; }
 .cd-num {
   font-family: 'Arial Black', Arial, sans-serif;
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
   line-height: 1; color: #eaecec;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
 }
 .cd-lbl {
   font-family: 'Arial Narrow', Arial, sans-serif;
-  font-size: 5.5px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: #2e333b;
+  font-size: 6px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: #3a4448;
 }
 .cd-sep {
   font-family: 'Arial Black', Arial, sans-serif;
-  font-size: 1.8rem; color: #1e222a;
-  line-height: 1; margin-bottom: 0.55rem; align-self: flex-end;
+  font-size: 2.2rem; color: #2e333b;
+  line-height: 1; margin-bottom: 0.65rem; align-self: flex-end;
 }
 .cd-date {
   font-family: 'Arial Narrow', Arial, sans-serif;
   font-size: 6px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: #1e222a; margin-top: 0.3rem; text-align: right;
+  color: #3a4448; margin-top: 0.4rem; text-align: right;
 }
 
 .scroll-cue {
@@ -1326,11 +1322,11 @@ footer {
 
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-eyebrow">New Album &nbsp;·&nbsp; July 4, 2026</div>
-      <h1 class="hero-band" data-text="LazarusGrimm">
-        Lazarus<em>Grimm</em>
+      <div class="hero-eyebrow">Lazarus Grimm</div>
+      <h1 class="hero-band" data-text="WakeUp">
+        Wake<em>Up</em>
       </h1>
-      <div class="hero-subtitle" data-text="Wake Up"><strong>Wake Up</strong></div>
+      <div class="hero-subtitle">New Album &nbsp;·&nbsp; <strong>July 4, 2026</strong> &nbsp;·&nbsp; Independence Day</div>
       <p class="hero-desc">
         "i'm not here to comfort you with metaphors.<br>
         i'm here with a flashlight and a plea."
