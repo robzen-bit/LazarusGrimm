@@ -74,11 +74,13 @@ body {
 }
 .nav-logo img {
   width: 48px; height: 48px;
-  object-fit: contain;
-  border: 1px solid #677380;
-  background: #0d0e12;
-  padding: 2px;
+  object-fit: cover;
+  border: none;
+  background: none;
+  padding: 0;
   filter: grayscale(1) brightness(0.7);
+  border-radius: 50%;
+  clip-path: circle(50% at 50% 50%);
 }
 .nav-wordmark {
   font-family: 'Arial Narrow', Arial, sans-serif;
