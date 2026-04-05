@@ -2419,53 +2419,6 @@ window.closeLyrModal = function(e) {
 })();
 </script>
 
-<script>
-/* Gradual mask: hides the portrait behind the text, fades in softly
-   so the dark photo background doesn't look like a hard overlay.
-   Recalculates on every resize so it's fluid. */
-(function() {
-  'use strict';
-  var bgEl   = document.querySelector('.bg-child');
-  var bandEl = document.querySelector('.hero-band');
-  if (!bgEl || !bandEl) return;
 
-  function apply() {
-    var hero  = bgEl.closest('section') || bgEl.parentElement;
-    var heroW = hero.offsetWidth;
-    var heroR = hero.getBoundingClientRect();
-    var bandR = bandEl.getBoundingClientRect();
-    var textRight = bandR.right - heroR.left;   // px from hero left
-
-    // Fade starts ~40px before text ends, completes ~280px after text ends.
-    // Wide, gradual fade so the dark portrait bg blends in, not a hard cut.
-    var fadeStart = Math.max(0, textRight - 40);
-    var fadeEnd   = textRight + 280;
-
-    var pA = (fadeStart / heroW * 100).toFixed(1);
-    var pB = (fadeEnd   / heroW * 100).toFixed(1);
-
-    var mask = 'linear-gradient(to right,'
-             + ' transparent 0%,'
-             + ' transparent ' + pA + '%,'
-             + ' black '       + pB + '%)';
-
-    bgEl.style.webkitMaskImage = mask;
-    bgEl.style.maskImage       = mask;
-
-    // Reset any left/right the previous JS may have set
-    bgEl.style.left  = '0';
-    bgEl.style.right = '0';
-    bgEl.style.backgroundSize     = 'cover';
-    bgEl.style.backgroundPosition = 'center 15%';
-  }
-
-  apply();
-  var raf;
-  window.addEventListener('resize', function() {
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(apply);
-  });
-})();
-</script>
 </body>
 </html>
