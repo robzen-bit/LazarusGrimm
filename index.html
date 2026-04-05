@@ -65,10 +65,17 @@ body::after {
   height: 124px;
   padding: 0 3rem;
   display: flex; align-items: center; justify-content: space-between;
-  background: linear-gradient(to bottom, rgba(12,13,15,0.97) 0%, rgba(12,13,15,0) 100%);
-  transition: background 0.3s;
+  background: linear-gradient(to bottom, rgba(12,13,15,0.92) 0%, rgba(12,13,15,0) 100%);
+  backdrop-filter: blur(0px) brightness(1);
+  -webkit-backdrop-filter: blur(0px) brightness(1);
+  transition: background 0.35s, backdrop-filter 0.35s, -webkit-backdrop-filter 0.35s, border-color 0.35s;
 }
-.nav.scrolled { background: rgba(12,13,15,0.97); border-bottom: 1px solid var(--steel-dark); }
+.nav.scrolled {
+  background: rgba(12,13,15,0.72);
+  backdrop-filter: blur(18px) brightness(0.7);
+  -webkit-backdrop-filter: blur(18px) brightness(0.7);
+  border-bottom: 1px solid rgba(125,168,168,0.1);
+}
 .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
 .nav-logo img { width: 36px; height: 36px; object-fit: contain; }
 .nav-wordmark {
