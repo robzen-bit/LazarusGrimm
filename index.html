@@ -86,6 +86,40 @@ body::after {
   letter-spacing: 0.32em; color: var(--silver-cool);
   text-transform: uppercase;
 }
+.nav-has-dropdown { position: relative; }
+.nav-has-dropdown > a::after { content: ' ▾'; font-size: 0.6em; vertical-align: middle; opacity: 0.6; }
+.nav-dropdown {
+  display: none;
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+  list-style: none; padding: 0.5rem 0; margin: 0;
+  background: rgba(6,7,8,0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(125,168,168,0.12);
+  min-width: 220px;
+  z-index: 600;
+}
+.nav-dropdown::before {
+  content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%);
+  border-left: 5px solid transparent; border-right: 5px solid transparent;
+  border-bottom: 5px solid rgba(125,168,168,0.12);
+}
+.nav-dropdown li { padding: 0; }
+.nav-dropdown a {
+  display: block; padding: 0.55rem 1.2rem;
+  font-family: var(--font-sub); font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--steel-light); text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { color: var(--silver-cool); background: rgba(125,168,168,0.06); }
+.nav-release {
+  font-size: 0.58rem; letter-spacing: 0.1em; color: var(--accent);
+  text-transform: none; margin-left: 0.4rem; opacity: 0.85;
+}
+.nav-has-dropdown:hover .nav-dropdown,
+.nav-has-dropdown:focus-within .nav-dropdown { display: block; }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 .nav-links a {
   font-family: var(--font-sub); font-size: 0.68rem; font-weight: 600;
@@ -1775,7 +1809,14 @@ a.btn-outline:active {
     <span class="nav-wordmark">Lazarus Grimm</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#album">Album</a></li>
+    <li class="nav-has-dropdown">
+      <a href="#album" class="nav-dropdown-toggle">Music</a>
+      <ul class="nav-dropdown">
+        <li><a href="#album">Wake Up <span class="nav-release">release 7/4/26</span></a></li>
+        <li><a href="#album">Lanterns to the Line</a></li>
+        <li><a href="#album">Destroying Your Legacy</a></li>
+      </ul>
+    </li>
     <li><a href="#manifesto">Manifesto</a></li>
     <li><a href="#found">The Search</a></li>
     <li><a href="#press">Press</a></li>
