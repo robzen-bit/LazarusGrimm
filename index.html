@@ -178,8 +178,8 @@ body::after {
   position: relative; z-index: 10;
   padding: 172px 4rem 4rem;
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: flex-end; gap: 3rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start; gap: 4rem;
 }
 
 /* Text reveals */
@@ -400,15 +400,15 @@ body::after {
 
 /* Countdown */
 .hero-right {
-  text-align: right; flex-shrink: 0;
-  opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.3s both;
+  display: flex; flex-direction: column; align-items: flex-start;
+  opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.2s both;
 }
 .cd-label {
   font-family: var(--font-sub); font-size: 0.58rem; font-weight: 600;
   letter-spacing: 0.4em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 0.5rem;
+  color: var(--accent); margin-bottom: 0.5rem; margin-top: 1.4rem;
 }
-.countdown { display: flex; gap: 0.25rem; justify-content: flex-end; align-items: flex-start; }
+.countdown { display: flex; gap: 0.25rem; justify-content: flex-start; align-items: flex-start; }
 .cd-unit { text-align: center; }
 .cd-num {
   font-family: var(--font-display);
@@ -430,6 +430,103 @@ body::after {
   letter-spacing: 0.2em; color: #2e333b;
   margin-top: 0.5rem; text-transform: uppercase;
 }
+
+
+/* ── Lyric Card ── */
+.lyric-card {
+  position: relative;
+  width: 100%; max-width: 440px;
+  background: rgba(3, 7, 10, 0.9);
+  border: 1px solid rgba(125, 168, 168, 0.18);
+  padding: 1.4rem 1.6rem 1.1rem;
+  margin-bottom: 1.5rem;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(125,168,168,0.04), 0 8px 40px rgba(0,0,0,0.7);
+  opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.2s both;
+}
+.lc-corner {
+  position: absolute; width: 10px; height: 10px;
+  border-color: rgba(125,168,168,0.5); border-style: solid;
+}
+.lc-corner.tl { top: 5px; left: 5px; border-width: 1px 0 0 1px; }
+.lc-corner.tr { top: 5px; right: 5px; border-width: 1px 1px 0 0; }
+.lc-corner.bl { bottom: 5px; left: 5px; border-width: 0 0 1px 1px; }
+.lc-corner.br { bottom: 5px; right: 5px; border-width: 0 1px 1px 0; }
+.lc-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem;
+}
+.lc-tag {
+  font-family: var(--font-sub); font-size: 0.5rem; font-weight: 700;
+  letter-spacing: 0.35em; text-transform: uppercase; color: #7da8a8;
+}
+.lc-status {
+  font-family: 'Courier New', monospace;
+  font-size: 0.46rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #2a3e3e;
+}
+.lc-dot {
+  display: inline-block; width: 5px; height: 5px;
+  border-radius: 50%; background: #7da8a8;
+  margin-right: 0.35rem; vertical-align: middle;
+  animation: lc-blink 1.6s step-start infinite;
+}
+@keyframes lc-blink { 0%,100%{opacity:1} 50%{opacity:0.1} }
+.lc-body {
+  position: relative; min-height: 100px; flex: 1;
+}
+.lc-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.88rem; font-style: italic;
+  color: #b8c4cc; line-height: 1.75;
+  position: absolute; width: 100%;
+  white-space: pre-line;
+}
+.lc-footer {
+  display: flex; align-items: center; gap: 0.7rem;
+  margin-top: 1rem; padding-top: 0.7rem;
+  border-top: 1px solid rgba(125,168,168,0.1);
+}
+.lc-track-label, .lc-index-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.46rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #2a4040; white-space: nowrap;
+}
+.lc-progress {
+  flex: 1; height: 1px; background: rgba(125,168,168,0.12);
+  position: relative; overflow: hidden;
+}
+.lc-progress-fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, #3a6060, #7da8a8);
+  width: 0%;
+}
+.lc-scanlines {
+  position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 3px,
+    rgba(0,0,0,0.055) 3px, rgba(0,0,0,0.055) 4px
+  );
+}
+@keyframes lc-out {
+  0%  { opacity:1;   transform:translate(0,0) skewX(0deg);   clip-path:inset(0 0 0 0); }
+  20% { opacity:.8;  transform:translate(-4px,0) skewX(-3deg); clip-path:inset(15% 0 40% 0); }
+  40% { opacity:.5;  transform:translate(5px,1px) skewX(4deg); clip-path:inset(60% 0 5% 0); }
+  65% { opacity:.2;  transform:translate(-2px,-1px);           clip-path:inset(30% 0 55% 0); }
+  85% { opacity:.05; transform:translate(3px,0);               clip-path:inset(80% 0 0 0); }
+  100%{ opacity:0;   transform:translate(0,0);                 clip-path:inset(0 0 100% 0); }
+}
+@keyframes lc-in {
+  0%  { opacity:0;   transform:translate(5px,0) skewX(3deg);   clip-path:inset(0 0 100% 0); }
+  20% { opacity:.25; transform:translate(-4px,1px) skewX(-2deg); clip-path:inset(60% 0 10% 0); }
+  45% { opacity:.55; transform:translate(3px,0) skewX(2deg);   clip-path:inset(25% 0 45% 0); }
+  70% { opacity:.8;  transform:translate(-1px,0) skewX(-1deg); clip-path:inset(5% 0 15% 0); }
+  90% { opacity:.95; transform:translate(1px,0);               clip-path:inset(0 0 2% 0); }
+  100%{ opacity:1;   transform:translate(0,0) skewX(0deg);     clip-path:inset(0 0 0 0); }
+}
+.lc-text.lc-out { animation: lc-out 0.42s linear both; }
+.lc-text.lc-in  { animation: lc-in  0.5s  linear both; }
 
 /* Scroll cue */
 .scroll-cue {
@@ -1853,22 +1950,6 @@ a.btn-outline:active {
         "I'm not here to comfort you with metaphors.<br>
         I'm here with a flashlight and a plea."
       </p>
-      <div class="hero-actions">
-        <div class="hero-cta">
-          <a href="#" class="btn-accent" style="color:#0c0d0f;background:#7da8a8;text-decoration:none;display:inline-block;padding:0.85rem 2.2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;border:2px solid #7da8a8;cursor:pointer;">Pre-Save Now</a>
-          <a href="#album" class="btn-outline" style="color:#98a4a4;background:transparent;text-decoration:none;display:inline-block;padding:0.85rem 2.2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;border:0.5px solid rgba(152,164,164,0.3);cursor:pointer;">Explore Album ↓</a>
-        </div>
-        <form class="hero-email" onsubmit="handleSub(event)">
-          <div class="hero-email-label">Get the exclusive pre-release track — free</div>
-          <div class="hero-email-row">
-            <input type="email" class="hero-email-input email-input" placeholder="your@email.com" required>
-            <button type="submit" class="hero-email-btn email-btn">Wake Up</button>
-          </div>
-          <div class="email-feedback" style="display:none;margin-top:0.5rem;font-size:0.78rem;letter-spacing:0.06em;font-family:var(--font-body);"></div>
-        </form>
-      </div>
-    </div>
-    <div class="hero-right">
       <div class="cd-label">Releasing In</div>
       <div class="countdown">
         <div class="cd-unit"><span class="cd-num" id="cd-d">91</span><span class="cd-lbl">Days</span></div>
@@ -1880,6 +1961,42 @@ a.btn-outline:active {
         <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-lbl">Sec</span></div>
       </div>
       <div class="cd-date">July 4, 2026 · Independence Day</div>
+      <div class="hero-actions">
+        <form class="hero-email" onsubmit="handleSub(event)">
+          <div class="hero-email-label">Get the exclusive pre-release track — free</div>
+          <div class="hero-email-row">
+            <input type="email" class="hero-email-input email-input" placeholder="your@email.com" required>
+            <button type="submit" class="hero-email-btn email-btn">Wake Up</button>
+          </div>
+          <div class="email-feedback" style="display:none;margin-top:0.5rem;font-size:0.78rem;letter-spacing:0.06em;font-family:var(--font-body);"></div>
+        </form>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="lyric-card">
+        <span class="lc-corner tl"></span>
+        <span class="lc-corner tr"></span>
+        <span class="lc-corner bl"></span>
+        <span class="lc-corner br"></span>
+        <div class="lc-header">
+          <span class="lc-tag">Wake Up · 2026</span>
+          <span class="lc-status"><span class="lc-dot"></span>Transmitting</span>
+        </div>
+        <div class="lc-body">
+          <div class="lc-text" id="lc-text">"sleep is a luxury
+sold to you in monthly payments."</div>
+        </div>
+        <div class="lc-footer">
+          <span class="lc-track-label" id="lc-track">WAKE UP · TRK 01</span>
+          <div class="lc-progress"><div class="lc-progress-fill" id="lc-fill"></div></div>
+          <span class="lc-index-label" id="lc-index">01 / 07</span>
+        </div>
+        <div class="lc-scanlines"></div>
+      </div>
+      <div class="hero-cta" style="opacity:0;animation:glitch-in-small 0.9s steps(1) 3.5s both;">
+        <a href="#" class="btn-accent" style="color:#0c0d0f;background:#7da8a8;text-decoration:none;display:inline-block;padding:0.85rem 2.2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;border:2px solid #7da8a8;cursor:pointer;">Pre-Save Now</a>
+        <a href="#album" class="btn-outline" style="color:#98a4a4;background:transparent;text-decoration:none;display:inline-block;padding:0.85rem 2.2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;border:0.5px solid rgba(152,164,164,0.3);cursor:pointer;">Explore Album ↓</a>
+      </div>
     </div>
   </div>
   <div class="scroll-cue">
@@ -2160,6 +2277,60 @@ a.btn-outline:active {
     if (e.key === 'Escape') closeLyrModal();
   });
 
+
+
+  // ── Lyric Card Cycling ────────────────────────────────────────────────────
+  (function() {
+    var quotes = [
+      { text: '"sleep is a luxury\nsold to you in monthly payments."',             track: 'WAKE UP · TRK 01', idx: '01 / 07' },
+      { text: '"your attention was never the product —\nit was the currency."',     track: 'WAKE UP · TRK 01', idx: '02 / 07' },
+      { text: '"the divide is their policy;\nthe outrage, their marketing plan."',  track: 'WAKE UP · TRK 01', idx: '03 / 07' },
+      { text: '"power is not mystical.\nit's paperwork, payroll,\nand complicit quiet."', track: 'WAKE UP · TRK 01', idx: '04 / 07' },
+      { text: '"wake up is not a slogan.\nit is a decision."',                       track: 'WAKE UP · TRK 01', idx: '05 / 07' },
+      { text: '"we are not broken beyond repair —\nwe were mis-sold a map."',        track: 'WAKE UP · TRK 01', idx: '06 / 07' },
+      { text: '"refuse to be divided.\nrefuse to be sold.\nrefuse to be quiet."',   track: 'WAKE UP · TRK 01', idx: '07 / 07' },
+    ];
+    var current = 0;
+    var DISPLAY_MS = 4800, OUT_MS = 420, IN_MS = 500;
+
+    function applyProgress(fill) {
+      if (!fill) return;
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          fill.style.transition = 'width ' + ((DISPLAY_MS + OUT_MS + IN_MS) / 1000).toFixed(1) + 's linear';
+          fill.style.width = '100%';
+        });
+      });
+    }
+
+    function cycle() {
+      var el    = document.getElementById('lc-text');
+      var fill  = document.getElementById('lc-fill');
+      var track = document.getElementById('lc-track');
+      var idx   = document.getElementById('lc-index');
+      if (!el) return;
+      el.classList.remove('lc-in');
+      el.classList.add('lc-out');
+      setTimeout(function() {
+        current = (current + 1) % quotes.length;
+        var q = quotes[current];
+        el.textContent = q.text;
+        if (track) track.textContent = q.track;
+        if (idx)   idx.textContent   = q.idx;
+        el.classList.remove('lc-out');
+        el.classList.add('lc-in');
+        applyProgress(fill);
+        setTimeout(function() { el.classList.remove('lc-in'); }, IN_MS);
+      }, OUT_MS);
+    }
+
+    window.addEventListener('load', function() {
+      applyProgress(document.getElementById('lc-fill'));
+      setInterval(cycle, DISPLAY_MS + OUT_MS + IN_MS);
+    });
+  })();
 
   // ── AMBIENT GLITCH SYSTEM ──
   // Subtle, spaced-out, non-hero glitches that loop forever
