@@ -115,7 +115,7 @@ body::after {
   object-fit: cover;
   object-position: center 20%;
   /* B&W + cold blue-grey grade to match site palette */
-  filter: grayscale(1) brightness(0.55) contrast(1.2) sepia(0.15) hue-rotate(175deg);
+  filter: grayscale(1) brightness(0.75) contrast(1.15) sepia(0.12) hue-rotate(175deg);
   opacity: 0.92;
 }
 .bg-video-tint {
@@ -2438,31 +2438,37 @@ window.closeLyrModal = function(e) {
 
 
 <script>
-/* Autoplay fix: some browsers ignore the muted HTML attribute,
-   requiring the property to be set explicitly via JS before play() */
+/* Robust video autoplay — set muted as property, wait for canplay */
 (function() {
   var v = document.querySelector('.bg-video');
   if (!v) return;
+  // Must set as property, not just attribute
   v.muted = true;
   v.defaultMuted = true;
-  var tryPlay = function() {
+  v.volume = 0;
+
+  function doPlay() {
     v.muted = true;
     var p = v.play();
-    if (p && p.catch) {
-      p.catch(function() {
-        // If still blocked, re-attempt on first user interaction
-        document.addEventListener('click', function once() {
-          v.muted = true;
-          v.play();
-          document.removeEventListener('click', once);
-        }, { once: true });
+    if (p !== undefined) {
+      p.catch(function(err) {
+        console.warn('Autoplay blocked:', err);
+        // Retry on first interaction
+        ['click','touchstart','keydown'].forEach(function(evt) {
+          document.addEventListener(evt, function once() {
+            v.muted = true; v.play();
+            document.removeEventListener(evt, once);
+          }, { once: true });
+        });
       });
     }
-  };
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', tryPlay);
+  }
+
+  if (v.readyState >= 3) {
+    doPlay();
   } else {
-    tryPlay();
+    v.addEventListener('canplay', doPlay, { once: true });
+    v.load(); // force load in case browser deferred it
   }
 })();
 </script>
