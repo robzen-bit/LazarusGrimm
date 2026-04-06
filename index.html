@@ -156,8 +156,15 @@ body::after {
 }
 .bg-video-tint {
   position: absolute; inset: 0;
-  /* cold dark blue wash — reinforces the icy palette */
   background: rgba(8, 18, 28, 0.38);
+  pointer-events: none;
+}
+.bg-overlay-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -1830,6 +1837,9 @@ a.btn-outline:active {
   <div class="bg-child">
     <div class="bg-image"></div>
     <div class="bg-video-tint"></div>
+    <video class="bg-overlay-video" autoplay muted loop playsinline preload="auto">
+      <source src="video/overlay.mp4" type="video/mp4">
+    </video>
   </div>
   
   
@@ -2536,7 +2546,7 @@ window.closeLyrModal = function(e) {
 <script>
 /* Robust video autoplay — set muted as property, wait for canplay */
 (function() {
-  var v = document.querySelector('.bg-video');
+  var v = document.querySelector('.bg-overlay-video');
   if (!v) return;
   // Must set as property, not just attribute
   v.muted = true;
