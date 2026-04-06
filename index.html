@@ -436,11 +436,11 @@ body::after {
 /* ── Lyric Card ── */
 .lyric-card {
   position: relative;
-  width: 100%;
+  width: 100%; flex: 1;
   background: rgba(3, 7, 10, 0.9);
   border: 1px solid rgba(125, 168, 168, 0.18);
   padding: 1.4rem 1.6rem 1.1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   display: flex; flex-direction: column;
   overflow: hidden;
   box-shadow: inset 0 0 0 1px rgba(125,168,168,0.04), 0 8px 40px rgba(0,0,0,0.7);
@@ -478,12 +478,24 @@ body::after {
   position: relative; min-height: 100px; flex: 1;
 }
 .lc-text {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 0.88rem; font-style: italic;
-  color: #b8c4cc; line-height: 1.75;
-  position: absolute; width: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.88rem;
+  color: #c4d0d6; line-height: 1.85;
   white-space: pre-line;
+  min-height: 5rem;
 }
+.lc-text::after {
+  content: '|';
+  color: #7da8a8;
+  opacity: 0;
+  animation: none;
+  margin-left: 1px;
+}
+.lc-text.typing::after {
+  opacity: 1;
+  animation: lc-cursor 0.65s step-start infinite;
+}
+@keyframes lc-cursor { 50% { opacity: 0; } }
 .lc-footer {
   display: flex; align-items: center; gap: 0.7rem;
   margin-top: 1rem; padding-top: 0.7rem;
@@ -510,24 +522,19 @@ body::after {
     rgba(0,0,0,0.055) 3px, rgba(0,0,0,0.055) 4px
   );
 }
-@keyframes lc-out {
-  0%  { opacity:1;   transform:translate(0,0) skewX(0deg);   clip-path:inset(0 0 0 0); }
-  20% { opacity:.8;  transform:translate(-4px,0) skewX(-3deg); clip-path:inset(15% 0 40% 0); }
+20% { opacity:.8;  transform:translate(-4px,0) skewX(-3deg); clip-path:inset(15% 0 40% 0); }
   40% { opacity:.5;  transform:translate(5px,1px) skewX(4deg); clip-path:inset(60% 0 5% 0); }
   65% { opacity:.2;  transform:translate(-2px,-1px);           clip-path:inset(30% 0 55% 0); }
   85% { opacity:.05; transform:translate(3px,0);               clip-path:inset(80% 0 0 0); }
   100%{ opacity:0;   transform:translate(0,0);                 clip-path:inset(0 0 100% 0); }
 }
-@keyframes lc-in {
-  0%  { opacity:0;   transform:translate(5px,0) skewX(3deg);   clip-path:inset(0 0 100% 0); }
-  20% { opacity:.25; transform:translate(-4px,1px) skewX(-2deg); clip-path:inset(60% 0 10% 0); }
+20% { opacity:.25; transform:translate(-4px,1px) skewX(-2deg); clip-path:inset(60% 0 10% 0); }
   45% { opacity:.55; transform:translate(3px,0) skewX(2deg);   clip-path:inset(25% 0 45% 0); }
   70% { opacity:.8;  transform:translate(-1px,0) skewX(-1deg); clip-path:inset(5% 0 15% 0); }
   90% { opacity:.95; transform:translate(1px,0);               clip-path:inset(0 0 2% 0); }
   100%{ opacity:1;   transform:translate(0,0) skewX(0deg);     clip-path:inset(0 0 0 0); }
 }
-.lc-text.lc-out { animation: lc-out 0.42s linear both; }
-.lc-text.lc-in  { animation: lc-in  0.5s  linear both; }
+
 
 /* Scroll cue */
 .scroll-cue {
@@ -2280,56 +2287,78 @@ sold to you in monthly payments."</div>
 
 
 
-  // ── Lyric Card Cycling ────────────────────────────────────────────────────
+  // ── Lyric Card Typewriter ─────────────────────────────────────────────────
   (function() {
     var quotes = [
       { text: '"sleep is a luxury\nsold to you in monthly payments."',             track: 'WAKE UP · TRK 01', idx: '01 / 07' },
       { text: '"your attention was never the product —\nit was the currency."',     track: 'WAKE UP · TRK 01', idx: '02 / 07' },
       { text: '"the divide is their policy;\nthe outrage, their marketing plan."',  track: 'WAKE UP · TRK 01', idx: '03 / 07' },
-      { text: '"power is not mystical.\nit's paperwork, payroll,\nand complicit quiet."', track: 'WAKE UP · TRK 01', idx: '04 / 07' },
+      { text: '"power is not mystical.\nit\u2019s paperwork, payroll,\nand complicit quiet."', track: 'WAKE UP · TRK 01', idx: '04 / 07' },
       { text: '"wake up is not a slogan.\nit is a decision."',                       track: 'WAKE UP · TRK 01', idx: '05 / 07' },
       { text: '"we are not broken beyond repair —\nwe were mis-sold a map."',        track: 'WAKE UP · TRK 01', idx: '06 / 07' },
       { text: '"refuse to be divided.\nrefuse to be sold.\nrefuse to be quiet."',   track: 'WAKE UP · TRK 01', idx: '07 / 07' },
     ];
     var current = 0;
-    var DISPLAY_MS = 4800, OUT_MS = 420, IN_MS = 500;
+    var CHAR_DELAY = 38; // ms per character
+    var HOLD_MS    = 3000;
+    var FADE_MS    = 700;
 
-    function applyProgress(fill) {
+    function setProgress(fill, durationMs) {
       if (!fill) return;
       fill.style.transition = 'none';
       fill.style.width = '0%';
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
-          fill.style.transition = 'width ' + ((DISPLAY_MS + OUT_MS + IN_MS) / 1000).toFixed(1) + 's linear';
+          fill.style.transition = 'width ' + (durationMs / 1000).toFixed(2) + 's linear';
           fill.style.width = '100%';
         });
       });
     }
 
-    function cycle() {
+    function typeQuote(el, fill, track, idx) {
+      var q = quotes[current];
+      var text = q.text;
+      if (track) track.textContent = q.track;
+      if (idx)   idx.textContent   = q.idx;
+
+      var totalTypingMs = text.length * CHAR_DELAY;
+      setProgress(fill, totalTypingMs + HOLD_MS);
+
+      el.textContent = '';
+      el.classList.add('typing');
+      var i = 0;
+
+      function typeNext() {
+        if (i < text.length) {
+          el.textContent = text.substring(0, i + 1);
+          i++;
+          setTimeout(typeNext, CHAR_DELAY);
+        } else {
+          // Fully typed — hold, then fade out
+          setTimeout(function() {
+            el.classList.remove('typing');
+            el.style.transition = 'opacity ' + FADE_MS + 'ms ease';
+            el.style.opacity = '0';
+            setTimeout(function() {
+              current = (current + 1) % quotes.length;
+              el.style.transition = 'none';
+              el.style.opacity = '1';
+              typeQuote(el, fill, track, idx);
+            }, FADE_MS);
+          }, HOLD_MS);
+        }
+      }
+      typeNext();
+    }
+
+    window.addEventListener('load', function() {
       var el    = document.getElementById('lc-text');
       var fill  = document.getElementById('lc-fill');
       var track = document.getElementById('lc-track');
       var idx   = document.getElementById('lc-index');
       if (!el) return;
-      el.classList.remove('lc-in');
-      el.classList.add('lc-out');
-      setTimeout(function() {
-        current = (current + 1) % quotes.length;
-        var q = quotes[current];
-        el.textContent = q.text;
-        if (track) track.textContent = q.track;
-        if (idx)   idx.textContent   = q.idx;
-        el.classList.remove('lc-out');
-        el.classList.add('lc-in');
-        applyProgress(fill);
-        setTimeout(function() { el.classList.remove('lc-in'); }, IN_MS);
-      }, OUT_MS);
-    }
-
-    window.addEventListener('load', function() {
-      applyProgress(document.getElementById('lc-fill'));
-      setInterval(cycle, DISPLAY_MS + OUT_MS + IN_MS);
+      // Small delay so the card animation plays first
+      setTimeout(function() { typeQuote(el, fill, track, idx); }, 3800);
     });
   })();
 
