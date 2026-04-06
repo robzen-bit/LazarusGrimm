@@ -1816,6 +1816,7 @@ a.btn-outline:active {
             <input type="email" class="hero-email-input email-input" placeholder="your@email.com" required>
             <button type="submit" class="hero-email-btn email-btn">Wake Up</button>
           </div>
+          <div class="email-feedback" style="display:none;margin-top:0.5rem;font-size:0.78rem;letter-spacing:0.06em;font-family:var(--font-body);"></div>
         </form>
       </div>
     </div>
@@ -2246,10 +2247,63 @@ a.btn-outline:active {
   // Email submit
   function handleSub(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.email-btn');
-    btn.textContent = "You're In ✓";
-    btn.style.background = 'var(--steel-light)';
-    e.target.querySelector('.email-input').value = '';
+    var form     = e.target;
+    var input    = form.querySelector('.email-input');
+    var btn      = form.querySelector('.email-btn');
+    var feedback = form.querySelector('.email-feedback');
+    var email    = input.value.trim();
+
+    // Validation
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRe.test(email)) {
+      if (feedback) {
+        feedback.textContent = 'Enter a valid email address.';
+        feedback.style.color = '#c0392b';
+        feedback.style.display = 'block';
+      }
+      return;
+    }
+
+    // Disable while sending
+    btn.disabled = true;
+    var origText = btn.textContent;
+    btn.textContent = '…';
+
+    fetch('https://connect.mailerlite.com/api/subscribers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYjBlZWVjOGU5NzEwNjRkYmU3NmU0MDQ4ZjY4ZDJiMWJmNDk4ZjMzNWE5Nzg4NWNlNzlhZTk1OWJkNDdmN2MwY2ZmZTVhZTExYjI5MWQ2NmMiLCJpYXQiOjE3NzU0Mzk4MDMuODA5NTczLCJuYmYiOjE3NzU0Mzk4MDMuODA5NTc1LCJleHAiOjQ5MzExMTM0MDMuODAzMDc5LCJzdWIiOiIyMjY2NzUxIiwic2NvcGVzIjpbXX0.NRSfsyX55RmGyjLfHZpkqZV513yaONuH45PDIWciX6mOMnBxbu0FTPW5s_Toffx3ASlzm5oXK1EuYf6KGWj5i_AAuC7-sGCfGEtxHahw6s4yWYoGIJsNFblotUj-yae1wjgOZISHW4mQrepw2f0SzlCRLfwXGzRdFnxIv3UsS2wckr5Y_O8gNxZqDOBToJIYV1u8wJ5vvraq3kgqBwkaaBsQY8bkob7NXsuF1nZ8sdXbbJzKXCtcjIkS8sNRRxq0cv8r4vf0sqE9u2XAHnfBv75__1ET8VzDDb8yWnVT9pqSoow9QnSaE88YYvxmwy0UjtoSa4kZyNcUz7srPVPgrUrTYZ-CES4N47JvuKHgp1BqNu5WmKP74HqkzbIHr_nKqb-yEbNous3cCAni10bshkg_IUQ1yPGopfuSjv3qIdOidpl9-AHHPILzlrifiPYb3xcv8_PCe84icOOe9-EgnbNjRgy4qtkLcDnFSS7xSA3zn1Pw7zmL5SBW8ECp6ZKNcGEuYSS9nhJ9OhZRshBv8aKtLUpXRkaeKHPP3XREcb8pjNiutPXnEFNS01kr3GS6_utneSR0ZXDnMMKvcDr_-_eJIx78DQwyi-11P78ZXzi0S93HyHQnRtvRkayjaAGOBqZi_sf7s0xyfqeIoGtUMTN07i3jiZz_1DyHSrM5YsA'
+      },
+      body: JSON.stringify({
+        email: email,
+        groups: ['183962079989860351']
+      })
+    })
+    .then(function(res) {
+      if (res.ok || res.status === 200 || res.status === 201) {
+        input.value = '';
+        btn.textContent = origText;
+        btn.disabled = false;
+        if (feedback) {
+          feedback.textContent = "You’re in. Check your inbox.";
+          feedback.style.color = '#7da8a8';
+          feedback.style.display = 'block';
+        }
+      } else {
+        return res.json().then(function(data) { throw new Error(data.message || res.status); });
+      }
+    })
+    .catch(function(err) {
+      btn.textContent = origText;
+      btn.disabled = false;
+      if (feedback) {
+        feedback.textContent = 'Something went wrong. Try again.';
+        feedback.style.color = '#c0392b';
+        feedback.style.display = 'block';
+      }
+      console.error('MailerLite error:', err);
+    });
   }
 </script>
 
