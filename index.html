@@ -2437,5 +2437,34 @@ window.closeLyrModal = function(e) {
 </script>
 
 
+<script>
+/* Autoplay fix: some browsers ignore the muted HTML attribute,
+   requiring the property to be set explicitly via JS before play() */
+(function() {
+  var v = document.querySelector('.bg-video');
+  if (!v) return;
+  v.muted = true;
+  v.defaultMuted = true;
+  var tryPlay = function() {
+    v.muted = true;
+    var p = v.play();
+    if (p && p.catch) {
+      p.catch(function() {
+        // If still blocked, re-attempt on first user interaction
+        document.addEventListener('click', function once() {
+          v.muted = true;
+          v.play();
+          document.removeEventListener('click', once);
+        }, { once: true });
+      });
+    }
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryPlay);
+  } else {
+    tryPlay();
+  }
+})();
+</script>
 </body>
 </html>
