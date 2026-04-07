@@ -186,26 +186,27 @@ body::after {
 .hero-center {
   display: flex; flex-direction: column;
   align-items: center;
-  max-width: 680px; width: 100%;
+  max-width: 820px; width: 100%;
 }
 
 /* Text reveals */
 .hero-eyebrow {
   font-family: var(--font-sub); font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.25em; text-transform: uppercase;
+  letter-spacing: 0.18em; text-transform: none;
   color: #ffffff;
   background: #000000;
-  display: inline-block;
-  padding: 0.35rem 0.9rem;
+  display: block; width: 100%;
+  text-align: center;
+  padding: 0.45rem 1.2rem;
   margin-bottom: 0;
   opacity: 0; animation: glitch-in-small 1.0s steps(1) 1.5s both;
 }
 .hero-band {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 8vw, 7rem);
-  line-height: 0.85; letter-spacing: 0.03em;
+  font-size: clamp(4.5rem, 11vw, 10rem);
+  line-height: 0.85; letter-spacing: 0.04em;
   color: #eaecec; text-transform: uppercase;
-  position: relative; z-index: 1; margin-bottom: 0;
+  position: relative; z-index: 3; margin-bottom: 0;
   opacity: 0; animation: glitch-in-band 1.6s steps(1) 1.7s both;
 }
 .hero-band em {
@@ -537,12 +538,12 @@ body::after {
 
 /* Hero card: centered box containing eyebrow/lyrics/countdown/presave */
 .hero-card {
-  position: relative; z-index: 2;
-  width: 100%;
+  position: relative; z-index: 1;
+  width: 78%;
   background: rgba(3, 7, 10, 0.82);
   border: 1px solid rgba(125, 168, 168, 0.18);
   padding: 1.4rem 0 1.2rem;
-  margin-top: -1.6rem;
+  margin-top: -2.2rem;
   display: flex; flex-direction: column; align-items: center;
   overflow: hidden;
   box-shadow: inset 0 0 0 1px rgba(125,168,168,0.04), 0 8px 40px rgba(0,0,0,0.6);
@@ -620,7 +621,7 @@ body::after {
 /* Countdown row outside card */
 .hero-countdown-row {
   display: flex; align-items: baseline; justify-content: center;
-  gap: 1.2rem; margin-top: 1.4rem; flex-wrap: wrap;
+  gap: 1.2rem; margin-top: 1.4rem; flex-wrap: wrap; width: 78%;
   opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.0s both;
 }
 .cd-label-inline {
@@ -632,7 +633,7 @@ body::after {
 /* Bottom row: presave + email inline */
 .hero-bottom-row {
   display: flex; align-items: stretch; gap: 0.8rem;
-  margin-top: 1rem; width: 100%;
+  margin-top: 1rem; width: 78%;
   opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.3s both;
 }
 
