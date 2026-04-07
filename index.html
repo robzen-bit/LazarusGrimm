@@ -207,6 +207,7 @@ body::after {
   line-height: 0.85; letter-spacing: 0.09em;
   color: #eaecec; text-transform: uppercase;
   position: relative; z-index: 3; margin-bottom: 0;
+  width: 76%; text-align: center;
   opacity: 0; animation: glitch-in-band 1.6s steps(1) 1.7s both;
 }
 .hero-band em {
@@ -456,13 +457,14 @@ body::after {
   opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.2s both;
 }
 .lc-corner {
-  position: absolute; width: 10px; height: 10px;
-  border-color: rgba(125,168,168,0.5); border-style: solid;
+  position: absolute; width: 16px; height: 16px;
+  border-color: rgba(125,168,168,0.65); border-style: solid;
+  z-index: 4;
 }
-.lc-corner.tl { top: 5px; left: 5px; border-width: 1px 0 0 1px; }
-.lc-corner.tr { top: 5px; right: 5px; border-width: 1px 1px 0 0; }
-.lc-corner.bl { bottom: 5px; left: 5px; border-width: 0 0 1px 1px; }
-.lc-corner.br { bottom: 5px; right: 5px; border-width: 0 1px 1px 0; }
+.lc-corner.tl { top: 4px; left: 4px; border-width: 1px 0 0 1px; }
+.lc-corner.tr { top: 4px; right: 4px; border-width: 1px 1px 0 0; }
+.lc-corner.bl { bottom: 4px; left: 4px; border-width: 0 0 1px 1px; }
+.lc-corner.br { bottom: 4px; right: 4px; border-width: 0 1px 1px 0; }
 .lc-header {
   display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 1rem;
@@ -525,11 +527,49 @@ body::after {
   width: 0%;
 }
 .lc-scanlines {
-  position: absolute; inset: 0; pointer-events: none;
+  position: absolute; inset: 0; pointer-events: none; z-index: 3;
   background: repeating-linear-gradient(
-    0deg, transparent, transparent 3px,
-    rgba(0,0,0,0.055) 3px, rgba(0,0,0,0.055) 4px
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.045) 2px, rgba(0,0,0,0.045) 3px
   );
+}
+
+/* Glass highlight + subtle grain */
+.hero-card::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,0.055) 0%,
+      rgba(255,255,255,0.018) 28%,
+      transparent 58%),
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(125,168,168,0.07) 0%, transparent 70%);
+}
+
+/* Hardware HUD bars */
+.card-hud-top, .card-hud-bot {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.3rem 0.85rem;
+  background: rgba(0,0,0,0.72);
+  font-family: 'Courier New', monospace;
+  font-size: 0.46rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(125,168,168,0.4);
+  position: relative; z-index: 4;
+}
+.card-hud-top { border-bottom: 1px solid rgba(125,168,168,0.12); }
+.card-hud-bot { border-top: 1px solid rgba(125,168,168,0.12); }
+.card-bolts { display: flex; gap: 0.55rem; align-items: center; }
+.card-bolts i {
+  display: block; width: 5px; height: 5px; border-radius: 50%;
+  border: 1px solid rgba(125,168,168,0.28);
+  background: radial-gradient(circle at 35% 35%, rgba(125,168,168,0.18), rgba(0,0,0,0.4));
+  font-style: normal;
+}
+.card-sys { display: flex; align-items: center; gap: 0.3rem; }
+.card-hud-line {
+  flex: 1; height: 1px; background: rgba(125,168,168,0.18);
+  margin: 0 0.8rem;
 }
 
 
@@ -539,14 +579,19 @@ body::after {
 /* Hero card: centered box containing eyebrow/lyrics/countdown/presave */
 .hero-card {
   position: relative; z-index: 1;
-  width: 70%;
-  background: rgba(3, 7, 10, 0.82);
-  border: 1px solid rgba(125, 168, 168, 0.18);
-  padding: 1.4rem 0 1.2rem;
+  width: 76%;
+  background: rgba(3, 7, 10, 0.88);
+  border: 1px solid rgba(125, 168, 168, 0.22);
+  padding: 0;
   margin-top: -2.2rem;
   display: flex; flex-direction: column; align-items: center;
   overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(125,168,168,0.04), 0 8px 40px rgba(0,0,0,0.6);
+  box-shadow:
+    inset 0 0 0 1px rgba(125,168,168,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    inset 4px 0 0 rgba(125,168,168,0.03),
+    inset -4px 0 0 rgba(125,168,168,0.03),
+    0 12px 50px rgba(0,0,0,0.75);
   opacity: 0; animation: glitch-in-small 0.9s steps(1) 2.8s both;
 }
 
@@ -589,10 +634,11 @@ body::after {
 /* lyric-zone: fixed height for max 3 lines, 48px side padding */
 .lyric-zone {
   width: 100%;
-  padding: 1.2rem 48px 0.8rem;
-  min-height: calc(3 * 1rem * 1.85 + 2.4rem); /* 3 lines + top/bottom padding */
+  padding: 1.0rem 48px 0.8rem;
+  height: calc(3 * 1rem * 1.85 + 1.8rem);
   display: flex; align-items: center; justify-content: center;
   text-align: center;
+  overflow: hidden;
 }
 .lyric-zone .lc-text {
   font-family: 'Courier New', Courier, monospace;
@@ -610,7 +656,7 @@ body::after {
 /* Countdown row outside card */
 .hero-countdown-row {
   display: flex; align-items: baseline; justify-content: center;
-  gap: 1.2rem; margin-top: 1.4rem; flex-wrap: wrap; width: 70%;
+  gap: 1.2rem; margin-top: 1.4rem; flex-wrap: wrap; width: 76%;
   opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.0s both;
 }
 .cd-label-inline {
@@ -622,7 +668,7 @@ body::after {
 /* Bottom row: presave + email inline */
 .hero-bottom-row {
   display: flex; align-items: stretch; gap: 0.8rem;
-  margin-top: 1rem; width: 70%;
+  margin-top: 1rem; width: 76%;
   opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.3s both;
 }
 
@@ -2050,12 +2096,25 @@ a.btn-outline:active {
         <span class="lc-corner bl"></span>
         <span class="lc-corner br"></span>
 
+        <!-- Hardware top bar -->
+        <div class="card-hud-top">
+          <span>LG &middot; WU &middot; 2026</span>
+          <span class="card-bolts"><i></i><i></i><i></i></span>
+          <span class="card-sys"><span class="lc-dot"></span>DISPLAY_ON</span>
+        </div>
+
         <div class="hero-eyebrow">New Album by Lazarus Grimm &nbsp;|&nbsp; July 4th 2026</div>
 
         <div class="lyric-zone">
           <div class="lc-text" id="lc-text"></div>
         </div>
 
+        <!-- Hardware bottom bar -->
+        <div class="card-hud-bot">
+          <span>CH &middot; 01</span>
+          <span class="card-hud-line"></span>
+          <span>440 HZ</span>
+        </div>
 
         <div class="lc-scanlines"></div>
       </div>
