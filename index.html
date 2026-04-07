@@ -605,18 +605,7 @@ body::after {
 .lyric-zone .lc-text.typing::after {
   opacity: 1; animation: lc-cursor 0.65s step-start infinite;
 }
-.lc-progress-wrap {
-  width: 100%; padding: 0 48px;
-}
-.lc-progress-wrap .lc-progress {
-  width: 100%; height: 3px; background: rgba(125,168,168,0.15);
-  position: relative; overflow: hidden; border-radius: 2px;
-}
-.lc-progress-wrap .lc-progress-fill {
-  position: absolute; left:0; top:0; bottom:0;
-  background: linear-gradient(90deg,#3a6060,#7da8a8);
-  width: 0%;
-}
+
 
 /* Countdown row outside card */
 .hero-countdown-row {
@@ -2067,9 +2056,6 @@ a.btn-outline:active {
           <div class="lc-text" id="lc-text"></div>
         </div>
 
-        <div class="lc-progress-wrap">
-          <div class="lc-progress"><div class="lc-progress-fill" id="lc-fill"></div></div>
-        </div>
 
         <div class="lc-scanlines"></div>
       </div>
@@ -2383,76 +2369,104 @@ a.btn-outline:active {
 
   // ── Lyric Card Typewriter ─────────────────────────────────────────────────
   (function() {
-    var quotes = [
-      { text: '"sleep is a luxury\nsold to you in monthly payments."',             track: 'WAKE UP · TRK 01', idx: '01 / 07' },
-      { text: '"your attention was never the product —\nit was the currency."',     track: 'WAKE UP · TRK 01', idx: '02 / 07' },
-      { text: '"the divide is their policy;\nthe outrage, their marketing plan."',  track: 'WAKE UP · TRK 01', idx: '03 / 07' },
-      { text: '"power is not mystical.\nit\u2019s paperwork, payroll,\nand complicit quiet."', track: 'WAKE UP · TRK 01', idx: '04 / 07' },
-      { text: '"wake up is not a slogan.\nit is a decision."',                       track: 'WAKE UP · TRK 01', idx: '05 / 07' },
-      { text: '"we are not broken beyond repair —\nwe were mis-sold a map."',        track: 'WAKE UP · TRK 01', idx: '06 / 07' },
-      { text: '"refuse to be divided.\nrefuse to be sold.\nrefuse to be quiet."',   track: 'WAKE UP · TRK 01', idx: '07 / 07' },
+    // Each quote is a sequence of steps:
+    //   {t: 'text', s: 'string'}  — type these chars
+    //   {t: 'typo', w: 'wrong', c: 'correct'} — type wrong, pause, backspace, type correct
+    var scripts = [
+      [ {t:'text',s:'"sleep is a '}, {t:'typo',w:'luxry',c:'luxury'}, {t:'text',s:'
+sold to you in monthly payments."'} ],
+      [ {t:'text',s:'"your '}, {t:'typo',w:'attenion',c:'attention'}, {t:'text',s:' was never the product —
+it was the currency."'} ],
+      [ {t:'text',s:'"the divide is their '}, {t:'typo',w:'polciy',c:'policy'}, {t:'text',s:';
+the outrage, their marketing plan."'} ],
+      [ {t:'text',s:'"power is not '}, {t:'typo',w:'mysticla',c:'mystical'}, {t:'text',s:'.
+it’s paperwork, payroll,
+and complicit quiet."'} ],
+      [ {t:'text',s:'"wake up is not a '}, {t:'typo',w:'slogn',c:'slogan'}, {t:'text',s:'.
+it is a decision."'} ],
+      [ {t:'text',s:'"we are not '}, {t:'typo',w:'brokne',c:'broken'}, {t:'text',s:' beyond repair —
+we were mis-sold a map."'} ],
+      [ {t:'text',s:'"refuse to be '}, {t:'typo',w:'devided',c:'divided'}, {t:'text',s:'.
+refuse to be sold.
+refuse to be quiet."'} ],
     ];
     var current = 0;
-    var CHAR_DELAY = 38; // ms per character
-    var HOLD_MS    = 3000;
-    var FADE_MS    = 700;
+    var TYPE_DELAY  = 42;   // ms per char while typing
+    var BS_DELAY    = 55;   // ms per backspace (typo fix)
+    var BS_END      = 28;   // ms per backspace when erasing at end
+    var HOLD_MS     = 5000; // hold after fully typed
+    var TYPO_PAUSE  = 320;  // pause before realising mistake
 
-    function setProgress(fill, durationMs) {
-      if (!fill) return;
-      fill.style.transition = 'none';
-      fill.style.width = '0%';
-      requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-          fill.style.transition = 'width ' + (durationMs / 1000).toFixed(2) + 's linear';
-          fill.style.width = '100%';
+    function typeChars(el, buf, str, cb) {
+      var i = 0;
+      function step() {
+        if (i >= str.length) { cb(buf); return; }
+        buf += str[i++];
+        el.textContent = buf;
+        setTimeout(step, TYPE_DELAY + (Math.random() * 28 | 0));
+      }
+      step();
+    }
+
+    function backspace(el, buf, count, delay, cb) {
+      function step() {
+        if (count <= 0 || buf.length === 0) { cb(buf); return; }
+        buf = buf.slice(0, -1);
+        el.textContent = buf;
+        count--;
+        setTimeout(step, delay + (Math.random() * 18 | 0));
+      }
+      step();
+    }
+
+    function runScript(el, steps, stepIdx, buf, onDone) {
+      if (stepIdx >= steps.length) { onDone(buf); return; }
+      var step = steps[stepIdx];
+      if (step.t === 'text') {
+        typeChars(el, buf, step.s, function(newBuf) {
+          runScript(el, steps, stepIdx + 1, newBuf, onDone);
         });
+      } else if (step.t === 'typo') {
+        typeChars(el, buf, step.w, function(newBuf) {
+          // Pause — realise mistake
+          setTimeout(function() {
+            backspace(el, newBuf, step.w.length, BS_DELAY, function(fixedBuf) {
+              typeChars(el, fixedBuf, step.c, function(correctedBuf) {
+                runScript(el, steps, stepIdx + 1, correctedBuf, onDone);
+              });
+            });
+          }, TYPO_PAUSE);
+        });
+      }
+    }
+
+    function eraseAll(el, cb) {
+      var buf = el.textContent;
+      backspace(el, buf, buf.length, BS_END, cb);
+    }
+
+    function runCycle(el) {
+      el.classList.add('typing');
+      el.textContent = '';
+      runScript(el, scripts[current], 0, '', function() {
+        // Fully typed — hold for 5s
+        setTimeout(function() {
+          // Erase everything with backspace
+          eraseAll(el, function() {
+            current = (current + 1) % scripts.length;
+            // Brief pause between quotes
+            setTimeout(function() { runCycle(el); }, 400);
+          });
+        }, HOLD_MS);
       });
     }
 
-    function typeQuote(el, fill, track, idx) {
-      var q = quotes[current];
-      var text = q.text;
-      if (track) track.textContent = q.track;
-      if (idx)   idx.textContent   = q.idx;
-
-      var totalTypingMs = text.length * CHAR_DELAY;
-      setProgress(fill, totalTypingMs + HOLD_MS);
-
-      el.textContent = '';
-      el.classList.add('typing');
-      var i = 0;
-
-      function typeNext() {
-        if (i < text.length) {
-          el.textContent = text.substring(0, i + 1);
-          i++;
-          setTimeout(typeNext, CHAR_DELAY);
-        } else {
-          // Fully typed — hold, then fade out
-          setTimeout(function() {
-            el.classList.remove('typing');
-            el.style.transition = 'opacity ' + FADE_MS + 'ms ease';
-            el.style.opacity = '0';
-            setTimeout(function() {
-              current = (current + 1) % quotes.length;
-              el.style.transition = 'none';
-              el.style.opacity = '1';
-              typeQuote(el, fill, track, idx);
-            }, FADE_MS);
-          }, HOLD_MS);
-        }
-      }
-      typeNext();
-    }
-
     window.addEventListener('load', function() {
-      var el    = document.getElementById('lc-text');
-      var fill  = document.getElementById('lc-fill');
-      var track = document.getElementById('lc-track');
-      var idx   = document.getElementById('lc-index');
+      var el = document.getElementById('lc-text');
       if (!el) return;
-      // Small delay so the card animation plays first
-      setTimeout(function() { typeQuote(el, fill, track, idx); }, 3800);
+      el.classList.add('typing');
+      // Delay start so card animation plays first
+      setTimeout(function() { runCycle(el); }, 3800);
     });
   })();
 
