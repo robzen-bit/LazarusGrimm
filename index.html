@@ -195,16 +195,16 @@ body::after {
   letter-spacing: 0.18em; text-transform: none;
   color: #ffffff;
   background: #000000;
-  display: block; width: 100%;
+  display: inline-block; width: auto;
   text-align: center;
-  padding: 0.45rem 1.2rem;
+  padding: 0.45rem 1.4rem;
   margin-bottom: 0;
   opacity: 0; animation: glitch-in-small 1.0s steps(1) 1.5s both;
 }
 .hero-band {
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 11vw, 10rem);
-  line-height: 0.85; letter-spacing: 0.04em;
+  font-size: clamp(6rem, 15vw, 13rem);
+  line-height: 0.85; letter-spacing: 0.09em;
   color: #eaecec; text-transform: uppercase;
   position: relative; z-index: 3; margin-bottom: 0;
   opacity: 0; animation: glitch-in-band 1.6s steps(1) 1.7s both;
@@ -539,7 +539,7 @@ body::after {
 /* Hero card: centered box containing eyebrow/lyrics/countdown/presave */
 .hero-card {
   position: relative; z-index: 1;
-  width: 78%;
+  width: 70%;
   background: rgba(3, 7, 10, 0.82);
   border: 1px solid rgba(125, 168, 168, 0.18);
   padding: 1.4rem 0 1.2rem;
@@ -610,7 +610,7 @@ body::after {
 /* Countdown row outside card */
 .hero-countdown-row {
   display: flex; align-items: baseline; justify-content: center;
-  gap: 1.2rem; margin-top: 1.4rem; flex-wrap: wrap; width: 78%;
+  gap: 1.2rem; margin-top: 1.4rem; flex-wrap: wrap; width: 70%;
   opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.0s both;
 }
 .cd-label-inline {
@@ -622,7 +622,7 @@ body::after {
 /* Bottom row: presave + email inline */
 .hero-bottom-row {
   display: flex; align-items: stretch; gap: 0.8rem;
-  margin-top: 1rem; width: 78%;
+  margin-top: 1rem; width: 70%;
   opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.3s both;
 }
 
@@ -2379,9 +2379,9 @@ a.btn-outline:active {
       [ {t:'text',s:'"refuse to be '}, {t:'typo',w:'devided',c:'divided'}, {t:'text',s:'.\nrefuse to be sold.\nrefuse to be quiet."'} ],
     ];
     var current = 0;
-    var TYPE_DELAY = 42;
-    var BS_DELAY   = 55;
-    var BS_END     = 28;
+    var TYPE_DELAY = 68;
+    var BS_DELAY   = 82;
+    var BS_END     = 46;
     var HOLD_MS    = 5000;
     var TYPO_PAUSE = 320;
 
@@ -2391,7 +2391,7 @@ a.btn-outline:active {
         if (i >= str.length) { cb(buf); return; }
         buf += str[i++];
         el.textContent = buf;
-        setTimeout(step, TYPE_DELAY + (Math.random() * 28 | 0));
+        setTimeout(step, TYPE_DELAY + (Math.random() * 55 | 0));
       }
       step();
     }
@@ -2402,7 +2402,7 @@ a.btn-outline:active {
         buf = buf.slice(0, -1);
         el.textContent = buf;
         count--;
-        setTimeout(step, delay + (Math.random() * 18 | 0));
+        setTimeout(step, delay + (Math.random() * 32 | 0));
       }
       step();
     }
