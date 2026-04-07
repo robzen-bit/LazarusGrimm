@@ -146,19 +146,24 @@ body::after {
   position: absolute; inset: 0; z-index: 0;
   overflow: hidden;
 }
-.bg-video {
+/* Ash background */
+.ash-canvas {
   position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  filter: grayscale(1) brightness(0.75) contrast(1.15) sepia(0.12) hue-rotate(175deg);
-  transform: scaleX(-1);
-  opacity: 0.92;
+  overflow: hidden; pointer-events: none;
+  background: radial-gradient(ellipse 130% 55% at 50% -5%, #0d1e2d 0%, #060d13 55%, #020508 100%);
 }
-.bg-video-tint {
-  position: absolute; inset: 0;
-  background: rgba(8, 18, 28, 0.38);
-  pointer-events: none;
+.ash-particle {
+  position: absolute; top: -6px;
+  border-radius: 50% 30% 50% 20% / 40% 50% 30% 50%;
+  background: rgba(170,165,155,0.55);
+  animation: ash-drift linear infinite;
+  will-change: transform;
+}
+@keyframes ash-drift {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  4%   { opacity: var(--op); }
+  94%  { opacity: var(--op); }
+  100% { transform: translateY(105vh) translateX(var(--sway)) rotate(var(--rot)); opacity: 0; }
 }
 
 
@@ -556,22 +561,20 @@ body::after {
   border-radius: 1px;
 }
 
-/* Screen static noise */
+/* Screen static — lightweight scanline flicker, no feTurbulence */
 .card-static {
   position: absolute; inset: 0; pointer-events: none; z-index: 4;
-  background-image: url("data:image/svg+xml,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  background-size: 160px 160px;
-  opacity: 0.055;
-  mix-blend-mode: overlay;
-  animation: static-shift 0.11s steps(1) infinite;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent, transparent 3px,
+    rgba(57,255,122,0.014) 3px, rgba(57,255,122,0.014) 4px
+  );
+  opacity: 0;
+  animation: static-flicker 5s step-start infinite;
 }
-@keyframes static-shift {
-  0%   { background-position: 0 0; }
-  16%  { background-position: -42px 18px; }
-  33%  { background-position: 28px -22px; }
-  50%  { background-position: -18px 35px; }
-  66%  { background-position: 44px -12px; }
-  83%  { background-position: -33px 27px; }
+@keyframes static-flicker {
+  0%,88%,90%,92%,95%,98% { opacity: 0; }
+  89%,91%,93%,96%,99%,100% { opacity: 1; }
 }
 
 /* Screen crack */
@@ -2110,10 +2113,7 @@ a.btn-outline:active {
 <!-- HERO -->
 <section class="hero" id="main-content">
   <div class="bg-child">
-    <video class="bg-video" autoplay muted loop playsinline preload="auto">
-      <source src="video/bg.mp4" type="video/mp4">
-    </video>
-    <div class="bg-video-tint"></div>
+    <div id="ash-canvas" class="ash-canvas"></div>
   </div>
   
   
@@ -2925,38 +2925,34 @@ window.closeLyrModal = function(e) {
 
 
 <script>
-/* Robust video autoplay — set muted as property, wait for canplay */
+/* Ash particle generator */
 (function() {
-  var v = document.querySelector('.bg-video');
-  if (!v) return;
-  // Must set as property, not just attribute
-  v.muted = true;
-  v.defaultMuted = true;
-  v.volume = 0;
-
-  function doPlay() {
-    v.muted = true;
-    var p = v.play();
-    if (p !== undefined) {
-      p.catch(function(err) {
-        console.warn('Autoplay blocked:', err);
-        // Retry on first interaction
-        ['click','touchstart','keydown'].forEach(function(evt) {
-          document.addEventListener(evt, function once() {
-            v.muted = true; v.play();
-            document.removeEventListener(evt, once);
-          }, { once: true });
-        });
-      });
-    }
+  var canvas = document.getElementById('ash-canvas');
+  if (!canvas) return;
+  var count = 72;
+  var frag = document.createDocumentFragment();
+  for (var i = 0; i < count; i++) {
+    var p = document.createElement('span');
+    p.className = 'ash-particle';
+    var size   = 1 + Math.random() * 3.2;
+    var left   = Math.random() * 102;
+    var dur    = 14 + Math.random() * 18;
+    var delay  = -(Math.random() * (dur));
+    var op     = (0.12 + Math.random() * 0.32).toFixed(2);
+    var sway   = ((Math.random() * 90) - 45).toFixed(0) + 'px';
+    var rot    = (Math.random() * 360).toFixed(0) + 'deg';
+    p.style.cssText =
+      'width:'  + size.toFixed(1) + 'px;' +
+      'height:' + (size * 0.55).toFixed(1) + 'px;' +
+      'left:'   + left.toFixed(1) + '%;' +
+      'animation-duration:' + dur.toFixed(1) + 's;' +
+      'animation-delay:'    + delay.toFixed(1) + 's;' +
+      '--op:'   + op + ';' +
+      '--sway:' + sway + ';' +
+      '--rot:'  + rot + ';';
+    frag.appendChild(p);
   }
-
-  if (v.readyState >= 3) {
-    doPlay();
-  } else {
-    v.addEventListener('canplay', doPlay, { once: true });
-    v.load(); // force load in case browser deferred it
-  }
+  canvas.appendChild(frag);
 })();
 </script>
 </body>
