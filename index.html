@@ -192,12 +192,12 @@ body::after {
 /* Text reveals */
 .hero-eyebrow {
   font-family: var(--font-sub); font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.45em; text-transform: uppercase;
+  letter-spacing: 0.25em; text-transform: uppercase;
   color: #ffffff;
   background: #000000;
   display: inline-block;
-  padding: 0.3rem 0.6rem;
-  margin-bottom: 0.8rem;
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 0;
   opacity: 0; animation: glitch-in-small 1.0s steps(1) 1.5s both;
 }
 .hero-band {
@@ -205,6 +205,7 @@ body::after {
   font-size: clamp(3.5rem, 8vw, 7rem);
   line-height: 0.85; letter-spacing: 0.03em;
   color: #eaecec; text-transform: uppercase;
+  position: relative; z-index: 1; margin-bottom: 0;
   opacity: 0; animation: glitch-in-band 1.6s steps(1) 1.7s both;
 }
 .hero-band em {
@@ -237,8 +238,8 @@ body::after {
   opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.2s both;
 }
 .hero-email {
-  margin-top: 1rem; width: 100%;
-  opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.5s both;
+  margin-top: 0; width: 100%;
+  opacity: 1; animation: none;
 }
 .hero-email-label {
   font-family: var(--font-sub); font-size: 0.6rem; font-weight: 600;
@@ -536,12 +537,12 @@ body::after {
 
 /* Hero card: centered box containing eyebrow/lyrics/countdown/presave */
 .hero-card {
-  position: relative;
+  position: relative; z-index: 2;
   width: 100%;
   background: rgba(3, 7, 10, 0.82);
   border: 1px solid rgba(125, 168, 168, 0.18);
-  padding: 1.4rem 2rem 1.4rem;
-  margin-top: 0.8rem;
+  padding: 1.4rem 0 1.2rem;
+  margin-top: -1.6rem;
   display: flex; flex-direction: column; align-items: center;
   overflow: hidden;
   box-shadow: inset 0 0 0 1px rgba(125,168,168,0.04), 0 8px 40px rgba(0,0,0,0.6);
@@ -582,6 +583,58 @@ body::after {
   width: 0%;
 }
 
+
+
+/* lyric-zone: fixed height for max 3 lines, 48px side padding */
+.lyric-zone {
+  width: 100%;
+  padding: 1.2rem 48px 0.8rem;
+  min-height: calc(3 * 1rem * 1.85 + 2.4rem); /* 3 lines + top/bottom padding */
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+}
+.lyric-zone .lc-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem; color: #c4d0d6; line-height: 1.85;
+  white-space: pre-line; width: 100%;
+}
+.lyric-zone .lc-text::after {
+  content: '|'; color: #7da8a8; opacity: 0; margin-left: 1px;
+}
+.lyric-zone .lc-text.typing::after {
+  opacity: 1; animation: lc-cursor 0.65s step-start infinite;
+}
+.lc-progress-wrap {
+  width: 100%; padding: 0 48px;
+}
+.lc-progress-wrap .lc-progress {
+  width: 100%; height: 3px; background: rgba(125,168,168,0.15);
+  position: relative; overflow: hidden; border-radius: 2px;
+}
+.lc-progress-wrap .lc-progress-fill {
+  position: absolute; left:0; top:0; bottom:0;
+  background: linear-gradient(90deg,#3a6060,#7da8a8);
+  width: 0%;
+}
+
+/* Countdown row outside card */
+.hero-countdown-row {
+  display: flex; align-items: baseline; justify-content: center;
+  gap: 1.2rem; margin-top: 1.4rem; flex-wrap: wrap;
+  opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.0s both;
+}
+.cd-label-inline {
+  font-family: var(--font-sub); font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent);
+  white-space: nowrap;
+}
+
+/* Bottom row: presave + email inline */
+.hero-bottom-row {
+  display: flex; align-items: stretch; gap: 0.8rem;
+  margin-top: 1rem; width: 100%;
+  opacity: 0; animation: glitch-in-small 0.9s steps(1) 3.3s both;
+}
 
 /* Scroll cue */
 .scroll-cue {
@@ -1999,27 +2052,30 @@ a.btn-outline:active {
       <h1 class="hero-band" data-text="WakeUp">
         Wake <em>Up</em>
       </h1>
-      <div class="hero-credit">Lazarus Grimm</div>
 
-      <!-- Card: eyebrow + lyric typewriter + countdown + presave -->
+      <!-- Card overlaps title via negative margin-top -->
       <div class="hero-card">
         <span class="lc-corner tl"></span>
         <span class="lc-corner tr"></span>
         <span class="lc-corner bl"></span>
         <span class="lc-corner br"></span>
 
-        <div class="hero-eyebrow" style="margin-bottom:1.2rem;">New Album &nbsp;·&nbsp; July 4, 2026</div>
+        <div class="hero-eyebrow">New Album by Lazarus Grimm &nbsp;|&nbsp; July 4th 2026</div>
 
-        <div class="lyric-inline">
+        <div class="lyric-zone">
           <div class="lc-text" id="lc-text"></div>
-          <div class="lyric-inline-footer">
-            <span class="lc-track-label" id="lc-track">WAKE UP · TRK 01</span>
-            <div class="lc-progress"><div class="lc-progress-fill" id="lc-fill"></div></div>
-            <span class="lc-index-label" id="lc-index">01 / 07</span>
-          </div>
         </div>
 
-        <div class="cd-label">Releasing In</div>
+        <div class="lc-progress-wrap">
+          <div class="lc-progress"><div class="lc-progress-fill" id="lc-fill"></div></div>
+        </div>
+
+        <div class="lc-scanlines"></div>
+      </div>
+
+      <!-- Countdown outside card, horizontal row -->
+      <div class="hero-countdown-row">
+        <span class="cd-label-inline">Releasing in</span>
         <div class="countdown">
           <div class="cd-unit"><span class="cd-num" id="cd-d">91</span><span class="cd-lbl">Days</span></div>
           <span class="cd-sep">:</span>
@@ -2029,24 +2085,19 @@ a.btn-outline:active {
           <span class="cd-sep">:</span>
           <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-lbl">Sec</span></div>
         </div>
-        <div class="cd-date">July 4, 2026 · Independence Day</div>
-
-        <div class="hero-cta">
-          <a href="#" class="btn-accent" style="color:#0c0d0f;background:#7da8a8;text-decoration:none;display:inline-block;padding:0.85rem 2.2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;border:2px solid #7da8a8;cursor:pointer;">Pre-Save Now</a>
-        </div>
-
-        <div class="lc-scanlines"></div>
       </div>
 
-      <!-- Email below card -->
-      <form class="hero-email" onsubmit="handleSub(event)">
-        <div class="hero-email-label">Get the exclusive pre-release track — free</div>
-        <div class="hero-email-row">
-          <input type="email" class="hero-email-input email-input" placeholder="your@email.com" required>
-          <button type="submit" class="hero-email-btn email-btn">Wake Up</button>
-        </div>
-        <div class="email-feedback" style="display:none;margin-top:0.5rem;font-size:0.78rem;letter-spacing:0.06em;font-family:var(--font-body);"></div>
-      </form>
+      <!-- Bottom row: presave + email inline -->
+      <div class="hero-bottom-row">
+        <a href="#" class="btn-accent" style="color:#0c0d0f;background:#7da8a8;text-decoration:none;display:inline-flex;align-items:center;padding:0.85rem 2.2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;border:2px solid #7da8a8;cursor:pointer;white-space:nowrap;flex-shrink:0;">Pre-Save Now</a>
+        <form class="hero-email" onsubmit="handleSub(event)" style="flex:1;margin-top:0;">
+          <div class="hero-email-row">
+            <input type="email" class="hero-email-input email-input" placeholder="email" required>
+            <button type="submit" class="hero-email-btn email-btn">Wake Up</button>
+          </div>
+          <div class="email-feedback" style="display:none;margin-top:0.5rem;font-size:0.78rem;letter-spacing:0.06em;font-family:var(--font-body);"></div>
+        </form>
+      </div>
     </div>
   </div>
   <div class="scroll-cue">
