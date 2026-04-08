@@ -9,7 +9,9 @@
 <meta property="og:description" content="Wake Up — the fifth studio album by Lazarus Grimm. Releasing July 4, 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -209,16 +211,19 @@ body::after {
 /* Vertical divider — CSS-driven entrance, no .e class */
 .hero-divider {
   width: 1px;
-  height: 0;
+  height: 70px;
   background: var(--ghost);
   margin: 0 auto 26px;
+  transform-origin: top center;
+  transform: scaleY(0);
   opacity: 0;
   animation: dividerGrow 0.7s 1.3s cubic-bezier(0.22,1,0.36,1) forwards;
+  will-change: transform, opacity;
 }
 
 @keyframes dividerGrow {
-  from { height: 0; opacity: 0; }
-  to   { height: 70px; opacity: 1; }
+  from { transform: scaleY(0); opacity: 0; }
+  to   { transform: scaleY(1); opacity: 1; }
 }
 
 /* Tagline */
