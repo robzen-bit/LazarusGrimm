@@ -278,6 +278,19 @@ body::after {
   user-select: none;
 }
 
+
+/* ── WAKE UP DREAM LETTERS ── */
+.letter {
+  display: inline-block;
+  animation: letterDream var(--dur, 4s) var(--del, 0s) ease-in-out infinite alternate;
+  will-change: filter, opacity, transform;
+}
+@keyframes letterDream {
+  from { filter: blur(0px); opacity: 1; transform: translateY(0) scale(1); }
+  to   { filter: blur(var(--blr, 1.5px)); opacity: var(--op, 0.78);
+         transform: translateY(var(--ty, -1px)) scale(var(--sc, 0.995)); }
+}
+
 .hero-title-ghost {
   position: absolute;
   inset: 0;
@@ -364,28 +377,66 @@ body::after {
   70%      { opacity:1; }
   70.1%    { opacity:0; }
 }
-/* Whole-line stutter fires when words switch — runs on .hero-tagline */
+/* Whole-line digital glitch — fires at every word transition point.
+   Duration matches rw1/rw7 (28s). Chromatic split + skew + blur. */
 @keyframes lineStutter {
-  0%,100%  { transform:translateX(0); opacity:1; }
-  5.1%     { transform:translateX(-3px) skewX(-1deg); opacity:0.7; }
-  5.25%    { transform:translateX(2px); opacity:1; }
-  5.4%     { transform:translateX(-1px); opacity:0.85; }
-  5.55%    { transform:translateX(0); opacity:1; }
-  13.1%    { transform:translateX(2px) skewX(0.5deg); opacity:0.75; }
-  13.25%   { transform:translateX(-1px); opacity:1; }
-  13.4%    { transform:translateX(0); }
-  30.1%    { transform:translateX(-2px); opacity:0.8; }
-  30.25%   { transform:translateX(1px); opacity:1; }
-  30.4%    { transform:translateX(0); }
-  40.2%    { transform:translateX(3px) skewX(-0.5deg); opacity:0.7; }
-  40.35%   { transform:translateX(-1px); opacity:1; }
-  40.5%    { transform:translateX(0); }
-  60.1%    { transform:translateX(-3px); opacity:0.75; }
-  60.25%   { transform:translateX(2px); opacity:1; }
-  60.4%    { transform:translateX(0); }
-  70.1%    { transform:translateX(2px) skewX(1deg); opacity:0.8; }
-  70.25%   { transform:translateX(-1px); opacity:1; }
-  70.4%    { transform:translateX(0); }
+  /* baseline */
+  0%,100%   { transform:translateX(0) skewX(0); opacity:1; filter:none;
+               text-shadow:none; }
+  /* rA 5.1% on */
+  4.98%     { transform:translateX(0); opacity:1; filter:none; text-shadow:none; }
+  5.0%      { transform:translateX(-16px) skewX(-6deg); opacity:0.4;
+               filter:blur(2.5px);
+               text-shadow:-8px 0 var(--teal), 8px 0 var(--white); }
+  5.07%     { transform:translateX(11px) skewX(3deg); opacity:0.7;
+               filter:blur(1px);
+               text-shadow:5px 0 var(--teal); }
+  5.13%     { transform:translateX(-5px) skewX(-1deg); opacity:0.88;
+               filter:none; text-shadow:none; }
+  5.2%      { transform:translateX(2px); opacity:0.95; }
+  5.28%     { transform:translateX(0); opacity:1; }
+  /* rA 13.1% off */
+  12.98%    { transform:translateX(0); opacity:1; filter:none; text-shadow:none; }
+  13.0%     { transform:translateX(14px) skewX(5deg); opacity:0.35;
+               filter:blur(2px);
+               text-shadow:-6px 0 var(--white), 7px 0 var(--teal); }
+  13.07%    { transform:translateX(-9px) skewX(-2deg); opacity:0.65;
+               filter:blur(1px); text-shadow:none; }
+  13.14%    { transform:translateX(4px); opacity:0.9; filter:none; }
+  13.22%    { transform:translateX(0); opacity:1; }
+  /* rB 30.1% on */
+  29.98%    { transform:translateX(0); opacity:1; filter:none; text-shadow:none; }
+  30.0%     { transform:translateX(-13px) skewX(-5deg); opacity:0.4;
+               filter:blur(3px);
+               text-shadow:-7px 0 var(--teal), 6px 0 var(--white); }
+  30.07%    { transform:translateX(9px) skewX(2deg); opacity:0.72; filter:blur(1px); }
+  30.14%    { transform:translateX(-4px); opacity:0.9; filter:none; text-shadow:none; }
+  30.22%    { transform:translateX(0); opacity:1; }
+  /* rB 40.2% off */
+  40.08%    { transform:translateX(0); opacity:1; filter:none; text-shadow:none; }
+  40.1%     { transform:translateX(15px) skewX(6deg); opacity:0.38;
+               filter:blur(2px);
+               text-shadow:-5px 0 var(--white), 8px 0 var(--teal); }
+  40.17%    { transform:translateX(-10px) skewX(-3deg); opacity:0.68; filter:blur(1px); }
+  40.24%    { transform:translateX(5px); opacity:0.87; filter:none; text-shadow:none; }
+  40.32%    { transform:translateX(0); opacity:1; }
+  /* rC 60.1% on */
+  59.98%    { transform:translateX(0); opacity:1; filter:none; text-shadow:none; }
+  60.0%     { transform:translateX(-17px) skewX(-7deg); opacity:0.33;
+               filter:blur(3px);
+               text-shadow:-9px 0 var(--teal), 9px 0 var(--white); }
+  60.07%    { transform:translateX(12px) skewX(4deg); opacity:0.6; filter:blur(1.5px); }
+  60.14%    { transform:translateX(-6px); opacity:0.85; filter:none; text-shadow:none; }
+  60.22%    { transform:translateX(2px); opacity:0.96; }
+  60.3%     { transform:translateX(0); opacity:1; }
+  /* rC 70.1% off */
+  69.98%    { transform:translateX(0); opacity:1; filter:none; text-shadow:none; }
+  70.0%     { transform:translateX(13px) skewX(5deg); opacity:0.42;
+               filter:blur(2.5px);
+               text-shadow:-6px 0 var(--white), 7px 0 var(--teal); }
+  70.07%    { transform:translateX(-8px) skewX(-2deg); opacity:0.7; filter:blur(1px); }
+  70.14%    { transform:translateX(3px); opacity:0.9; filter:none; text-shadow:none; }
+  70.22%    { transform:translateX(0); opacity:1; }
 }
 /* Sparse per-word assignments — long cycles, big phase gaps */
 .rw1::before { animation: rA 28s  -2.0s  infinite; }
@@ -405,6 +456,7 @@ body::after {
   color: var(--dim);
   margin-bottom: 8px;
   letter-spacing: 0.3px;
+  animation: lineStutter 28s -2.0s linear infinite;
 }
 
 /* Date line */
@@ -1243,6 +1295,40 @@ document.querySelectorAll('[data-section]').forEach(function(s) {
   var n = document.getElementById('nav-logo');
   if (s && n) n.src = s.src;
 })();
+</script>
+
+<script>
+  /* ── WAKE UP dream letters ── */
+  (function() {
+    function splitLetters(el) {
+      var text = el.textContent;
+      el.innerHTML = '';
+      text.split('').forEach(function(ch, i) {
+        var s = document.createElement('span');
+        if (ch === ' ') {
+          s.innerHTML = '&nbsp;';
+          s.className = 'letter-space';
+          s.style.display = 'inline-block';
+          s.style.width = '0.3em';
+        } else {
+          s.textContent = ch;
+          s.className = 'letter';
+          var dur  = (3.5 + Math.random() * 4.5).toFixed(2);
+          var del  = (-Math.random() * 8).toFixed(2);
+          var blr  = (0.8 + Math.random() * 2.2).toFixed(2);
+          var op   = (0.7 + Math.random() * 0.25).toFixed(3);
+          var ty   = (-0.5 + Math.random() * 1.5).toFixed(2);
+          var sc   = (0.978 + Math.random() * 0.03).toFixed(4);
+          s.style.cssText += '--dur:'+dur+'s;--del:'+del+'s;--blr:'+blr+'px;--op:'+op+';--ty:'+ty+'px;--sc:'+sc+';';
+        }
+        el.appendChild(s);
+      });
+    }
+    var title = document.querySelector('.hero-title');
+    var ghost = document.querySelector('.hero-title-ghost');
+    if (title) splitLetters(title);
+    if (ghost) splitLetters(ghost);
+  })();
 </script>
 </body>
 </html>
