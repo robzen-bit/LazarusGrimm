@@ -935,31 +935,33 @@ footer {
 
 <script>
 // ── PARTICLES ──
-(function() {
-  const container = document.getElementById('particles');
-  const isMobile = window.innerWidth < 768;
-  const count = isMobile ? 8 : 18;
-  for (let i = 0; i < count; i++) {
-    const p = document.createElement('span');
+requestAnimationFrame(function() {
+  var container = document.getElementById('particles');
+  var isMobile = window.matchMedia('(max-width: 767px)').matches;
+  var count = isMobile ? 8 : 18;
+  var frag = document.createDocumentFragment();
+  for (var i = 0; i < count; i++) {
+    var p = document.createElement('span');
     p.className = 'particle';
-    const size   = 1 + Math.random() * 3;
-    const drift  = (Math.random() - 0.5) * 120;
-    const dur    = 18 + Math.random() * 22;
-    const delay  = -(Math.random() * 40);
-    const op     = 0.06 + Math.random() * 0.14;
+    var size  = 1 + Math.random() * 3;
+    var drift = (Math.random() - 0.5) * 120;
+    var dur   = 18 + Math.random() * 22;
+    var delay = -(Math.random() * 40);
+    var op    = 0.06 + Math.random() * 0.14;
     p.style.cssText = [
-      `left:${Math.random() * 100}%`,
-      `width:${size}px`,
-      `height:${size}px`,
-      `--drift:${drift}px`,
-      `--op:${op}`,
-      `animation-duration:${dur}s`,
-      `animation-delay:${delay}s`,
-      `opacity:${op}`
+      'left:' + (Math.random() * 100) + '%',
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      '--drift:' + drift + 'px',
+      '--op:' + op,
+      'animation-duration:' + dur + 's',
+      'animation-delay:' + delay + 's',
+      'opacity:' + op
     ].join(';');
-    container.appendChild(p);
+    frag.appendChild(p);
   }
-})();
+  container.appendChild(frag);
+});
 
 // ── CURTAIN CLEANUP ──
 setTimeout(function() {
