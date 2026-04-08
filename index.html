@@ -206,6 +206,88 @@ body::after {
   100% { transform: scale(1.09) translate(-4px, 5px);  filter: saturate(0.28) brightness(0.50) blur(0.8px); }
 }
 
+
+/* ── DREAM LIGHT BLOBS ── */
+.dream-blobs {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: screen;
+  opacity: 0.42;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform, opacity;
+}
+/* Blob 1 — cool steel, drifts top-left */
+.blob-1 {
+  width: 520px; height: 420px;
+  background: radial-gradient(ellipse, rgba(133,150,170,0.18) 0%, transparent 70%);
+  top: -10%; left: -8%;
+  animation: blobDrift1 38s ease-in-out infinite alternate;
+}
+/* Blob 2 — pale steel, drifts centre-right */
+.blob-2 {
+  width: 460px; height: 560px;
+  background: radial-gradient(ellipse, rgba(200,212,224,0.10) 0%, transparent 68%);
+  top: 20%; right: -12%;
+  animation: blobDrift2 52s ease-in-out infinite alternate;
+}
+/* Blob 3 — deep teal tint, anchors centre */
+.blob-3 {
+  width: 640px; height: 380px;
+  background: radial-gradient(ellipse, rgba(100,130,150,0.09) 0%, transparent 72%);
+  top: 40%; left: 20%;
+  animation: blobDrift3 45s ease-in-out infinite alternate;
+}
+/* Blob 4 — whisper of light, bottom-left */
+.blob-4 {
+  width: 340px; height: 440px;
+  background: radial-gradient(ellipse, rgba(180,200,220,0.08) 0%, transparent 65%);
+  bottom: -5%; left: 10%;
+  animation: blobDrift4 60s ease-in-out infinite alternate;
+}
+/* Blob 5 — tiny bright core, top-right */
+.blob-5 {
+  width: 260px; height: 260px;
+  background: radial-gradient(ellipse, rgba(220,230,240,0.11) 0%, transparent 60%);
+  top: 5%; right: 15%;
+  animation: blobDrift5 34s ease-in-out infinite alternate;
+}
+
+@keyframes blobDrift1 {
+  from { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  33%  { transform: translate(60px, 80px) scale(1.12); opacity: 0.4; }
+  66%  { transform: translate(30px, 140px) scale(0.92); opacity: 0.9; }
+  to   { transform: translate(90px, 60px) scale(1.06); opacity: 0.55; }
+}
+@keyframes blobDrift2 {
+  from { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  40%  { transform: translate(-80px, 60px) scale(1.08); opacity: 0.85; }
+  70%  { transform: translate(-40px, -50px) scale(0.96); opacity: 0.35; }
+  to   { transform: translate(-100px, 30px) scale(1.14); opacity: 0.65; }
+}
+@keyframes blobDrift3 {
+  from { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  30%  { transform: translate(-50px, -40px) scale(1.10); opacity: 0.3; }
+  60%  { transform: translate(70px, 50px) scale(0.94); opacity: 0.8; }
+  to   { transform: translate(20px, -60px) scale(1.04); opacity: 0.45; }
+}
+@keyframes blobDrift4 {
+  from { transform: translate(0, 0) scale(1); opacity: 0.55; }
+  45%  { transform: translate(90px, -70px) scale(1.16); opacity: 0.8; }
+  to   { transform: translate(40px, -30px) scale(0.90); opacity: 0.35; }
+}
+@keyframes blobDrift5 {
+  from { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  50%  { transform: translate(-60px, 80px) scale(1.20); opacity: 0.3; }
+  to   { transform: translate(-30px, 50px) scale(0.88); opacity: 0.65; }
+}
+
 .hero-vignette {
   position: absolute; inset: 0;
   background: radial-gradient(ellipse at 50% 50%,
@@ -1032,6 +1114,7 @@ footer {
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-vignette"></div>
+  <div class="dream-blobs" aria-hidden="true"><span class="blob blob-1"></span><span class="blob blob-2"></span><span class="blob blob-3"></span><span class="blob blob-4"></span><span class="blob blob-5"></span></div>
   <div class="particles" id="particles"></div>
 
   <div class="hero-content">
