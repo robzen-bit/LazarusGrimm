@@ -183,7 +183,7 @@ body::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--nav-h) + 40px) 24px 60px;
+  padding: calc(var(--nav-h) + 20px) 24px 40px;
 }
 
 .hero-bg {
@@ -269,7 +269,7 @@ body::after {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(130px, 24vw, 280px);
+  font-size: clamp(100px, 18vw, 220px);
   line-height: 0.83;
   letter-spacing: 6px;
   color: var(--white);
@@ -282,7 +282,7 @@ body::after {
   position: absolute;
   inset: 0;
   font-family: var(--font-display);
-  font-size: clamp(130px, 24vw, 280px);
+  font-size: clamp(100px, 18vw, 220px);
   line-height: 0.83;
   letter-spacing: 6px;
   color: var(--teal);
@@ -304,16 +304,6 @@ body::after {
 }
 
 /* Subtitle */
-.hero-sub {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  font-size: 13px;
-  letter-spacing: 10px;
-  color: var(--dim);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
 /* Vertical divider — CSS-driven entrance, no .e class */
 .hero-divider {
   width: 1px;
@@ -333,6 +323,52 @@ body::after {
 }
 
 /* Tagline */
+
+/* ── TAGLINE REDACTED GLITCH ── */
+.redacted-line {
+  position: relative;
+  display: inline-block;
+}
+/* The black redaction bar */
+.redacted-line::before {
+  content: '';
+  position: absolute;
+  left: -2px; right: -2px;
+  top: 0; bottom: 0;
+  background: var(--white);
+  transform-origin: left center;
+  animation: redactReveal 0.6s 2.8s cubic-bezier(0.77,0,0.18,1) forwards,
+             redactFlicker 6s 4s infinite;
+}
+@keyframes redactReveal {
+  0%   { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0); opacity: 0; }
+}
+@keyframes redactFlicker {
+  0%,88%,100% { opacity: 0; transform: scaleX(0); }
+  89%         { opacity: 1; transform: scaleX(0.7) translateX(-4px); }
+  90%         { opacity: 0; }
+  92%         { opacity: 0.8; transform: scaleX(0.4) translateX(6px); }
+  93%,99%     { opacity: 0; }
+}
+/* Glitch ghost layers */
+.redacted-line::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0; top: 0;
+  color: var(--teal);
+  opacity: 0;
+  clip-path: inset(40% 0 40% 0);
+  animation: taglineGlitch 7s 4.5s infinite;
+}
+@keyframes taglineGlitch {
+  0%,82%,100% { opacity:0; transform:translateX(0); }
+  83%         { opacity:0.5; transform:translateX(-5px); clip-path:inset(20% 0 60% 0); }
+  84%         { opacity:0; }
+  86%         { opacity:0.35; transform:translateX(4px); clip-path:inset(55% 0 15% 0); }
+  87%,99%     { opacity:0; }
+}
+
 .hero-tagline {
   font-family: var(--font-serif);
   font-style: italic;
@@ -879,11 +915,10 @@ footer {
       <span class="hero-title-ghost" aria-hidden="true">Wake Up</span>
     </div>
 
-    <p class="hero-sub e" id="e3">Fifth Studio Album</p>
-
+    
     <div class="hero-divider" aria-hidden="true"></div>
 
-    <p class="hero-tagline e" id="e5">The album they don't want you to hear.</p>
+    <p class="hero-tagline e" id="e5"><span class="redacted-line" data-text="The album they don't want you to hear.">The album they don't want you to hear.</span></p>
 
     <p class="hero-date e" id="e6">
       July 4, 2026<span class="sep">·</span>Independence Day
