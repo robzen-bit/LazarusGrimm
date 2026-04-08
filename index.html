@@ -324,50 +324,84 @@ body::after {
 
 /* Tagline */
 
-/* ── TAGLINE REDACTED GLITCH ── */
-.redacted-line {
+/* ── TAGLINE WORD REDACTION GLITCH ── */
+.r-word {
   position: relative;
   display: inline-block;
+  white-space: nowrap;
 }
-/* The black redaction bar */
-.redacted-line::before {
+.r-word::before {
   content: '';
   position: absolute;
-  left: -2px; right: -2px;
-  top: 0; bottom: 0;
+  left: -1px; right: -1px;
+  top: 1px; bottom: 1px;
   background: var(--white);
-  transform-origin: left center;
-  animation: redactReveal 0.6s 2.8s cubic-bezier(0.77,0,0.18,1) forwards,
-             redactFlicker 6s 4s infinite;
-}
-@keyframes redactReveal {
-  0%   { transform: scaleX(1); opacity: 1; }
-  100% { transform: scaleX(0); opacity: 0; }
-}
-@keyframes redactFlicker {
-  0%,88%,100% { opacity: 0; transform: scaleX(0); }
-  89%         { opacity: 1; transform: scaleX(0.7) translateX(-4px); }
-  90%         { opacity: 0; }
-  92%         { opacity: 0.8; transform: scaleX(0.4) translateX(6px); }
-  93%,99%     { opacity: 0; }
-}
-/* Glitch ghost layers */
-.redacted-line::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0; top: 0;
-  color: var(--teal);
   opacity: 0;
-  clip-path: inset(40% 0 40% 0);
-  animation: taglineGlitch 7s 4.5s infinite;
+  pointer-events: none;
 }
-@keyframes taglineGlitch {
-  0%,82%,100% { opacity:0; transform:translateX(0); }
-  83%         { opacity:0.5; transform:translateX(-5px); clip-path:inset(20% 0 60% 0); }
-  84%         { opacity:0; }
-  86%         { opacity:0.35; transform:translateX(4px); clip-path:inset(55% 0 15% 0); }
-  87%,99%     { opacity:0; }
+/* Three glitch patterns — words share them with staggered delays */
+@keyframes rA {
+  0%,100%  { opacity:0; transform:scaleX(1) translateX(0); }
+  4%       { opacity:1; transform:scaleX(1.03) translateX(-1px); }
+  5%       { opacity:0.2; }
+  6%       { opacity:1; transform:scaleX(0.97) translateX(1px); }
+  22%      { opacity:1; transform:scaleX(1); }
+  24%      { opacity:0; }
+  25%      { opacity:0.8; transform:scaleX(1.02); }
+  26%      { opacity:0; }
+  60%      { opacity:0; }
+  62%      { opacity:1; transform:scaleX(0.95) translateX(2px); }
+  63%      { opacity:0.3; }
+  64%      { opacity:1; }
+  78%      { opacity:1; }
+  80%      { opacity:0; }
 }
+@keyframes rB {
+  0%,100%  { opacity:0; }
+  8%       { opacity:1; transform:scaleX(1); }
+  9%       { opacity:0; }
+  11%      { opacity:1; transform:scaleX(1.04) translateX(-2px); }
+  35%      { opacity:1; }
+  37%      { opacity:0.1; }
+  38%      { opacity:1; transform:scaleX(0.96); }
+  50%      { opacity:1; }
+  52%      { opacity:0; }
+  54%      { opacity:0.6; transform:scaleX(1.02) translateX(1px); }
+  55%      { opacity:0; }
+  85%      { opacity:0; }
+  87%      { opacity:1; transform:scaleX(0.98) translateX(-1px); }
+  89%      { opacity:0; }
+  91%      { opacity:0.7; }
+  92%      { opacity:0; }
+}
+@keyframes rC {
+  0%,100%  { opacity:0; }
+  2%       { opacity:0.9; transform:scaleX(1) translateX(1px); }
+  3%       { opacity:0; }
+  5%       { opacity:1; transform:scaleX(1.01); }
+  18%      { opacity:1; }
+  19%      { opacity:0; }
+  45%      { opacity:0; }
+  47%      { opacity:1; transform:scaleX(1.03) translateX(-1px); }
+  48%      { opacity:0.2; }
+  49%      { opacity:1; }
+  66%      { opacity:1; }
+  68%      { opacity:0; }
+  70%      { opacity:0.5; transform:scaleX(0.95); }
+  71%      { opacity:0; }
+  95%      { opacity:0; }
+  96%      { opacity:1; transform:scaleX(1.02) translateX(2px); }
+  97%      { opacity:0; }
+}
+/* Per-word assignments: animation-name duration delay */
+.rw1::before { animation: rA  7.3s -1.1s  infinite; }
+.rw2::before { animation: rB  9.7s -3.4s  infinite; }
+.rw3::before { animation: rC  6.1s -0.7s  infinite; }
+.rw4::before { animation: rA  8.5s -5.2s  infinite; }
+.rw5::before { animation: rB 11.2s -2.0s  infinite; }
+.rw6::before { animation: rC  5.4s -4.3s  infinite; }
+.rw7::before { animation: rA  7.8s -6.6s  infinite; }
+.rw8::before { animation: rB  9.1s -1.8s  infinite; }
 
 .hero-tagline {
   font-family: var(--font-serif);
@@ -918,7 +952,7 @@ footer {
     
     <div class="hero-divider" aria-hidden="true"></div>
 
-    <p class="hero-tagline e" id="e5"><span class="redacted-line" data-text="The album they don't want you to hear.">The album they don't want you to hear.</span></p>
+    <p class="hero-tagline e" id="e5"><span class="r-word rw1">The</span> <span class="r-word rw2">album</span> <span class="r-word rw3">they</span> <span class="r-word rw4">don&#8217;t</span> <span class="r-word rw5">want</span> <span class="r-word rw6">you</span> <span class="r-word rw7">to</span> <span class="r-word rw8">hear.</span></p>
 
     <p class="hero-date e" id="e6">
       July 4, 2026<span class="sep">·</span>Independence Day
