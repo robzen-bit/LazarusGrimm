@@ -280,7 +280,7 @@ document.querySelectorAll('[data-section]').forEach(function(s) {
         });
         el.appendChild(wSpan);
         if (wi < words.length - 1) {
-          el.appendChild(document.createElement('br'));
+          var sp = document.createElement('span'); sp.style.cssText = 'display:inline-block;width:0.22em;'; el.appendChild(sp);
         }
       });
     }
