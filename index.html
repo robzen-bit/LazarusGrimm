@@ -104,7 +104,6 @@ body::after {
   border-bottom: 1px solid var(--ghost);
 }
 .nav-brand {
-  margin-right: auto;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -118,10 +117,23 @@ body::after {
   background: var(--ghost);
   display: block;
 }
+
+.nav-wordmark {
+  font-family: var(--font-caps);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 8px;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-left: 14px;
+  white-space: nowrap;
+  text-decoration: none;
+}
 .nav-links {
   display: flex;
   gap: 36px;
   list-style: none;
+  margin-left: auto;
   margin-right: 36px;
 }
 .nav-links a {
@@ -146,7 +158,8 @@ body::after {
   transition: background 0.25s, color 0.25s;
 }
 .nav-cta:hover { background: var(--teal); color: var(--bg); }
-@media (max-width: 768px) {
+@media (max-width: 520px) {
+  .nav-wordmark { display: none; }
   .nav-links { display: none; }
   .site-nav { padding: 0 20px; }
 }
@@ -1103,6 +1116,7 @@ footer {
   <a href="/" class="nav-brand">
     <img class="nav-logo" id="nav-logo" alt="Lazarus Grimm">
   </a>
+  <span class="nav-wordmark">Lazarus Grimm</span>
   <ul class="nav-links">
     <li><a href="/about.html">About</a></li>
     <li><a href="/music.html">Music</a></li>
@@ -1117,9 +1131,6 @@ footer {
   <div class="particles" id="particles"></div>
 
   <div class="hero-content">
-
-    <p class="hero-label e" id="e1">Lazarus Grimm</p>
-
     <div class="hero-title-wrap e" id="e2">
       <span class="hero-title" elementtiming="hero-title">Wake Up</span>
       <span class="hero-title-ghost" aria-hidden="true">Wake Up</span>
