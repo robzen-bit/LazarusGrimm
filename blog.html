@@ -3,42 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lazarus Grimm — </title>
-<style>
-@font-face{font-family:'Cinzel';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/cinzel.woff2') format('woff2');}
-@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url('/fonts/cormorant-normal.woff2') format('woff2');}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --bg:#07090d;--white:#c8d4e0;--dim:#546070;--ghost:#1a2430;--teal:#8596aa;
-  --nav-h:64px;
-  --font-caps:'Cinzel',serif;
-  --font-serif:'Cormorant Garamond',serif;
-}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--white);font-family:var(--font-serif);min-height:100vh;}
-.site-nav{
-  position:fixed;top:0;left:0;right:0;height:var(--nav-h);
-  display:flex;align-items:center;padding:0 32px;z-index:100;
-  background:rgba(7,9,13,0.82);backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--ghost);
-}
-.nav-brand{margin-right:auto;display:flex;align-items:center;text-decoration:none;}
-.nav-logo{width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:center;background:var(--ghost);display:block;}
-.nav-links{display:flex;gap:36px;list-style:none;margin-right:36px;}
-.nav-links a{font-family:var(--font-caps);font-size:11px;letter-spacing:3px;color:var(--dim);text-decoration:none;text-transform:uppercase;transition:color .25s;}
-.nav-links a:hover{color:var(--white);}
-.nav-links a.active{color:var(--white);}
-.nav-cta{font-family:var(--font-caps);font-size:10px;letter-spacing:3px;color:var(--teal);text-decoration:none;text-transform:uppercase;border:1px solid var(--teal);padding:9px 22px;transition:background .25s,color .25s;}
-.nav-cta:hover{background:var(--teal);color:var(--bg);}
-@media(max-width:768px){.nav-links{display:none;}.site-nav{padding:0 20px;}}
-.page-body{padding-top:var(--nav-h);}
-</style>
+<title>Lazarus Grimm — Blog</title>
+<meta name="description" content="Blog by Lazarus Grimm — thoughts on music, independence, and waking up.">
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <nav class="site-nav" id="site-nav">
   <a href="/" class="nav-brand">
     <img class="nav-logo" id="nav-logo" alt="Lazarus Grimm">
   </a>
+  <span class="nav-wordmark">Lazarus Grimm</span>
   <ul class="nav-links">
     <li><a href="/about.html">About</a></li>
     <li><a href="/music.html">Music</a></li>
@@ -47,5 +21,14 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-serif);min-h
   <a href="/" class="nav-cta">Wake Up</a>
 </nav>
 <main class="page-body"></main>
+
+<script>
+// ── NAV LOGO ──
+(function() {
+  var s = document.querySelector('.sigil-large') || document.querySelector('.hero-sigil');
+  var n = document.getElementById('nav-logo');
+  if (s && n) n.src = s.src;
+})();
+</script>
 </body>
 </html>
