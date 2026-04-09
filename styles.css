@@ -318,9 +318,9 @@ body::after {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(80px, 13vw, 160px);
+  font-size: clamp(48px, 15.4vw, 260px);
   line-height: 0.88;
-  letter-spacing: 6px;
+  letter-spacing: 0.05em;
   color: var(--white);
   display: block;
   text-transform: uppercase;
@@ -345,7 +345,7 @@ body::after {
   position: absolute;
   inset: 0;
   font-family: var(--font-display);
-  font-size: clamp(80px, 13vw, 160px);
+  font-size: clamp(48px, 15.4vw, 260px);
   line-height: 0.88;
   letter-spacing: 6px;
   color: var(--teal);
