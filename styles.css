@@ -9,6 +9,7 @@
 
 /* ── RESET & ROOT ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 :root {
   --bg:    #07090d;
@@ -155,7 +156,7 @@ body::after {
 .hero-bg {
   position: absolute;
   inset: -40px;
-  background-image: url('images/hero-bg-1.jpeg');
+  background-image: url('images/hero-bg-1.webp');
   background-size: cover;
   background-position: center;
   animation: bgDrift 28s ease-in-out infinite alternate;
@@ -821,7 +822,7 @@ body::after {
 .album-bg {
   position: absolute;
   inset: -40px;
-  background-image: url('images/hero-bg-2.jpeg');
+  background-image: url('images/hero-bg-2.webp');
   background-size: cover;
   background-position: center;
   filter: saturate(0.18) brightness(0.35);
