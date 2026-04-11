@@ -54,7 +54,8 @@
 </head>
 <body>
 
-<div class="hero-curtain" id="curtain"></div>
+<div class="eyelid eyelid-top" id="eyelid-top"></div>
+<div class="eyelid eyelid-bottom" id="eyelid-bottom"></div>
 
 <!-- ── HERO ── -->
 <nav class="site-nav" id="site-nav">
@@ -160,17 +161,11 @@ requestAnimationFrame(function() {
   container.appendChild(frag);
 });
 
-// ── CURTAIN CLEANUP ──
-setTimeout(function() {
-  const c = document.getElementById('curtain');
-  if (c) { c.style.display = 'none'; }
-}, 1000);
-
 // ── ENTRANCE SEQUENCE ──
 (function() {
   var TRANSITION = 'opacity 2.4s cubic-bezier(0.16,1,0.3,1), transform 2.4s cubic-bezier(0.16,1,0.3,1)';
 
-  // Immediately force all non-title elements invisible via inline style
+  // Keep all non-title elements invisible until after the eyes open
   ['e5','e6','e7','e7b','e8'].forEach(function(id) {
     var el = document.getElementById(id);
     if (!el) return;
@@ -179,29 +174,49 @@ setTimeout(function() {
     el.style.transition = 'none';
   });
 
-  // Title: start centered, float up to natural position
+  // Title: hidden behind eyelids, positioned at center, ready to float up
   var wrap = document.getElementById('e2');
   if (wrap) {
     wrap.classList.remove('e');
     wrap.style.opacity = '1';
-    wrap.style.filter = 'blur(3px)';
+    wrap.style.filter = 'blur(6px)';
     var rect = wrap.getBoundingClientRect();
     var offset = (window.innerHeight / 2) - (rect.top + rect.height / 2);
     wrap.style.transform = 'translateY(' + Math.round(offset) + 'px)';
-    setTimeout(function() {
-      wrap.style.transition = 'transform 1.6s cubic-bezier(0.16,1,0.3,1), filter 1.6s ease';
-      wrap.style.transform = 'translateY(0)';
-      wrap.style.filter = 'blur(0)';
-    }, 1200);
   }
 
-  // Other elements drift in top to bottom after title settles
+  // Step 1 — brief pause, then open the eyelids (eyes opening)
+  setTimeout(function() {
+    var top = document.getElementById('eyelid-top');
+    var bot = document.getElementById('eyelid-bottom');
+    if (top) top.classList.add('open');
+    if (bot) bot.classList.add('open');
+  }, 400);
+
+  // Step 2 — as eyes finish opening, Wake Up floats up and sharpens
+  // Eyelid transition is 2.2s; start float slightly before fully open for overlap
+  setTimeout(function() {
+    if (wrap) {
+      wrap.style.transition = 'transform 1.8s cubic-bezier(0.16,1,0.3,1), filter 2.0s ease';
+      wrap.style.transform = 'translateY(0)';
+      wrap.style.filter = 'blur(0)';
+    }
+    // Remove eyelids from the DOM after they've fully slid away
+    setTimeout(function() {
+      var top = document.getElementById('eyelid-top');
+      var bot = document.getElementById('eyelid-bottom');
+      if (top) top.style.display = 'none';
+      if (bot) bot.style.display = 'none';
+    }, 2400);
+  }, 1800);
+
+  // Step 3 — other elements drift in top to bottom after Wake Up settles
   [
-    { id: 'e5',  delay: 2900 },
-    { id: 'e6',  delay: 3400 },
-    { id: 'e7',  delay: 3900 },
-    { id: 'e7b', delay: 4200 },
-    { id: 'e8',  delay: 4600 },
+    { id: 'e5',  delay: 3800 },
+    { id: 'e6',  delay: 4300 },
+    { id: 'e7',  delay: 4800 },
+    { id: 'e7b', delay: 5100 },
+    { id: 'e8',  delay: 5500 },
   ].forEach(function(item) {
     setTimeout(function() {
       var el = document.getElementById(item.id);
