@@ -1093,6 +1093,10 @@ footer {
 @media (max-width: 480px) {
   .hero           { justify-content: flex-start; padding-top: calc(var(--nav-h) + 48px); }
   .hero-title     { font-size: 42vw; }
+  .hero-title > span,
+  .hero-title-ghost > span { display: block !important; }
+  .hero-title > span:nth-child(2),
+  .hero-title-ghost > span:nth-child(2) { display: none !important; }
   .countdown      { gap: 2px; }
   .countdown-num  { font-size: 36px; }
   .countdown-sep  { font-size: 34px; }
