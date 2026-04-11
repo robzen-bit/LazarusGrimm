@@ -1094,8 +1094,13 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .hero           { justify-content: flex-start; padding-top: calc(var(--nav-h) + 48px); }
+  .hero           { justify-content: flex-start; padding-top: calc(var(--nav-h) + 20px); }
   .hero-title     { font-size: 42vw; }
+  .hero-title-wrap { margin-bottom: 6px; }
+  .hero-tagline   { margin-bottom: 4px; }
+  .hero-date      { margin-bottom: 8px; }
+  .countdown      { margin-bottom: 2px; }
+  .countdown-note { margin-bottom: 10px; }
   .hero-title > span,
   .hero-title-ghost > span { display: block !important; }
   .hero-title > span:nth-child(2),
