@@ -594,6 +594,9 @@ body::after {
   70.2%  { transform:translateX(2px); opacity:0.92; filter:none; }
   70.28% { transform:translateX(0); opacity:1; }
 }
+/* Hide redaction bars while tagline is not yet revealed */
+#e5:not(.in) .r-word::before { opacity: 0 !important; }
+
 /* Sparse per-word assignments */
 .rw1::before { animation: rA 28s  -2.0s  infinite; will-change: opacity; }
 .rw2::before { animation: rB 22s  -8.5s  infinite; will-change: opacity; }

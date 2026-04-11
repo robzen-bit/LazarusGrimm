@@ -206,6 +206,7 @@ setTimeout(function() {
     setTimeout(function() {
       var el = document.getElementById(item.id);
       if (!el) return;
+      el.classList.add('in');
       el.style.transition = TRANSITION;
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
