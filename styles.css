@@ -1253,8 +1253,10 @@ footer {
   color: var(--teal);
 }
 
-/* ── BIO PAGE — ATMOSPHERE ── */
-.bio-bg-layer {
+/* ── BIO PAGE — REDESIGN ── */
+
+/* Ambient particle layer (fixed, behind everything) */
+.bio-particles-wrap {
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -1262,63 +1264,207 @@ footer {
   overflow: hidden;
 }
 
-.bio-sigil-fixed {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(66vh, 66vw);
-  height: min(66vh, 66vw);
-  object-fit: contain;
-  z-index: 0;
-  opacity: 0;
-  pointer-events: none;
-  filter: grayscale(1);
-  mix-blend-mode: screen;
-  will-change: opacity;
+/* Intro hero */
+.bio-intro {
+  position: relative;
+  z-index: 2;
+  padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 60px) 32px 56px;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* Bio rule — draw from center outward on reveal */
-.bio-rule { width: 100px; }
-.bio-rule[data-reveal] {
-  opacity: 0;
-  transform: none;
-  clip-path: inset(0 50% 0 50%);
-  transition: opacity 0.6s ease, clip-path 1.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.bio-rule[data-reveal].visible {
-  opacity: 1;
-  transform: none;
-  clip-path: inset(0 0% 0 0%);
+.bio-photo-wrap {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 28px;
+  border: 1px solid rgba(133, 150, 170, 0.18);
+  box-shadow: 0 0 80px rgba(133, 150, 170, 0.07),
+              0 0 0 5px rgba(18, 26, 38, 0.7);
 }
 
-/* Bio lead — word-by-word reveal */
-.bio-lead-word {
-  opacity: 0;
-  display: inline;
-  transition: opacity 0.65s ease;
+.bio-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
 }
-.bio-lead-word.lit { opacity: 1; }
 
-/* Section label — keep subtle opacity after reveal */
-.bio-section-label[data-reveal].visible { opacity: 0.5; }
-
-/* Emotional anchor lines */
-.bio-anchor {
+.bio-artist-name {
+  font-family: var(--font-caps);
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 400;
+  letter-spacing: 10px;
   color: var(--white);
-  letter-spacing: 0.025em;
-  text-shadow: 0 0 60px rgba(133, 150, 170, 0.08);
-  font-size: 1.03em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
-/* Wake Up — current album accent */
-.disco-item--wake { border-top-color: rgba(133, 150, 170, 0.22); }
-.disco-item--wake .disco-title { text-shadow: 0 0 40px rgba(133, 150, 170, 0.12); }
-.disco-item--wake .disco-year { color: var(--teal); opacity: 0.65; }
-.disco-item--wake .disco-link { color: var(--teal); opacity: 0.7; }
-.disco-item--wake .disco-link:hover { opacity: 1; }
+.bio-genre-tags {
+  font-family: var(--font-caps);
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  opacity: 0.8;
+}
 
-/* Open letter CTA — with extending line on hover */
+.bio-thesis {
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 1.8vw, 20px);
+  font-weight: 400;
+  color: var(--dim);
+  line-height: 1.88;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Content column */
+.bio-col {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 32px 72px;
+}
+
+/* Section bars — solid dark strip, full bleed within col */
+.section-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  background: rgba(18, 26, 38, 0.94);
+  border-left: 3px solid var(--teal);
+  padding: 18px 32px;
+  margin: 72px -32px 44px;
+}
+
+.section-bar-num {
+  font-family: var(--font-caps);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--teal);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.section-bar h2 {
+  font-family: var(--font-caps);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 8px;
+  color: var(--white);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Pull quote — border-left treatment */
+.bio-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(17px, 1.85vw, 20px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.82;
+  border-left: 2px solid var(--teal);
+  padding: 8px 0 8px 24px;
+  margin: 36px 0;
+  opacity: 0.88;
+  letter-spacing: 0.01em;
+}
+
+/* Impact text — large, dramatic, centered */
+.bio-impact {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.45;
+  text-align: center;
+  padding: 32px 0;
+  letter-spacing: 0.01em;
+}
+
+/* Discography — timeline grid */
+.disco-timeline { margin-top: 8px; }
+
+.disco-row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0 28px;
+  padding: 40px 0;
+  border-top: 1px solid var(--ghost);
+}
+
+.disco-row:last-child { border-bottom: 1px solid var(--ghost); }
+
+.disco-row-year {
+  display: block;
+  font-family: var(--font-caps);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--dim);
+  opacity: 0.45;
+  text-transform: uppercase;
+  padding-top: 6px;
+}
+
+.disco-row-title {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(19px, 2vw, 22px);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.disco-row-desc {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.88;
+  margin-bottom: 18px;
+}
+
+.disco-row-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.disco-row-link {
+  font-family: var(--font-caps);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.5;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: opacity 0.25s, color 0.25s, border-color 0.25s;
+}
+.disco-row-link:hover {
+  opacity: 1;
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+/* Wake Up — featured treatment */
+.disco-row--wake { border-top-color: rgba(133, 150, 170, 0.2); }
+.disco-row--wake .disco-row-title { text-shadow: 0 0 40px rgba(133, 150, 170, 0.1); }
+.disco-row--wake .disco-row-year { color: var(--teal); opacity: 0.65; }
+.disco-row--wake .disco-row-link { color: var(--teal); opacity: 0.65; }
+.disco-row--wake .disco-row-link:hover { opacity: 1; }
+
+/* Open letter CTA */
 .open-letter-cta {
   display: inline-flex;
   align-items: center;
@@ -1347,10 +1493,10 @@ footer {
   footer       { padding: 48px 24px; gap: 16px; }
   .hero-label  { font-size: 9px; letter-spacing: 6px; }
   .hero-sub    { letter-spacing: 6px; }
-  .bio-header  { padding: 72px 24px 48px; }
-  .bio-section { padding: 0 24px 56px; }
+  .bio-intro   { padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 40px) 24px 40px; }
+  .bio-col     { padding: 0 24px 56px; }
+  .section-bar { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; margin-top: 56px; }
   .open-letter-cta-wrap { padding: 8px 24px 80px; }
-  .bio-sigil-bg { width: 320px; height: 320px; }
 }
 
 @media (max-width: 480px) {
@@ -1372,9 +1518,11 @@ footer {
   .hero-content   { padding: 0 28px; }
   .hero-tagline   { font-size: 22px; }
   .footer-links   { gap: 16px; flex-wrap: wrap; justify-content: center; }
-  .bio-header  { padding: 48px 20px 36px; }
-  .bio-section { padding: 0 20px 44px; }
+  .bio-intro   { padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 28px) 20px 32px; }
+  .bio-col     { padding: 0 20px 48px; }
+  .section-bar { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; margin-top: 44px; margin-bottom: 36px; }
+  .bio-photo-wrap { width: 170px; height: 170px; }
+  .bio-impact  { font-size: clamp(20px, 5vw, 26px); padding: 24px 0; }
+  .disco-row   { grid-template-columns: 52px 1fr; gap: 0 16px; padding: 32px 0; }
   .open-letter-cta-wrap { padding: 8px 20px 64px; }
-  .bio-sigil-bg { width: 240px; height: 240px; }
-  .disco-item  { padding: 32px 0; }
 }
