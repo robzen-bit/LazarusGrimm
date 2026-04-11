@@ -120,6 +120,7 @@ body::after {
   gap: 5px;
   background: none;
   border: none;
+  outline: none;
   cursor: pointer;
   padding: 8px;
   margin-left: 16px;
@@ -1071,9 +1072,10 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .countdown   { flex-wrap: wrap; justify-content: center; gap: 0; }
-  .countdown-unit { width: 45%; margin-bottom: 16px; }
-  .countdown-sep  { display: none; }
+  .countdown      { gap: 2px; }
+  .countdown-num  { font-size: 36px; }
+  .countdown-sep  { font-size: 34px; }
+  .hero-date      { letter-spacing: 2px; }
   .hero-content   { padding: 0 28px; }
   .hero-tagline   { font-size: 22px; }
   .footer-links   { gap: 16px; flex-wrap: wrap; justify-content: center; }
