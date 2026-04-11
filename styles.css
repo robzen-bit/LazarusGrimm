@@ -145,9 +145,8 @@ body::after {
 .nav-mobile-cta { display: none; }
 
 @media (max-width: 520px) {
-  .nav-wordmark { display: none; }
   .nav-cta-desktop { display: none; }
-  .nav-hamburger { display: flex; }
+  .nav-hamburger { display: flex; margin-left: auto; }
   .site-nav { padding: 0 20px; }
 
   /* Mobile dropdown */
