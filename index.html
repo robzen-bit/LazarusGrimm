@@ -168,7 +168,18 @@ setTimeout(function() {
 
 // ── ENTRANCE SEQUENCE ──
 (function() {
-  // Title: start centered, slightly blurred — float up and sharpen
+  var TRANSITION = 'opacity 2.4s cubic-bezier(0.16,1,0.3,1), transform 2.4s cubic-bezier(0.16,1,0.3,1)';
+
+  // Immediately force all non-title elements invisible via inline style
+  ['e5','e6','e7','e7b','e8'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'none';
+  });
+
+  // Title: start centered, float up to natural position
   var wrap = document.getElementById('e2');
   if (wrap) {
     wrap.classList.remove('e');
@@ -177,15 +188,14 @@ setTimeout(function() {
     var rect = wrap.getBoundingClientRect();
     var offset = (window.innerHeight / 2) - (rect.top + rect.height / 2);
     wrap.style.transform = 'translateY(' + Math.round(offset) + 'px)';
-    // Float up and sharpen after curtain is fully gone
     setTimeout(function() {
-      wrap.style.transition = 'transform 1.6s cubic-bezier(0.16, 1, 0.3, 1), filter 1.6s ease';
+      wrap.style.transition = 'transform 1.6s cubic-bezier(0.16,1,0.3,1), filter 1.6s ease';
       wrap.style.transform = 'translateY(0)';
       wrap.style.filter = 'blur(0)';
     }, 1200);
   }
 
-  // Other elements drift in top to bottom after title has settled
+  // Other elements drift in top to bottom after title settles
   [
     { id: 'e5',  delay: 2900 },
     { id: 'e6',  delay: 3400 },
@@ -195,7 +205,14 @@ setTimeout(function() {
   ].forEach(function(item) {
     setTimeout(function() {
       var el = document.getElementById(item.id);
-      if (el) el.classList.add('in');
+      if (!el) return;
+      el.style.transition = TRANSITION;
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      });
     }, item.delay);
   });
 })();
