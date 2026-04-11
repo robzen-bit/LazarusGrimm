@@ -604,6 +604,25 @@ body::after {
 .rw7::before { animation: rA 26s  -16s   infinite; will-change: opacity; }
 .rw8::before { animation: rB 20s  -11s   infinite; will-change: opacity; }
 
+/* ── HIDDEN MESSAGE IN REDACTION ── */
+.r-word[data-hidden]::after {
+  content: attr(data-hidden);
+  position: absolute;
+  left: -1px; right: -1px;
+  top: 1px; bottom: 1px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.12);
+  font-family: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+}
+.rw2[data-hidden]::after { animation: rB 22s -8.5s infinite; }
+.rw8[data-hidden]::after { animation: rB 20s -11s  infinite; }
+
 .hero-tagline {
   font-family: var(--font-serif);
   font-style: italic;
