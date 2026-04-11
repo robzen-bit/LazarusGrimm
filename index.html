@@ -113,14 +113,8 @@
     </div>
     <p class="countdown-note e" id="e7b">Releasing July 4, 2026</p>
 
-    <div class="email-block e" id="e8">
-      <p class="email-label-text">Don’t go back to sleep.</p>
-      <div id="hero-email-wrap">
-        <form class="email-form" id="hero-form">
-          <input class="email-input" type="email" placeholder="your email address" autocomplete="email">
-          <button class="email-btn" type="submit">I’m awake</button>
-        </form>
-      </div>
+    <div class="presave-block e" id="e8">
+      <a class="presave-btn" href="#" target="_blank" rel="noopener">Pre-Save</a>
     </div>
 
   </div>
@@ -214,29 +208,6 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
-// ── EMAIL FORM ──
-(function() {
-  var form = document.getElementById('hero-form');
-  if (!form) return;
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var input = form.querySelector('input[type="email"]');
-    var val   = input.value.trim();
-    var ok    = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-    if (!ok) {
-      input.style.borderBottomColor = '#6b3535';
-      input.style.transition = 'border-bottom-color 0s';
-      setTimeout(function() {
-        input.style.transition = '';
-        input.style.borderBottomColor = '';
-      }, 1400);
-      return;
-    }
-    var wrap = document.getElementById('hero-email-wrap');
-    wrap.innerHTML = '<p class="email-confirmed">You will hear it first.</p>';
-  });
-})();
 
 // ── SCROLL REVEAL ──
 var revealObserver = new IntersectionObserver(function(entries) {
