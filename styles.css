@@ -1261,35 +1261,74 @@ footer {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
 }
 
-/* Soft orb particles — larger, glowing, dreamy */
+/* Give the inner container explicit dimensions so absolute children resolve correctly */
+#bio-particles {
+  position: absolute;
+  inset: 0;
+}
+
+/* Fine dust particles */
+.bio-dust {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: var(--white);
+  animation: bioParticleRise linear infinite;
+}
+
+/* Soft orb particles — larger, glowing */
 .bio-particle-orb {
   position: absolute;
+  bottom: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(133,150,170,0.9) 0%, rgba(133,150,170,0) 70%);
-  filter: blur(2px);
-  animation: particleRise linear infinite;
-  bottom: -10vh;
+  background: radial-gradient(circle, rgba(133,150,170,1) 0%, rgba(133,150,170,0) 70%);
+  filter: blur(3px);
+  animation: bioParticleRise linear infinite;
 }
 
-/* Subtle slow-pulse glow that drifts across the page */
+@keyframes bioParticleRise {
+  from {
+    transform: translateY(0) translateX(0);
+    opacity: var(--op);
+  }
+  to {
+    transform: translateY(-110vh) translateX(var(--drift));
+    opacity: calc(var(--op) * 0.1);
+  }
+}
+
+/* Subtle ambient glow that breathes slowly */
 .bio-particles-wrap::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 20% 60%, rgba(133,150,170,0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 35% at 80% 30%, rgba(133,150,170,0.03) 0%, transparent 70%);
+    radial-gradient(ellipse 60% 40% at 20% 60%, rgba(133,150,170,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 80% 30%, rgba(133,150,170,0.05) 0%, transparent 70%);
   animation: bioGlowDrift 28s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
 @keyframes bioGlowDrift {
-  0%   { opacity: 0.5; transform: translateY(0) scale(1); }
-  50%  { opacity: 1;   transform: translateY(-18px) scale(1.04); }
-  100% { opacity: 0.6; transform: translateY(8px) scale(0.97); }
+  0%   { opacity: 0.4; transform: translateY(0) scale(1); }
+  50%  { opacity: 1;   transform: translateY(-22px) scale(1.05); }
+  100% { opacity: 0.5; transform: translateY(10px) scale(0.97); }
+}
+
+/* ── BIO PAGE LOADING VEIL (iris open) ── */
+.bio-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--bg);
+  pointer-events: none;
+  clip-path: circle(150% at 50% 38%);
+  transition: clip-path 2s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.bio-veil.bio-veil--open {
+  clip-path: circle(0% at 50% 38%);
 }
 
 /* Intro hero */

@@ -62,6 +62,9 @@
 </head>
 <body>
 
+<!-- ── LOADING VEIL ── -->
+<div class="bio-veil" id="bio-veil" aria-hidden="true"></div>
+
 <!-- ── AMBIENT PARTICLES ── -->
 <div class="bio-particles-wrap" aria-hidden="true">
   <div id="bio-particles"></div>
@@ -273,17 +276,16 @@ requestAnimationFrame(function() {
   var isMobile = window.matchMedia('(max-width: 767px)').matches;
   var frag = document.createDocumentFragment();
 
-  // Layer 1 — fine dust (many tiny dots)
-  var dustCount = isMobile ? 18 : 38;
+  // Layer 1 — fine dust
+  var dustCount = isMobile ? 20 : 42;
   for (var i = 0; i < dustCount; i++) {
     var p = document.createElement('span');
-    p.className = 'particle';
-    var size  = 0.8 + Math.random() * 1.8;
-    var drift = (Math.random() - 0.5) * 100;
-    var dur   = 30 + Math.random() * 50;
-    var delay = -(Math.random() * 80);
-    var op    = 0.04 + Math.random() * 0.08;
-    // Subtle teal tint on some particles
+    p.className = 'bio-dust';
+    var size  = 1 + Math.random() * 2.5;
+    var drift = (Math.random() - 0.5) * 120;
+    var dur   = 18 + Math.random() * 32;
+    var delay = -(Math.random() * dur);
+    var op    = 0.10 + Math.random() * 0.18;
     var isTeal = Math.random() < 0.3;
     p.style.cssText = [
       'left:' + (Math.random() * 100) + '%',
@@ -293,22 +295,21 @@ requestAnimationFrame(function() {
       '--op:' + op,
       'animation-duration:' + dur + 's',
       'animation-delay:' + delay + 's',
-      'opacity:' + op,
-      isTeal ? 'background:rgba(133,150,170,0.9)' : ''
+      isTeal ? 'background:rgba(133,150,170,1)' : ''
     ].join(';');
     frag.appendChild(p);
   }
 
-  // Layer 2 — soft orbs (fewer, larger, very slow, glowing)
-  var orbCount = isMobile ? 4 : 8;
+  // Layer 2 — soft glowing orbs
+  var orbCount = isMobile ? 5 : 10;
   for (var j = 0; j < orbCount; j++) {
     var o = document.createElement('span');
     o.className = 'bio-particle-orb';
-    var oSize  = 3 + Math.random() * 6;
-    var oDrift = (Math.random() - 0.5) * 140;
-    var oDur   = 55 + Math.random() * 60;
-    var oDelay = -(Math.random() * 100);
-    var oOp    = 0.06 + Math.random() * 0.10;
+    var oSize  = 5 + Math.random() * 10;
+    var oDrift = (Math.random() - 0.5) * 160;
+    var oDur   = 28 + Math.random() * 40;
+    var oDelay = -(Math.random() * oDur);
+    var oOp    = 0.18 + Math.random() * 0.22;
     o.style.cssText = [
       'left:' + (Math.random() * 100) + '%',
       'width:' + oSize + 'px',
@@ -316,14 +317,23 @@ requestAnimationFrame(function() {
       '--drift:' + oDrift + 'px',
       '--op:' + oOp,
       'animation-duration:' + oDur + 's',
-      'animation-delay:' + oDelay + 's',
-      'opacity:' + oOp
+      'animation-delay:' + oDelay + 's'
     ].join(';');
     frag.appendChild(o);
   }
 
   container.appendChild(frag);
 });
+
+// ── BIO LOADING VEIL (iris open) ──
+(function() {
+  var veil = document.getElementById('bio-veil');
+  if (!veil) return;
+  setTimeout(function() {
+    veil.classList.add('bio-veil--open');
+    setTimeout(function() { veil.style.display = 'none'; }, 2200);
+  }, 120);
+})();
 
 // ── SCROLL REVEAL ──
 var revealObserver = new IntersectionObserver(function(entries) {
