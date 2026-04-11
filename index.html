@@ -231,6 +231,12 @@ requestAnimationFrame(function() {
       });
     }, item.delay);
   });
+
+  // Step 4 — feather fades in last, after pre-save appears
+  setTimeout(function() {
+    var bg = document.querySelector('.hero-bg');
+    if (bg) bg.classList.add('visible');
+  }, 6200);
 })();
 
 // ── COUNTDOWN ──
