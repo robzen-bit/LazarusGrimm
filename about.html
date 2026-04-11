@@ -61,9 +61,17 @@
 </head>
 <body>
 
+<!-- ── ATMOSPHERE LAYER ── -->
+<div class="bio-bg-layer" id="bio-bg-layer" aria-hidden="true">
+  <div class="bio-particles" id="bio-particles"></div>
+</div>
+<img class="bio-sigil-fixed" id="bio-sigil-fixed"
+     src="images/sigil.webp" width="500" height="500"
+     alt="" aria-hidden="true" loading="eager" decoding="async">
+
 <nav class="site-nav" id="site-nav">
   <a href="index.html" class="nav-brand">
-    <img class="nav-logo" id="nav-logo" src="images/sigil.webp" width="42" height="42" alt="Lazarus Grimm sigil logo">
+    <img class="nav-logo" id="nav-logo" src="images/sigil.webp" width="42" height="42" alt="Lazarus Grimm Celtic knotwork sigil logo">
   </a>
   <span class="nav-wordmark">Lazarus Grimm</span>
   <ul class="nav-links">
@@ -82,10 +90,9 @@
 <article>
 
   <!-- ── IDENTITY ── -->
-  <header class="bio-header" data-section>
-    <img class="bio-sigil-bg" src="images/sigil.webp" width="500" height="500" alt="" aria-hidden="true">
+  <header class="bio-header">
     <h1 class="visually-hidden">About Lazarus Grimm</h1>
-    <p class="bio-lead" data-reveal>Lazarus Grimm is an independent artist creating nu-metalcore with a hint of conscious hip-hop, rooted in lived faith, personal survival, and a refusal to look away from what&#8217;s broken.</p>
+    <p class="bio-lead" id="bio-lead">Lazarus Grimm is an independent artist creating nu-metalcore with a hint of conscious hip-hop, rooted in lived faith, personal survival, and a refusal to look away from what&#8217;s broken.</p>
   </header>
 
   <section class="bio-section" data-section aria-label="Identity">
@@ -93,7 +100,9 @@
 
     <p class="bio-p" data-reveal>As a child I hid. Stayed silent. Stayed in the forest that surrounded our home, doing anything I could to not be around my stepfather, whose anger and intimidation filled the house and kept all of us on edge. He held a Bible in one hand and a wire hanger in the other. He used scripture the way other men use fists. My mother&#8217;s spirit went quiet. My brother was driven to the edge. I learned early that survival meant becoming invisible.</p>
 
-    <p class="bio-p" data-reveal>As a young adult I checked out in a chemical haze. It didn&#8217;t matter what chemical. Anything I could get my hands on to not feel or deal with the pain for a while. Later, untreated trauma and PTSD kept steering my choices, and I wandered through life detached, unreachable emotionally and spiritually. Once I got clean I shifted into thinking over feeling, keeping my mind and myself so busy I didn&#8217;t have time to feel. I built a machine. The machine went to work, wore a convincing smile, and even laughed when it seemed appropriate. But inside I was gone. I had retreated, shutting off every feeling because feeling hurt too much. Think, don&#8217;t feel. Feelings were dangerous. Feelings would destroy me.</p>
+    <p class="bio-p" data-reveal>As a young adult I checked out in a chemical haze. It didn&#8217;t matter what chemical. Anything I could get my hands on to not feel or deal with the pain for a while. Later, untreated trauma and PTSD kept steering my choices, and I wandered through life detached, unreachable emotionally and spiritually. Once I got clean I shifted into thinking over feeling, keeping my mind and myself so busy I didn&#8217;t have time to feel. I built a machine. The machine went to work, wore a convincing smile, and even laughed when it seemed appropriate. But inside I was gone.</p>
+
+    <p class="bio-p bio-anchor" data-reveal>Think, don&#8217;t feel. Feelings were dangerous. Feelings would destroy me.</p>
 
     <p class="bio-p" data-reveal>There was a moment in the wreckage where I almost didn&#8217;t come back. I had the plan. I had the steel in my hand. But God held my hand from the flame and told me vengeance is a lie. That was the first time I understood that surviving the darkness was just the beginning.</p>
 
@@ -107,7 +116,9 @@
 
     <p class="bio-p" data-reveal>I grew up Pentecostal. The religion I was raised in had either intentionally or inadvertently taught me that God was far away, keeping track of all my mistakes, ready to punish me for every little thing I did wrong. It also taught me to treat others the same way. Keeping a tally. Scriptures like knives, ready to attack when someone stepped out of line.</p>
 
-    <p class="bio-p" data-reveal>In my spirit I knew I was missing something. I knew this wasn&#8217;t the way things were supposed to be. So I said something I never thought I would say: God, I am willing to unlearn everything I have been taught about you, if you will reveal yourself to me and teach me who you are.</p>
+    <p class="bio-p" data-reveal>In my spirit I knew I was missing something. I knew this wasn&#8217;t the way things were supposed to be. So I said something I never thought I would say:</p>
+
+    <p class="bio-p bio-anchor" data-reveal>God, I am willing to unlearn everything I have been taught about you, if you will reveal yourself to me and teach me who you are.</p>
 
     <p class="bio-p" data-reveal>That prayer changed everything.</p>
 
@@ -125,9 +136,9 @@
 
     <p class="bio-p" data-reveal>On a whim I found Suno and learned how to make music with AI. I found something I could do quietly from my laptop in the early mornings while my wife slept. I started writing a song a day for her, just to encourage her through her recovery. Those songs became an album called VeilBright. Then in prayer I felt the call to go deeper. To tell my own story in the style of music I had always loved. That is how Lazarus Grimm was born. Yahweh opened a door when life tried to shut them all.</p>
 
-    <p class="bio-p" data-reveal>Every lyric is mine. Every creative decision is mine. Every track goes through hours of iteration, prompt refinement, and production work. Sometimes a single song takes a full week. The AI is the band I never had. It plays what I tell it to play. This is not a shortcut. This is the only door that was left open, and I walked through it.</p>
+    <p class="bio-p" data-reveal>Every lyric is mine. Every creative decision is mine. Every track goes through hours of iteration, prompt refinement, and production work. Sometimes a single song takes a full week. <span class="bio-anchor">The AI is the band I never had.</span> It plays what I tell it to play. This is not a shortcut. This is the only door that was left open, and I walked through it.</p>
 
-    <p class="bio-p" data-reveal>Nikki has come a long way but is still recovering. She is the reason this project exists at all.</p>
+    <p class="bio-p bio-anchor" data-reveal>Nikki has come a long way but is still recovering. She is the reason this project exists at all.</p>
   </section>
 
   <!-- ── THE MISSION ── -->
@@ -135,7 +146,7 @@
     <hr class="bio-rule" data-reveal>
     <span class="bio-section-label" data-reveal>The Mission</span>
 
-    <p class="bio-p" data-reveal>Lazarus Grimm exists to name what is real. The first albums named what was real inside me. The trauma, the addiction, the machine I built to survive, the faith I had to tear apart and rebuild. Wake Up names what is real outside. The systems. The institutions. The mechanisms of control that depend on your silence, your exhaustion, and your willingness to hate your neighbor instead of asking who profits from the division. Personal healing opened my eyes. Once you learn to see clearly inside yourself, you cannot help but see clearly outside yourself too.</p>
+    <p class="bio-p" data-reveal>Lazarus Grimm exists to name what is real. The first albums named what was real inside me. The trauma, the addiction, the machine I built to survive, the faith I had to tear apart and rebuild. Wake Up names what is real outside. The systems. The institutions. The mechanisms of control that depend on your silence, your exhaustion, and your willingness to hate your neighbor instead of asking who profits from the division. Personal healing opened my eyes. <span class="bio-anchor">Once you learn to see clearly inside yourself, you cannot help but see clearly outside yourself too.</span></p>
   </section>
 
   <!-- ── DISCOGRAPHY ── -->
@@ -148,7 +159,7 @@
       <span class="disco-title">Destroying Your Legacy</span>
       <p class="disco-desc">The testimony. Childhood abuse, addiction, a stepfather who weaponized faith, the night I almost didn&#8217;t come back, and the God who held my hand from the flame. A barbed-wire baptism of trauma and triumph.</p>
       <div class="disco-links">
-        <!-- Replace with album-specific Spotify and Apple Music links when available -->
+        <!-- Add album-specific Spotify and Apple Music links when available -->
         <a class="disco-link" href="https://www.youtube.com/@lazarusgrimm" target="_blank" rel="noopener">YouTube</a>
         <a class="disco-link" href="https://bandcamp.com/lazarusgrimm" target="_blank" rel="noopener">Bandcamp</a>
       </div>
@@ -184,7 +195,7 @@
       </div>
     </div>
 
-    <div class="disco-item" data-reveal>
+    <div class="disco-item disco-item--wake" data-reveal>
       <span class="disco-year">July 4, 2026</span>
       <span class="disco-title">Wake Up</span>
       <p class="disco-desc">The outward turn. Eyes open, receipts in hand. Citizens United. Cambridge Analytica. JP 3-13.2. The 764 network. Little Saint James. Weaponized faith. Manufactured division. Twelve tracks. No filler. Every song is a document.</p>
@@ -216,6 +227,79 @@
 </footer>
 
 <script>
+// ── BIO ATMOSPHERE ──
+(function() {
+  // Immediately hide bio-lead — will be revealed word by word
+  var lead = document.getElementById('bio-lead');
+  if (lead) lead.style.opacity = '0';
+
+  // ── PARTICLES (ambient, reduced) ──
+  requestAnimationFrame(function() {
+    var container = document.getElementById('bio-particles');
+    if (!container) return;
+    var isMobile = window.matchMedia('(max-width: 767px)').matches;
+    var count = isMobile ? 3 : 7;
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < count; i++) {
+      var p = document.createElement('span');
+      p.className = 'particle';
+      var size  = 1 + Math.random() * 1.5;
+      var drift = (Math.random() - 0.5) * 80;
+      var dur   = 38 + Math.random() * 38;
+      var delay = -(Math.random() * 70);
+      var op    = 0.018 + Math.random() * 0.024;
+      p.style.cssText = [
+        'left:' + (Math.random() * 100) + '%',
+        'width:' + size + 'px',
+        'height:' + size + 'px',
+        '--drift:' + drift + 'px',
+        '--op:' + op,
+        'animation-duration:' + dur + 's',
+        'animation-delay:' + delay + 's',
+        'opacity:' + op
+      ].join(';');
+      frag.appendChild(p);
+    }
+    container.appendChild(frag);
+  });
+
+  // ── SIGIL — fade in, then scroll-fade out ──
+  var sigil = document.getElementById('bio-sigil-fixed');
+  setTimeout(function() {
+    if (!sigil) return;
+    sigil.style.transition = 'opacity 2.2s ease';
+    sigil.style.opacity = '0.045';
+    // Once faded in, hand control to scroll listener
+    setTimeout(function() {
+      if (!sigil) return;
+      sigil.style.transition = 'none';
+      var threshold = window.innerHeight * 0.9;
+      function sigilScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        var ratio = Math.max(0, 1 - y / threshold);
+        sigil.style.opacity = (ratio * 0.045).toFixed(4);
+      }
+      window.addEventListener('scroll', sigilScroll, { passive: true });
+    }, 2300);
+  }, 1200);
+
+  // ── BIO-LEAD — word-by-word reveal ──
+  setTimeout(function() {
+    if (!lead) return;
+    var text = lead.textContent || lead.innerText;
+    var words = text.trim().split(/\s+/);
+    lead.innerHTML = words.map(function(w) {
+      return '<span class="bio-lead-word">' + w + '</span>';
+    }).join(' ');
+    lead.style.opacity = '1';
+    var spans = lead.querySelectorAll('.bio-lead-word');
+    spans.forEach(function(span, i) {
+      setTimeout(function() { span.classList.add('lit'); }, i * 42);
+    });
+  }, 1500);
+
+})();
+
 // ── SCROLL REVEAL ──
 var revealObserver = new IntersectionObserver(function(entries) {
   entries.forEach(function(entry) {

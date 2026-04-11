@@ -1253,6 +1253,90 @@ footer {
   color: var(--teal);
 }
 
+/* ── BIO PAGE — ATMOSPHERE ── */
+.bio-bg-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bio-sigil-fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(66vh, 66vw);
+  height: min(66vh, 66vw);
+  object-fit: contain;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  filter: grayscale(1);
+  mix-blend-mode: screen;
+  will-change: opacity;
+}
+
+/* Bio rule — draw from center outward on reveal */
+.bio-rule { width: 100px; }
+.bio-rule[data-reveal] {
+  opacity: 0;
+  transform: none;
+  clip-path: inset(0 50% 0 50%);
+  transition: opacity 0.6s ease, clip-path 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bio-rule[data-reveal].visible {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0% 0 0%);
+}
+
+/* Bio lead — word-by-word reveal */
+.bio-lead-word {
+  opacity: 0;
+  display: inline;
+  transition: opacity 0.65s ease;
+}
+.bio-lead-word.lit { opacity: 1; }
+
+/* Section label — keep subtle opacity after reveal */
+.bio-section-label[data-reveal].visible { opacity: 0.5; }
+
+/* Emotional anchor lines */
+.bio-anchor {
+  color: var(--white);
+  letter-spacing: 0.025em;
+  text-shadow: 0 0 60px rgba(133, 150, 170, 0.08);
+  font-size: 1.03em;
+}
+
+/* Wake Up — current album accent */
+.disco-item--wake { border-top-color: rgba(133, 150, 170, 0.22); }
+.disco-item--wake .disco-title { text-shadow: 0 0 40px rgba(133, 150, 170, 0.12); }
+.disco-item--wake .disco-year { color: var(--teal); opacity: 0.65; }
+.disco-item--wake .disco-link { color: var(--teal); opacity: 0.7; }
+.disco-item--wake .disco-link:hover { opacity: 1; }
+
+/* Open letter CTA — with extending line on hover */
+.open-letter-cta {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+.open-letter-cta::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+.open-letter-cta:hover { color: var(--white); }
+.open-letter-cta:hover::after { width: 48px; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .hero-sigil { display: none; }
