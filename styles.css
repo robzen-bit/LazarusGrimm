@@ -206,13 +206,16 @@ body::after {
 /* ── ENTRANCE ITEMS ── */
 .e {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1),
-              transform 0.85s cubic-bezier(0.22,1,0.36,1);
+  transform: translateY(24px);
+  filter: blur(4px);
+  transition: opacity 2.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 2.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 2.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .e.in {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 /* ── HERO ── */
