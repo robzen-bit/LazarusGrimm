@@ -212,6 +212,23 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
+// ── HIDDEN MESSAGE SYNC: know only shows when truth is also showing ──
+(function() {
+  var rw2 = document.querySelector('.rw2');
+  if (!rw2) return;
+  var duration = 22000; // matches rB 22s
+  var delay    = 8500;  // matches -8.5s offset
+  var visStart = 0.30;  // rB visible from 30%
+  var visEnd   = 0.402; // rB visible to 40.2%
+  var t0 = performance.now();
+  function tick() {
+    var pos = ((performance.now() - t0 + delay) % duration) / duration;
+    rw2.classList.toggle('truth-visible', pos >= visStart && pos <= visEnd);
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
 // ── HAMBURGER MENU ──
 (function() {
   var nav = document.getElementById('site-nav');

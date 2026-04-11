@@ -621,7 +621,7 @@ body::after {
   opacity: 0;
 }
 .rw2[data-hidden]::after { animation: rB 22s -8.5s infinite; }
-.rw8[data-hidden]::after { animation: rB 20s -11s  infinite; }
+.rw2.truth-visible ~ .rw8[data-hidden]::after { opacity: 1; }
 
 .hero-tagline {
   font-family: var(--font-serif);
