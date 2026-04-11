@@ -167,27 +167,36 @@ setTimeout(function() {
 }, 1000);
 
 // ── ENTRANCE SEQUENCE ──
-[
-  { id: 'e1',  delay: 600  },
-  { id: 'e2',  delay: 900  },
-  { id: 'e3',  delay: 1150 },
-  { id: 'e5',  delay: 1400 },
-  { id: 'e6',  delay: 1450 },
-  { id: 'e7',  delay: 900 },
-  { id: 'e7b', delay: 950 },
-  { id: 'e8',  delay: 1900 },
-].forEach(function(item) {
-  setTimeout(function() {
-    var el = document.getElementById(item.id);
-    if (el) el.classList.add('in');
-  }, item.delay);
-});
+(function() {
+  // Title: start centered on screen, float up to natural position
+  var wrap = document.getElementById('e2');
+  if (wrap) {
+    wrap.classList.remove('e');
+    wrap.style.opacity = '1';
+    var rect = wrap.getBoundingClientRect();
+    var offset = (window.innerHeight / 2) - (rect.top + rect.height / 2);
+    wrap.style.transform = 'translateY(' + Math.round(offset) + 'px)';
+    // Float up after curtain clears
+    setTimeout(function() {
+      wrap.style.transition = 'transform 1.1s cubic-bezier(0.22, 1, 0.36, 1)';
+      wrap.style.transform = 'translateY(0)';
+    }, 1100);
+  }
 
-// Sigil: separate opacity transition
-setTimeout(function() {
-  var sigil = document.getElementById('hero-sigil');
-  if (sigil) sigil.style.opacity = '0.12';
-}, 2500);
+  // Other elements fade in top to bottom after title settles
+  [
+    { id: 'e5',  delay: 2300 },
+    { id: 'e6',  delay: 2500 },
+    { id: 'e7',  delay: 2700 },
+    { id: 'e7b', delay: 2850 },
+    { id: 'e8',  delay: 3050 },
+  ].forEach(function(item) {
+    setTimeout(function() {
+      var el = document.getElementById(item.id);
+      if (el) el.classList.add('in');
+    }, item.delay);
+  });
+})();
 
 // ── COUNTDOWN ──
 function updateCountdown() {
