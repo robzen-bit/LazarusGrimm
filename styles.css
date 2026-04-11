@@ -208,6 +208,27 @@ body::after {
 .eyelid-top.open    { transform: translateY(-100%); }
 .eyelid-bottom.open { transform: translateY(100%); }
 
+.eyelid-top::after,
+.eyelid-bottom::before {
+  position: absolute;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: var(--font-caps);
+  font-size: clamp(52px, 8vw, 108px);
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.055);
+  pointer-events: none;
+  user-select: none;
+}
+.eyelid-top::after {
+  content: 'STAY';
+  bottom: 16px;
+}
+.eyelid-bottom::before {
+  content: 'AWAKE';
+  top: 16px;
+}
+
 /* ── ENTRANCE ITEMS ── */
 .e {
   opacity: 0;
