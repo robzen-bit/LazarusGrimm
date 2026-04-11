@@ -1072,6 +1072,7 @@ footer {
 }
 
 @media (max-width: 480px) {
+  .hero           { justify-content: flex-start; padding-top: calc(var(--nav-h) + 48px); }
   .countdown      { gap: 2px; }
   .countdown-num  { font-size: 36px; }
   .countdown-sep  { font-size: 34px; }
