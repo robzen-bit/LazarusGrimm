@@ -1448,10 +1448,22 @@ footer {
 /* Discography — timeline grid */
 .disco-timeline { margin-top: 8px; }
 
+.disco-row-cover {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border: 1px solid rgba(133,150,170,0.15);
+  opacity: 0.82;
+  transition: opacity 0.3s;
+}
+.disco-row:hover .disco-row-cover { opacity: 1; }
+
 .disco-row {
   display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 0 28px;
+  grid-template-columns: 72px 60px 1fr;
+  gap: 0 20px;
   padding: 40px 0;
   border-top: 1px solid var(--ghost);
 }
@@ -1579,6 +1591,7 @@ footer {
   .section-bar { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; margin-top: 44px; margin-bottom: 36px; }
   .bio-photo-wrap { width: 170px; height: 170px; }
   .bio-impact  { font-size: clamp(20px, 5vw, 26px); padding: 24px 0; }
-  .disco-row   { grid-template-columns: 52px 1fr; gap: 0 16px; padding: 32px 0; }
+  .disco-row   { grid-template-columns: 52px 44px 1fr; gap: 0 12px; padding: 32px 0; }
+  .disco-row-cover { width: 52px; height: 52px; }
   .open-letter-cta-wrap { padding: 8px 20px 64px; }
 }
