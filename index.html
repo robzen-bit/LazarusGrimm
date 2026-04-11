@@ -239,6 +239,30 @@ requestAnimationFrame(function() {
   }, 6200);
 })();
 
+// ── PAGE TRANSITIONS ──
+(function() {
+  var CLOSE_MS = 650;
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href[0] === '#' || a.target === '_blank' ||
+        /^https?:\/\//.test(href)) return;
+    e.preventDefault();
+    var top = document.getElementById('eyelid-top');
+    var bot = document.getElementById('eyelid-bottom');
+    if (!top || !bot) { window.location.href = href; return; }
+    top.style.display = bot.style.display = '';
+    top.style.transition = bot.style.transition = 'none';
+    top.classList.add('open'); bot.classList.add('open');
+    void top.offsetWidth;
+    top.style.transition = bot.style.transition =
+      'transform ' + CLOSE_MS + 'ms cubic-bezier(0.85, 0, 0.15, 1)';
+    top.classList.remove('open'); bot.classList.remove('open');
+    setTimeout(function() { window.location.href = href; }, CLOSE_MS + 60);
+  });
+})();
+
 // ── COUNTDOWN ──
 function updateCountdown() {
   var target = new Date('2026-07-04T00:00:00');

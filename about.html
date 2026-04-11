@@ -62,10 +62,11 @@
 </head>
 <body>
 
-<!-- ── LOADING VEIL ── -->
-<div class="bio-veil" id="bio-veil" aria-hidden="true">
-  <div class="bio-fog"></div>
-</div>
+<!-- ── EYELIDS ── -->
+<div class="eyelid eyelid-top" id="eyelid-top"></div>
+<div class="eyelid eyelid-bottom" id="eyelid-bottom"></div>
+<!-- ── LOADING FOG (visible while eyelids are closed) ── -->
+<div class="bio-fog" id="bio-fog" aria-hidden="true"></div>
 
 <!-- ── AMBIENT PARTICLES ── -->
 <div class="bio-particles-wrap" aria-hidden="true">
@@ -327,14 +328,52 @@ requestAnimationFrame(function() {
   container.appendChild(frag);
 });
 
-// ── BIO LOADING VEIL (iris open) ──
+// ── EYELID OPEN + FOG FADE (about page entrance) ──
 (function() {
-  var veil = document.getElementById('bio-veil');
-  if (!veil) return;
+  var top = document.getElementById('eyelid-top');
+  var bot = document.getElementById('eyelid-bottom');
+  if (!top || !bot) return;
   setTimeout(function() {
-    veil.classList.add('bio-veil--open');
-    setTimeout(function() { veil.style.display = 'none'; }, 2200);
-  }, 120);
+    top.classList.add('open');
+    bot.classList.add('open');
+    // Fade the fog out as eyes open
+    var fog = document.getElementById('bio-fog');
+    if (fog) {
+      fog.style.transition = 'opacity 1.8s ease';
+      fog.style.opacity = '0';
+      setTimeout(function() { fog.style.display = 'none'; }, 1900);
+    }
+    // Remove eyelids from layout after they've slid away
+    setTimeout(function() {
+      top.style.display = 'none';
+      bot.style.display = 'none';
+    }, 2500);
+  }, 350);
+})();
+
+// ── PAGE TRANSITIONS (close eyes → navigate → open eyes) ──
+(function() {
+  var CLOSE_MS = 650;
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href[0] === '#' || a.target === '_blank' ||
+        /^https?:\/\//.test(href)) return;
+    e.preventDefault();
+    var top = document.getElementById('eyelid-top');
+    var bot = document.getElementById('eyelid-bottom');
+    if (!top || !bot) { window.location.href = href; return; }
+    // Snap eyelids to open position (off-screen), then animate shut fast
+    top.style.display = bot.style.display = '';
+    top.style.transition = bot.style.transition = 'none';
+    top.classList.add('open'); bot.classList.add('open');
+    void top.offsetWidth; // force reflow
+    top.style.transition = bot.style.transition =
+      'transform ' + CLOSE_MS + 'ms cubic-bezier(0.85, 0, 0.15, 1)';
+    top.classList.remove('open'); bot.classList.remove('open');
+    setTimeout(function() { window.location.href = href; }, CLOSE_MS + 60);
+  });
 })();
 
 // ── SCROLL REVEAL ──
