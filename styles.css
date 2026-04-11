@@ -1283,8 +1283,8 @@ footer {
   position: absolute;
   bottom: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(133,150,170,1) 0%, rgba(133,150,170,0) 70%);
-  filter: blur(3px);
+  background: radial-gradient(circle, rgba(200,220,255,1) 0%, rgba(160,190,230,0.6) 40%, rgba(133,150,170,0) 70%);
+  filter: blur(8px);
   animation: bioParticleRise linear infinite;
 }
 
@@ -1305,39 +1305,16 @@ footer {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 20% 60%, rgba(133,150,170,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 35% at 80% 30%, rgba(133,150,170,0.05) 0%, transparent 70%);
+    radial-gradient(ellipse 60% 40% at 20% 60%, rgba(160,190,230,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 80% 30%, rgba(160,190,230,0.08) 0%, transparent 70%);
   animation: bioGlowDrift 28s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
 @keyframes bioGlowDrift {
-  0%   { opacity: 0.4; transform: translateY(0) scale(1); }
+  0%   { opacity: 0.5; transform: translateY(0) scale(1); }
   50%  { opacity: 1;   transform: translateY(-22px) scale(1.05); }
-  100% { opacity: 0.5; transform: translateY(10px) scale(0.97); }
-}
-
-/* ── ABOUT PAGE — loading fog (floats above eyelids) ── */
-.bio-fog {
-  position: fixed;
-  inset: -40%;
-  z-index: 8001; /* sits above eyelids (8000) */
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 90% 45% at 28% 65%, rgba(255,255,255,0.55) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 55% at 72% 38%, rgba(255,255,255,0.45) 0%, transparent 55%),
-    radial-gradient(ellipse 110% 35% at 50% 88%, rgba(255,255,255,0.38) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 60% at 12% 22%, rgba(255,255,255,0.32) 0%, transparent 48%),
-    radial-gradient(ellipse 60% 40% at 85% 75%, rgba(255,255,255,0.28) 0%, transparent 50%);
-  filter: blur(18px);
-  animation: bioFogDrift 6s ease-in-out infinite alternate;
-}
-
-@keyframes bioFogDrift {
-  0%   { transform: translate(-4%, -3%) scale(1);    }
-  33%  { transform: translate( 3%, -5%) scale(1.03); }
-  66%  { transform: translate(-2%,  4%) scale(0.98); }
-  100% { transform: translate( 5%,  2%) scale(1.04); }
+  100% { opacity: 0.6; transform: translateY(10px) scale(0.97); }
 }
 
 /* Intro hero */

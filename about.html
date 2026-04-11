@@ -65,8 +65,6 @@
 <!-- ── EYELIDS ── -->
 <div class="eyelid eyelid-top" id="eyelid-top"></div>
 <div class="eyelid eyelid-bottom" id="eyelid-bottom"></div>
-<!-- ── LOADING FOG (visible while eyelids are closed) ── -->
-<div class="bio-fog" id="bio-fog" aria-hidden="true"></div>
 
 <!-- ── AMBIENT PARTICLES ── -->
 <div class="bio-particles-wrap" aria-hidden="true">
@@ -312,7 +310,7 @@ requestAnimationFrame(function() {
     var oDrift = (Math.random() - 0.5) * 160;
     var oDur   = 28 + Math.random() * 40;
     var oDelay = -(Math.random() * oDur);
-    var oOp    = 0.18 + Math.random() * 0.22;
+    var oOp    = 0.35 + Math.random() * 0.35;
     o.style.cssText = [
       'left:' + (Math.random() * 100) + '%',
       'width:' + oSize + 'px',
@@ -336,13 +334,6 @@ requestAnimationFrame(function() {
   setTimeout(function() {
     top.classList.add('open');
     bot.classList.add('open');
-    // Fade the fog out as eyes open
-    var fog = document.getElementById('bio-fog');
-    if (fog) {
-      fog.style.transition = 'opacity 1.8s ease';
-      fog.style.opacity = '0';
-      setTimeout(function() { fog.style.display = 'none'; }, 1900);
-    }
     // Remove eyelids from layout after they've slid away
     setTimeout(function() {
       top.style.display = 'none';
