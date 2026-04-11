@@ -27,8 +27,12 @@
     <li><a href="about.html">About</a></li>
     <li><a href="music.html" class="active">Music</a></li>
     <li><a href="blog.html">Blog</a></li>
+    <li class="nav-mobile-cta"><a href="index.html" class="nav-cta">Wake Up</a></li>
   </ul>
-  <a href="index.html" class="nav-cta">Wake Up</a>
+  <a href="index.html" class="nav-cta nav-cta-desktop">Wake Up</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <main class="page-body">
   <h1 class="visually-hidden">Lazarus Grimm — Music</h1>
@@ -40,6 +44,25 @@
   var s = document.querySelector('.sigil-large') || document.querySelector('.hero-sigil');
   var n = document.getElementById('nav-logo');
   if (s && n) n.src = s.src;
+})();
+</script>
+
+<script>
+// ── HAMBURGER MENU ──
+(function() {
+  var nav = document.getElementById('site-nav');
+  var btn = document.getElementById('nav-hamburger');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    var open = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  nav.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      nav.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
 })();
 </script>
 </body>

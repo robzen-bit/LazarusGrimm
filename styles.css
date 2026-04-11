@@ -112,10 +112,84 @@ body::after {
   transition: background 0.25s, color 0.25s;
 }
 .nav-cta:hover { background: var(--teal); color: var(--bg); }
+/* ── HAMBURGER BUTTON ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 16px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--white);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.site-nav.nav-open .nav-hamburger span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.site-nav.nav-open .nav-hamburger span:nth-child(2) {
+  opacity: 0;
+}
+.site-nav.nav-open .nav-hamburger span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Hide mobile-only CTA on desktop */
+.nav-mobile-cta { display: none; }
+
 @media (max-width: 520px) {
   .nav-wordmark { display: none; }
-  .nav-links { display: none; }
+  .nav-cta-desktop { display: none; }
+  .nav-hamburger { display: flex; }
   .site-nav { padding: 0 20px; }
+
+  /* Mobile dropdown */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--ghost);
+    padding: 32px 0;
+    gap: 0;
+    margin: 0;
+    list-style: none;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .nav-links li { width: 100%; text-align: center; }
+  .nav-links a {
+    display: block;
+    padding: 16px 24px;
+    font-size: 13px;
+    letter-spacing: 4px;
+  }
+  .nav-mobile-cta { display: block; margin-top: 16px; }
+  .nav-mobile-cta .nav-cta {
+    display: inline-block;
+    border: 1px solid var(--ghost);
+  }
+
+  /* Open state */
+  .site-nav.nav-open .nav-links {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 }
 
 /* ── CURTAIN ── */

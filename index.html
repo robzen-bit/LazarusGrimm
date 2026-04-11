@@ -66,8 +66,12 @@
     <li><a href="about.html">About</a></li>
     <li><a href="music.html">Music</a></li>
     <li><a href="blog.html">Blog</a></li>
+    <li class="nav-mobile-cta"><a href="index.html" class="nav-cta">Wake Up</a></li>
   </ul>
-  <a href="index.html" class="nav-cta">Wake Up</a>
+  <a href="index.html" class="nav-cta nav-cta-desktop">Wake Up</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <main>
 <section class="hero">
@@ -207,6 +211,23 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+// ── HAMBURGER MENU ──
+(function() {
+  var nav = document.getElementById('site-nav');
+  var btn = document.getElementById('nav-hamburger');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    var open = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  nav.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      nav.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
 
 // ── SCROLL REVEAL ──
 var revealObserver = new IntersectionObserver(function(entries) {
