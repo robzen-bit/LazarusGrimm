@@ -611,7 +611,7 @@ body::after {
   left: -1px; right: -1px;
   top: 1px; bottom: 1px;
   text-align: center;
-  color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.25);
   font-family: inherit;
   font-style: inherit;
   font-size: inherit;
