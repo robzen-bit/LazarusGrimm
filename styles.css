@@ -1264,6 +1264,34 @@ footer {
   overflow: hidden;
 }
 
+/* Soft orb particles — larger, glowing, dreamy */
+.bio-particle-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(133,150,170,0.9) 0%, rgba(133,150,170,0) 70%);
+  filter: blur(2px);
+  animation: particleRise linear infinite;
+  bottom: -10vh;
+}
+
+/* Subtle slow-pulse glow that drifts across the page */
+.bio-particles-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 60%, rgba(133,150,170,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 80% 30%, rgba(133,150,170,0.03) 0%, transparent 70%);
+  animation: bioGlowDrift 28s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes bioGlowDrift {
+  0%   { opacity: 0.5; transform: translateY(0) scale(1); }
+  50%  { opacity: 1;   transform: translateY(-18px) scale(1.04); }
+  100% { opacity: 0.6; transform: translateY(8px) scale(0.97); }
+}
+
 /* Intro hero */
 .bio-intro {
   position: relative;

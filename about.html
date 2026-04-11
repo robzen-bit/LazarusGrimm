@@ -270,16 +270,20 @@ requestAnimationFrame(function() {
   var container = document.getElementById('bio-particles');
   if (!container) return;
   var isMobile = window.matchMedia('(max-width: 767px)').matches;
-  var count = isMobile ? 4 : 8;
   var frag = document.createDocumentFragment();
-  for (var i = 0; i < count; i++) {
+
+  // Layer 1 — fine dust (many tiny dots)
+  var dustCount = isMobile ? 18 : 38;
+  for (var i = 0; i < dustCount; i++) {
     var p = document.createElement('span');
     p.className = 'particle';
-    var size  = 1 + Math.random() * 1.5;
-    var drift = (Math.random() - 0.5) * 80;
-    var dur   = 38 + Math.random() * 40;
-    var delay = -(Math.random() * 70);
-    var op    = 0.018 + Math.random() * 0.022;
+    var size  = 0.8 + Math.random() * 1.8;
+    var drift = (Math.random() - 0.5) * 100;
+    var dur   = 30 + Math.random() * 50;
+    var delay = -(Math.random() * 80);
+    var op    = 0.04 + Math.random() * 0.08;
+    // Subtle teal tint on some particles
+    var isTeal = Math.random() < 0.3;
     p.style.cssText = [
       'left:' + (Math.random() * 100) + '%',
       'width:' + size + 'px',
@@ -288,10 +292,35 @@ requestAnimationFrame(function() {
       '--op:' + op,
       'animation-duration:' + dur + 's',
       'animation-delay:' + delay + 's',
-      'opacity:' + op
+      'opacity:' + op,
+      isTeal ? 'background:rgba(133,150,170,0.9)' : ''
     ].join(';');
     frag.appendChild(p);
   }
+
+  // Layer 2 — soft orbs (fewer, larger, very slow, glowing)
+  var orbCount = isMobile ? 4 : 8;
+  for (var j = 0; j < orbCount; j++) {
+    var o = document.createElement('span');
+    o.className = 'bio-particle-orb';
+    var oSize  = 3 + Math.random() * 6;
+    var oDrift = (Math.random() - 0.5) * 140;
+    var oDur   = 55 + Math.random() * 60;
+    var oDelay = -(Math.random() * 100);
+    var oOp    = 0.06 + Math.random() * 0.10;
+    o.style.cssText = [
+      'left:' + (Math.random() * 100) + '%',
+      'width:' + oSize + 'px',
+      'height:' + oSize + 'px',
+      '--drift:' + oDrift + 'px',
+      '--op:' + oOp,
+      'animation-duration:' + oDur + 's',
+      'animation-delay:' + oDelay + 's',
+      'opacity:' + oOp
+    ].join(';');
+    frag.appendChild(o);
+  }
+
   container.appendChild(frag);
 });
 
