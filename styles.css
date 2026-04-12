@@ -1486,15 +1486,13 @@ footer {
   text-transform: uppercase;
   color: var(--teal);
   text-decoration: none;
-  opacity: 0.4;
-  transition: opacity 0.2s;
+  transition: color 0.2s;
   white-space: nowrap;
   flex-shrink: 0;
 }
-.section-nav-link:hover { opacity: 0.75; }
+.section-nav-link:hover { color: var(--white); }
 .section-nav-link.active {
   color: var(--white);
-  opacity: 1;
   font-weight: 700;
   letter-spacing: 4px;
 }
