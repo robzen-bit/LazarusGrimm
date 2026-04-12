@@ -1386,8 +1386,6 @@ footer {
   color: var(--white);
   text-transform: uppercase;
   margin-bottom: 12px;
-  animation: lineStutter 28s -3.7s linear infinite;
-  will-change: transform, filter;
 }
 
 .bio-genre-tags {
@@ -1398,8 +1396,26 @@ footer {
   text-transform: uppercase;
   margin-bottom: 36px;
   opacity: 0.8;
-  animation: lineStutter 28s -17.4s linear infinite;
+}
+
+.bio-letter {
+  display: inline-block;
+  animation: bioGlitch var(--dur, 7s) var(--del, 0s) linear infinite;
   will-change: transform, filter;
+}
+
+@keyframes bioGlitch {
+  0%, 87%  { transform: translateX(0) skewX(0deg); filter: none; opacity: 1; text-shadow: none; }
+  87.2%    { transform: translateX(var(--gx, -3px)) skewX(-4deg);
+             filter: blur(1px) brightness(1.8); opacity: 0.7;
+             text-shadow: -2px 0 var(--teal), 2px 0 var(--white); }
+  87.45%   { transform: translateX(var(--gx2, 4px)) skewX(2deg);
+             filter: blur(0.4px); opacity: 1; text-shadow: none; }
+  87.65%   { transform: translateX(var(--gx3, -2px)) skewX(-1deg);
+             filter: blur(1.5px) brightness(0.6); opacity: 0.85;
+             text-shadow: -1px 0 var(--teal); }
+  87.9%    { transform: translateX(0) skewX(0deg); filter: none; opacity: 1; text-shadow: none; }
+  100%     { transform: translateX(0) skewX(0deg); filter: none; opacity: 1; text-shadow: none; }
 }
 
 .bio-thesis {

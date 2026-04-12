@@ -392,6 +392,44 @@ document.querySelectorAll('[data-section]').forEach(function(s) {
 </script>
 
 <script>
+// ── BIO LETTER GLITCH ──
+(function() {
+  function splitGlitch(el) {
+    var text = el.textContent;
+    el.innerHTML = '';
+    var i = 0;
+    while (i < text.length) {
+      if (/[ \u00a0]/.test(text[i])) {
+        var sp = document.createElement('span');
+        sp.style.cssText = 'display:inline-block;width:0.28em;';
+        el.appendChild(sp);
+        i++;
+      } else {
+        var word = document.createElement('span');
+        word.style.cssText = 'display:inline-block;white-space:nowrap;';
+        while (i < text.length && !/[ \u00a0]/.test(text[i])) {
+          var s = document.createElement('span');
+          s.textContent = text[i];
+          s.className = 'bio-letter';
+          var dur = (5 + Math.random() * 10).toFixed(2);
+          var del = (-Math.random() * 14).toFixed(2);
+          var gx  = (-5 + Math.random() * -2).toFixed(1);
+          var gx2 = (2 + Math.random() * 5).toFixed(1);
+          var gx3 = (-1 + Math.random() * -3).toFixed(1);
+          s.style.cssText = '--dur:'+dur+'s;--del:'+del+'s;--gx:'+gx+'px;--gx2:'+gx2+'px;--gx3:'+gx3+'px;';
+          word.appendChild(s);
+          i++;
+        }
+        el.appendChild(word);
+      }
+    }
+  }
+  var name = document.querySelector('.bio-artist-name');
+  var tags = document.querySelector('.bio-genre-tags');
+  if (name) splitGlitch(name);
+  if (tags) splitGlitch(tags);
+})();
+
 // ── HAMBURGER MENU ──
 (function() {
   var nav = document.getElementById('site-nav');
