@@ -221,8 +221,8 @@ body::after {
   font-weight: 900;
   letter-spacing: 0.28em;
   white-space: nowrap;
-  color: rgba(255,255,255,0.11);
-  -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.018);
+  -webkit-text-stroke: 0.5px rgba(255,255,255,0.01);
   pointer-events: none;
   user-select: none;
   line-height: 1;
