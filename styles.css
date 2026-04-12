@@ -228,6 +228,8 @@ body::after {
   content: 'AWAKE';
   top: 16px;
 }
+.eyelid--silent::before,
+.eyelid--silent::after { content: none; }
 
 /* ── ENTRANCE ITEMS ── */
 .e {
