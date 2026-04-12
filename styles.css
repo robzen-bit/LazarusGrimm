@@ -1386,6 +1386,8 @@ footer {
   color: var(--white);
   text-transform: uppercase;
   margin-bottom: 12px;
+  animation: lineStutter 28s -3.7s linear infinite;
+  will-change: transform, filter;
 }
 
 .bio-genre-tags {
@@ -1396,6 +1398,8 @@ footer {
   text-transform: uppercase;
   margin-bottom: 36px;
   opacity: 0.8;
+  animation: lineStutter 28s -17.4s linear infinite;
+  will-change: transform, filter;
 }
 
 .bio-thesis {
