@@ -200,33 +200,41 @@ body::after {
   left: 0; right: 0;
   z-index: 8000;
   background: #000;
+  overflow: hidden;
   transition: transform 2.2s cubic-bezier(0.4, 0, 0.15, 1);
   will-change: transform;
 }
-.eyelid-top    { top: 0; height: 55vh; transform-origin: top; }
-.eyelid-bottom { bottom: 0; height: 55vh; transform-origin: bottom; }
+.eyelid-top    { top: 0; height: 50vh; transform-origin: top; }
+.eyelid-bottom { bottom: 0; height: 50vh; transform-origin: bottom; }
 .eyelid-top.open    { transform: translateY(-100%); }
 .eyelid-bottom.open { transform: translateY(100%); }
 
+/* "STAY AWAKE" as one line split at the seam — only complete when shutters are closed */
 .eyelid-top::after,
 .eyelid-bottom::before {
+  content: 'STAY AWAKE';
   position: absolute;
   left: 0; right: 0;
   text-align: center;
   font-family: var(--font-caps);
-  font-size: clamp(52px, 8vw, 108px);
-  letter-spacing: 0.3em;
-  color: rgba(255,255,255,0.055);
+  font-size: clamp(48px, 7vw, 100px);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.03);
   pointer-events: none;
   user-select: none;
+  line-height: 1;
 }
+/* Top half: anchor text so its center sits at the bottom edge (seam) */
 .eyelid-top::after {
-  content: 'STAY';
-  bottom: 16px;
+  bottom: 0;
+  transform: translateY(50%);
 }
+/* Bottom half: anchor text so its center sits at the top edge (seam) */
 .eyelid-bottom::before {
-  content: 'AWAKE';
-  top: 16px;
+  top: 0;
+  transform: translateY(-50%);
 }
 .eyelid--silent::before,
 .eyelid--silent::after { content: none; }
