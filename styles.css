@@ -1594,15 +1594,16 @@ footer {
   color: var(--dim);
   text-decoration: none;
   text-transform: uppercase;
-  opacity: 0.5;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 1px;
+  border: 1px solid var(--dim);
+  border-radius: 99px;
+  padding: 6px 14px;
+  opacity: 0.6;
   transition: opacity 0.25s, color 0.25s, border-color 0.25s;
 }
 .disco-row-link:hover {
   opacity: 1;
   color: var(--teal);
-  border-bottom-color: var(--teal);
+  border-color: var(--teal);
 }
 
 /* Wake Up — featured treatment */
