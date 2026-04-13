@@ -1764,32 +1764,27 @@ footer {
 
 /* ── LYRICS PAGE ── */
 .lyr-page {
-  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  padding-top: calc(var(--nav-h) + var(--sec-nav-h) + env(safe-area-inset-top, 0px));
   min-height: 100vh;
 }
 
-/* Sticky album nav */
+/* Fixed album nav — matches section-sticky-nav style */
 .lyr-album-nav {
-  position: sticky;
+  position: fixed;
   top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 1px);
+  left: 0; right: 0;
   z-index: 98;
   display: flex;
   align-items: center;
-  gap: 8px 24px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  background: rgba(7, 9, 13, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(133, 150, 170, 0.1);
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  background: rgba(18, 26, 38, 0.96);
+  border-bottom: 1px solid rgba(133, 150, 170, 0.12);
   padding: 12px 32px;
 }
-.lyr-album-nav::-webkit-scrollbar { display: none; }
 .lyr-album-nav-link {
   font-family: var(--font-caps);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--teal);
@@ -1797,12 +1792,12 @@ footer {
   white-space: nowrap;
   flex-shrink: 0;
   transition: color 0.2s;
-  padding: 4px 0;
 }
 .lyr-album-nav-link:hover { color: var(--white); }
 .lyr-album-nav-link.active {
   color: var(--white);
   font-weight: 700;
+  letter-spacing: 4px;
 }
 .lyr-album-nav-sep {
   color: var(--ghost);
@@ -1819,7 +1814,7 @@ footer {
 }
 .lyr-album {
   margin-bottom: 140px;
-  scroll-margin-top: calc(var(--nav-h) + 60px);
+  scroll-margin-top: calc(var(--nav-h) + var(--sec-nav-h) + env(safe-area-inset-top, 0px) + 8px);
 }
 .lyr-album-header {
   text-align: center;
@@ -2022,7 +2017,9 @@ footer {
   .lyr-content { padding: 60px 24px 100px; }
   .lyr-album { margin-bottom: 100px; }
   .lyr-divider { margin-bottom: 100px; }
-  .lyr-album-nav { padding: 12px 24px; }
+  .lyr-album-nav { gap: 6px 18px; padding: 10px 24px; }
+  .lyr-album-nav-link { font-size: 8px; letter-spacing: 2px; }
+  .lyr-album-nav-link.active { letter-spacing: 3px; }
   .lyr-album-title { font-size: clamp(28px, 8vw, 44px); }
   .lyr-lyrics { padding-left: 24px; margin-left: 20px; }
 }
@@ -2030,6 +2027,7 @@ footer {
   .lyr-content { padding: 48px 20px 80px; }
   .lyr-track-title { font-size: 18px; }
   .lyr-lyrics p { font-size: 15px; }
-  .lyr-album-nav { padding: 10px 20px; gap: 6px 16px; }
-  .lyr-album-nav-link { font-size: 8px; letter-spacing: 2px; }
+  .lyr-album-nav { gap: 6px 14px; padding: 10px 20px; }
+  .lyr-album-nav-link { font-size: 7px; letter-spacing: 1.5px; }
+  .lyr-album-nav-link.active { letter-spacing: 2px; }
 }
