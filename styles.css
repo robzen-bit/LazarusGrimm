@@ -1688,7 +1688,7 @@ footer {
 }
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 18px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(-6px);
   min-width: 260px;
@@ -1696,7 +1696,7 @@ footer {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--ghost);
-  padding: 10px 0;
+  padding: 18px 0 10px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s, transform 0.2s;
