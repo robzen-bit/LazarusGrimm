@@ -30,6 +30,16 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="music.html">Music</a></li>
+    <li class="nav-has-dropdown">
+      <a href="lyrics.html">Lyrics</a>
+      <div class="nav-dropdown">
+        <a href="lyrics.html#destroying-your-legacy">Destroying Your Legacy</a>
+        <a href="lyrics.html#quiet-place">Quiet Place — Psalms For Today</a>
+        <a href="lyrics.html#shadowwork">ShadowWork</a>
+        <a href="lyrics.html#lanterns-to-the-line">Lanterns to the Line</a>
+        <a href="lyrics.html#wake-up">Wake Up</a>
+      </div>
+    </li>
     <li><a href="blog.html" class="active">Blog</a></li>
     <li class="nav-mobile-cta"><a href="index.html" class="nav-cta">Wake Up</a></li>
   </ul>
@@ -100,10 +110,19 @@
     var open = nav.classList.toggle('nav-open');
     btn.setAttribute('aria-expanded', String(open));
   });
-  nav.querySelectorAll('.nav-links a').forEach(function(a) {
+  nav.querySelectorAll('.nav-links a:not(.nav-has-dropdown a)').forEach(function(a) {
     a.addEventListener('click', function() {
       nav.classList.remove('nav-open');
       btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+  // Mobile Lyrics dropdown toggle
+  nav.querySelectorAll('.nav-has-dropdown > a').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      if (window.innerWidth > 520) return;
+      e.preventDefault();
+      var li = a.closest('.nav-has-dropdown');
+      li.classList.toggle('mobile-open');
     });
   });
 })();
