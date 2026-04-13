@@ -1953,6 +1953,12 @@ footer {
   opacity: 0.7;
 }
 
+/* Streaming links inside album header */
+.lyr-album-links {
+  justify-content: center;
+  margin-top: 10px;
+}
+
 /* Album cover thumbnail */
 .lyr-album-cover {
   display: block;
