@@ -2038,3 +2038,107 @@ footer {
   .lyr-album-nav-link { font-size: 7px; letter-spacing: 1.5px; }
   .lyr-album-nav-link.active { letter-spacing: 2px; }
 }
+
+/* ── ALBUM PAGE ── */
+.alb-page {
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  min-height: 100vh;
+}
+
+.alb-hero {
+  text-align: center;
+  padding: 60px 32px 64px;
+  border-bottom: 1px solid var(--ghost);
+}
+
+.alb-cover {
+  display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin: 0 auto 28px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
+}
+
+.alb-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 7vw, 56px);
+  letter-spacing: 6px;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.alb-release {
+  font-family: var(--font-caps);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.alb-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.alb-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px 120px;
+}
+
+.alb-section {
+  margin-bottom: 72px;
+}
+
+.alb-body p {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: var(--dim);
+  line-height: 1.85;
+  margin-bottom: 1.4em;
+}
+.alb-body p:last-child { margin-bottom: 0; }
+.alb-body em { font-style: italic; color: var(--teal); }
+
+/* Track by track */
+.alb-tracklist { list-style: none; padding: 0; }
+.alb-track {
+  padding: 22px 0;
+  border-top: 1px solid rgba(26, 36, 48, 0.6);
+}
+.alb-track:last-child { border-bottom: 1px solid rgba(26, 36, 48, 0.6); }
+.alb-track-title {
+  display: block;
+  font-family: var(--font-caps);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.alb-track-desc {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--dim);
+  line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .alb-cover { width: 160px; height: 160px; }
+  .alb-content { padding: 0 24px 100px; }
+  .alb-body p { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  .alb-cover { width: 130px; height: 130px; }
+  .alb-hero { padding: 44px 20px 48px; }
+  .alb-content { padding: 0 20px 80px; }
+  .alb-section-bar { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+}
