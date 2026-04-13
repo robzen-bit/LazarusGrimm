@@ -369,6 +369,8 @@ requestAnimationFrame(function() {
     var href = a.getAttribute('href');
     if (!href || href[0] === '#' || a.target === '_blank' ||
         /^https?:\/\//.test(href)) return;
+    var destPage = href.split('#')[0];
+    if (!destPage || destPage === window.location.pathname.split('/').pop()) return;
     e.preventDefault();
     var top = document.getElementById('eyelid-top');
     var bot = document.getElementById('eyelid-bottom');
