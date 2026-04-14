@@ -1763,6 +1763,9 @@ footer {
   }
 }
 
+/* Non-link dropdown trigger (Music nav) */
+.nav-has-dropdown > a:not([href]) { cursor: default; }
+
 /* ── LYRICS PAGE ── */
 .lyr-page {
   padding-top: calc(var(--nav-h) + var(--sec-nav-h) + env(safe-area-inset-top, 0px));
@@ -2041,7 +2044,7 @@ footer {
 
 /* ── ALBUM PAGE ── */
 .alb-page {
-  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  padding-top: calc(var(--nav-h) + var(--sec-nav-h) + env(safe-area-inset-top, 0px));
   min-height: 100vh;
 }
 
