@@ -1725,9 +1725,12 @@ footer {
 
 /* Mobile: lyrics dropdown as accordion in hamburger menu */
 @media (max-width: 520px) {
-  .nav-has-dropdown .nav-dropdown {
-    position: static;
-    transform: none;
+  .nav-has-dropdown .nav-dropdown,
+  .nav-has-dropdown:hover .nav-dropdown,
+  .nav-has-dropdown:focus-within .nav-dropdown {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
     border: none;
     background: none;
     backdrop-filter: none;
