@@ -1931,13 +1931,17 @@ footer {
   max-height: 8000px;
 }
 
-/* Individual lyric pages — always show lyrics, hide toggle */
+/* Individual lyric pages — always show lyrics, hide toggle, show header */
 .lyr-page-single .lyr-track-body {
   max-height: none;
   overflow: visible;
 }
 .lyr-page-single .lyr-track-toggle { display: none; }
 .lyr-page-single .lyr-track-header { cursor: default; }
+.lyr-page-single .lyr-album-header[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
 .lyr-lyrics {
   padding: 4px 0 32px 42px;
   border-left: 2px solid rgba(133, 150, 170, 0.1);
