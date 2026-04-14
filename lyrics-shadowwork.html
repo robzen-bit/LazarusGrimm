@@ -1014,14 +1014,16 @@ requestAnimationFrame(function() {
   var top = document.getElementById('eyelid-top');
   var bot = document.getElementById('eyelid-bottom');
   if (!top || !bot) return;
-  setTimeout(function() {
-    top.classList.add('open');
-    bot.classList.add('open');
-    setTimeout(function() {
-      top.style.display = 'none';
-      bot.style.display = 'none';
-    }, 2500);
-  }, 350);
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      top.classList.add('open');
+      bot.classList.add('open');
+      setTimeout(function() {
+        top.style.display = 'none';
+        bot.style.display = 'none';
+      }, 2500);
+    });
+  });
 })();
 
 // ── PAGE TRANSITIONS ──
