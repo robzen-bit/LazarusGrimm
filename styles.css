@@ -2147,3 +2147,55 @@ footer {
   .alb-content { padding: 0 20px 80px; }
   .alb-section-bar { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
 }
+
+/* Lyrics index page */
+.lyr-index-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 44px);
+  letter-spacing: 6px;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+.lyr-index-album {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(133,150,170,0.12);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.lyr-index-album:last-child { border-bottom: 1px solid rgba(133,150,170,0.12); }
+.lyr-index-album:hover { opacity: 0.75; }
+.lyr-index-album img { border-radius: 4px; flex-shrink: 0; }
+.lyr-index-album-name {
+  display: block;
+  font-family: var(--font-caps);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.lyr-index-album-year {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--dim);
+}
+.lyr-back {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(133,150,170,0.12);
+}
+.lyr-back a {
+  font-family: var(--font-caps);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.lyr-back a:hover { color: var(--teal); }
