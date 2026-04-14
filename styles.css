@@ -2060,7 +2060,7 @@ footer {
   .lyr-content { padding: 60px 24px 100px; }
   .lyr-album { margin-bottom: 100px; }
   .lyr-divider { margin-bottom: 100px; }
-  .lyr-album-nav { display: none; }
+  .lyr-album-nav { display: none !important; }
   .lyr-page { padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px)); }
   .alb-page { padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px)); }
   .lyr-album-title { font-size: clamp(28px, 8vw, 44px); }
