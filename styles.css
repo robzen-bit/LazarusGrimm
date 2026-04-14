@@ -1932,6 +1932,12 @@ footer {
 }
 
 /* Individual lyric pages — always show lyrics, hide toggle, show header */
+.lyr-page-single .lyr-album-cover {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.55);
+}
 .lyr-page-single .lyr-track-body {
   max-height: none;
   overflow: visible;
