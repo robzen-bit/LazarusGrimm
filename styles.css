@@ -1750,6 +1750,7 @@ footer {
     font-style: italic;
     font-family: var(--font-serif);
     white-space: normal;
+    text-align: center;
   }
   .nav-has-dropdown > a {
     display: flex;
