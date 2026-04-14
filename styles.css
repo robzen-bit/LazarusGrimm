@@ -1786,7 +1786,7 @@ footer {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px 28px;
+  gap: 0;
   background: rgba(18, 26, 38, 0.96);
   border-bottom: 1px solid rgba(133, 150, 170, 0.12);
   padding: 12px 32px;
@@ -1800,8 +1800,10 @@ footer {
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  padding: 0 10px;
   transition: color 0.2s;
 }
+.lyr-album-nav-link:first-child { padding-left: 0; }
 .lyr-album-nav-link:hover { color: var(--white); }
 .lyr-album-nav-link.active {
   color: var(--white);
@@ -1811,8 +1813,9 @@ footer {
 .lyr-album-nav-sep {
   color: var(--ghost);
   flex-shrink: 0;
-  font-size: 8px;
+  font-size: 10px;
   user-select: none;
+  padding: 0 2px;
 }
 
 /* Album sections */
