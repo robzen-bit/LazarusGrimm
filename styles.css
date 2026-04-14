@@ -1743,7 +1743,7 @@ footer {
     display: block;
   }
   .nav-dropdown a {
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 0.3px;
     padding: 8px 24px;
     color: var(--dim);
@@ -2051,10 +2051,9 @@ footer {
   .lyr-content { padding: 60px 24px 100px; }
   .lyr-album { margin-bottom: 100px; }
   .lyr-divider { margin-bottom: 100px; }
-  .lyr-album-nav { justify-content: center; padding: 10px 24px; gap: 0; }
-  .lyr-album-nav-link:not(.active) { display: none; }
-  .lyr-album-nav-sep { display: none; }
-  .lyr-album-nav-link { font-size: 8px; letter-spacing: 2px; }
+  .lyr-album-nav { justify-content: flex-start; padding: 10px 24px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .lyr-album-nav::-webkit-scrollbar { display: none; }
+  .lyr-album-nav-link { font-size: 8px; letter-spacing: 2px; white-space: nowrap; }
   .lyr-album-nav-link.active { letter-spacing: 3px; }
   .lyr-album-title { font-size: clamp(28px, 8vw, 44px); }
   .lyr-lyrics { padding-left: 24px; margin-left: 20px; }
@@ -2063,8 +2062,8 @@ footer {
   .lyr-content { padding: 48px 20px 80px; }
   .lyr-track-title { font-size: 18px; }
   .lyr-lyrics p { font-size: 15px; }
-  .lyr-album-nav { justify-content: center; padding: 10px 20px; gap: 0; }
-  .lyr-album-nav-link { font-size: 7px; letter-spacing: 1.5px; }
+  .lyr-album-nav { justify-content: flex-start; padding: 10px 20px; flex-wrap: nowrap; overflow-x: auto; }
+  .lyr-album-nav-link { font-size: 7px; letter-spacing: 1.5px; white-space: nowrap; }
   .lyr-album-nav-link.active { letter-spacing: 2px; }
 }
 
