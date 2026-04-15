@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Wake Up — Lazarus Grimm</title>
+<meta name="description" content="Wake Up is the fifth album from Lazarus Grimm. Releasing July 4, 2026. The album they don't want you to hear — receipts, not rumors. Nu-metal and conscious hip-hop.">
+<link rel="canonical" href="https://lazarusgrimm.com/wake-up.html">
+<meta property="og:title" content="Wake Up — Lazarus Grimm">
+<meta property="og:description" content="The fifth album. Releasing July 4, 2026. The album they don't want you to hear.">
+<meta property="og:url" content="https://lazarusgrimm.com/wake-up.html">
+<meta property="og:type" content="music.album">
+<meta property="og:image" content="https://lazarusgrimm.com/images/wake-up.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicAlbum",
+  "name": "Wake Up",
+  "byArtist": { "@type": "MusicGroup", "name": "Lazarus Grimm" },
+  "datePublished": "2026-07-04",
+  "albumProductionType": "https://schema.org/StudioAlbum",
+  "genre": ["Nu-Metal", "Conscious Hip-Hop", "Rap Metal"],
+  "numTracks": 12,
+  "image": "https://lazarusgrimm.com/images/wake-up.webp",
+  "url": "https://lazarusgrimm.com/wake-up.html",
+  "description": "Wake Up releases July 4, 2026. An album about independence in the truest sense — from the systems of control, the narratives we've been handed, and the manufactured divisions that keep us fighting each other.",
+  "track": [
+    {"@type":"MusicRecording","name":"Wake Up","position":1},
+    {"@type":"MusicRecording","name":"Astroturfing","position":2},
+    {"@type":"MusicRecording","name":"Yahweh Surround Me","position":3},
+    {"@type":"MusicRecording","name":"Epstein Island — Let Them Rot","position":4},
+    {"@type":"MusicRecording","name":"Illusion of Choice","position":5},
+    {"@type":"MusicRecording","name":"Divide and Rule","position":6},
+    {"@type":"MusicRecording","name":"Real Talk With Jordan","position":7},
+    {"@type":"MusicRecording","name":"764","position":8},
+    {"@type":"MusicRecording","name":"JP 3-13.2","position":9},
+    {"@type":"MusicRecording","name":"The Two Party Gravity Well","position":10},
+    {"@type":"MusicRecording","name":"State Power, War Propaganda, and Religious Control","position":11},
+    {"@type":"MusicRecording","name":"Rebuild","position":12}
+  ]
+}
+</script>
+<link rel="preload" href="fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cormorant-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="images/wake-up.webp" as="image" type="image/webp">
+<link rel="stylesheet" href="styles.min.css">
+<style>
+/* ── Wake Up page extras ── */
+.alb-subtitle {
+  font-family: 'Cormorant', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+  color: #8596aa;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.5rem;
+  text-align: center;
+}
+/* Hidden by default; JS reveals correct element */
+#alb-countdown { display: none; }
+#alb-release   { display: none; }
+.alb-content   { display: none; }
+
+.alb-countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 1.25rem auto 0;
+  padding: 1.5rem 2rem 1.25rem;
+  border: 1px solid rgba(133,150,170,0.18);
+  background: rgba(255,255,255,0.02);
+  max-width: 28rem;
+  width: 100%;
+}
+.alb-countdown-label {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8596aa;
+  margin-bottom: 1rem;
+}
+.alb-countdown-timer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+.alb-countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 4.5rem;
+}
+.alb-countdown-num {
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-size: clamp(2.6rem, 7vw, 4rem);
+  line-height: 1;
+  color: #e8e0d4;
+  letter-spacing: 0.03em;
+}
+.alb-countdown-unit-label {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8596aa;
+  margin-top: 0.3rem;
+}
+.alb-countdown-sep {
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-size: clamp(2.6rem, 7vw, 4rem);
+  line-height: 1;
+  color: rgba(133,150,170,0.35);
+  padding: 0 0.15rem;
+  margin-top: 0;
+}
+@media (max-width: 400px) {
+  .alb-countdown { padding: 1.25rem 1rem 1rem; }
+  .alb-countdown-unit { min-width: 3.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="eyelid eyelid-top" id="eyelid-top"></div>
+<div class="eyelid eyelid-bottom" id="eyelid-bottom"></div>
+
+<div class="bio-particles-wrap" aria-hidden="true">
+  <div id="alb-particles"></div>
+</div>
+
+<nav class="site-nav" id="site-nav">
+  <a href="index.html" class="nav-brand">
+    <img class="nav-logo" id="nav-logo" src="images/sigil-nav.png" width="42" height="42" alt="Lazarus Grimm logo">
+  </a>
+  <span class="nav-wordmark">Lazarus Grimm</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li class="nav-has-dropdown">
+      <a>Music</a>
+      <div class="nav-dropdown">
+        <a href="destroying-your-legacy.html">Destroying Your Legacy</a>
+        <a href="quiet-place.html">The Quiet Place &#8212; Psalms For Today</a>
+        <a href="shadowwork.html">ShadowWork</a>
+        <a href="lanterns-to-the-line.html">Lanterns to the Line</a>
+        <a href="wake-up.html" class="active">Wake Up</a>
+      </div>
+    </li>
+    <li class="nav-has-dropdown">
+      <a>Lyrics</a>
+      <div class="nav-dropdown">
+        <a href="lyrics-destroying-your-legacy.html">Destroying Your Legacy</a>
+        <a href="lyrics-quiet-place.html">Quiet Place &#8212; Psalms For Today</a>
+        <a href="lyrics-shadowwork.html">ShadowWork</a>
+        <a href="lyrics-lanterns-to-the-line.html">Lanterns to the Line</a>
+        <a href="lyrics-wake-up.html">Wake Up</a>
+      </div>
+    </li>
+    <li><a href="blog.html">Blog</a></li>
+    <li class="nav-mobile-cta"><a href="wake-up.html" class="nav-cta">Wake Up</a></li>
+  </ul>
+  <a href="wake-up.html" class="nav-cta nav-cta-desktop">Wake Up</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="lyr-album-nav" aria-label="Music">
+  <div class="lyr-album-nav-inner">
+    <a href="destroying-your-legacy.html" class="lyr-album-nav-link">Destroying Your Legacy</a>
+    <span class="lyr-album-nav-sep" aria-hidden="true">|</span>
+    <a href="quiet-place.html" class="lyr-album-nav-link">The Quiet Place</a>
+    <span class="lyr-album-nav-sep" aria-hidden="true">|</span>
+    <a href="shadowwork.html" class="lyr-album-nav-link">ShadowWork</a>
+    <span class="lyr-album-nav-sep" aria-hidden="true">|</span>
+    <a href="lanterns-to-the-line.html" class="lyr-album-nav-link">Lanterns to the Line</a>
+    <span class="lyr-album-nav-sep" aria-hidden="true">|</span>
+    <a class="lyr-album-nav-link active">Wake Up</a>
+  </div>
+</nav>
+
+<main class="alb-page">
+
+  <!-- ── HERO ── -->
+  <header class="alb-hero" data-section>
+    <img class="alb-cover" src="images/wake-up.webp" alt="Wake Up album cover" width="200" height="200" loading="eager" data-reveal>
+    <h1 class="alb-title" data-reveal>Wake Up</h1>
+    <p class="alb-subtitle" data-reveal>The Album They Don&#8217;t Want You to Hear</p>
+    <div class="alb-links" data-reveal>
+      <!-- Streaming links active on release day, July 4 2026 -->
+      <a class="disco-row-link" href="#" target="_blank" rel="noopener" aria-label="Spotify — Wake Up">Spotify</a>
+      <a class="disco-row-link" href="#" target="_blank" rel="noopener" aria-label="Apple Music — Wake Up">Apple Music</a>
+      <a class="disco-row-link" href="lyrics-wake-up.html" aria-label="Lyrics — Wake Up">Lyrics</a>
+    </div>
+    <!-- Countdown: visible pre-release -->
+    <div class="alb-countdown" id="alb-countdown" aria-live="polite" aria-atomic="true" data-reveal>
+      <span class="alb-countdown-label">Releasing July 4, 2026</span>
+      <div class="alb-countdown-timer">
+        <div class="alb-countdown-unit">
+          <span class="alb-countdown-num" id="cd-days">--</span>
+          <span class="alb-countdown-unit-label">days</span>
+        </div>
+        <span class="alb-countdown-sep" aria-hidden="true">:</span>
+        <div class="alb-countdown-unit">
+          <span class="alb-countdown-num" id="cd-hours">--</span>
+          <span class="alb-countdown-unit-label">hours</span>
+        </div>
+        <span class="alb-countdown-sep" aria-hidden="true">:</span>
+        <div class="alb-countdown-unit">
+          <span class="alb-countdown-num" id="cd-min">--</span>
+          <span class="alb-countdown-unit-label">minutes</span>
+        </div>
+        <span class="alb-countdown-sep" aria-hidden="true">:</span>
+        <div class="alb-countdown-unit">
+          <span class="alb-countdown-num" id="cd-sec">--</span>
+          <span class="alb-countdown-unit-label">seconds</span>
+        </div>
+      </div>
+    </div>
+    <!-- Release line: visible on and after July 4 2026 -->
+    <p class="alb-release" id="alb-release" data-reveal>Released July 4, 2026 &nbsp;&#183;&nbsp; Lazarus Grimm</p>
+  </header>
+
+  <!-- ── CONTENT: visible on and after July 4 2026 ── -->
+  <div class="alb-content">
+
+    <!-- About This Album -->
+    <section class="alb-section" data-section>
+      <div class="section-bar" data-reveal>
+        <h2>About This Album</h2>
+      </div>
+      <div class="alb-body">
+        <p data-reveal><em>Wake Up</em> releases on July 4, 2026 &#8212; and that date is not an accident. This is an album about independence in the truest sense: independence from the systems of control that have been built around us, independence from the narratives we&#8217;ve been handed, independence from the manufactured divisions that keep us fighting each other while the people who benefit from our division count their profits. Releasing this record on Independence Day is a statement. Read it as one.</p>
+        <p data-reveal>This is a new chapter for Lazarus Grimm &#8212; a departure from the interior excavation of <em>ShadowWork</em> and <em>Lanterns to the Line</em> and a turn toward the exterior. Toward the world we live in. Toward the systems that shape it. Toward the lies we&#8217;ve been sold at scale. Every track on this album is a call to action &#8212; personal, political, and spiritual all at once, because those three things have never actually been separate.</p>
+        <p data-reveal><em>Wake Up</em> opens with a spoken word track that functions as a manifesto: a clear-eyed, documented account of how power actually operates &#8212; campaign finance, media consolidation, algorithmic manipulation, the Epstein network, military information operations &#8212; delivered not with fury but with a flashlight and a plea. What follows is twelve tracks of some of the heaviest, most confrontational music I have ever made. This is not a conspiracy record. This is a receipts record. Every claim has a name. Every name has a source.</p>
+        <p data-reveal>This album is for the person who feels something is wrong but can&#8217;t name it yet. For the person who has been told their anger is irrational when it isn&#8217;t. For the person who is tired of being divided from their neighbors by systems that profit from that division. For the person who is ready to wake up &#8212; not with torches, but with a list, witnesses, and light.</p>
+      </div>
+    </section>
+
+    <!-- The Sound -->
+    <section class="alb-section" data-section>
+      <div class="section-bar" data-reveal>
+        <h2>The Sound</h2>
+      </div>
+      <div class="alb-body">
+        <p data-reveal><em>Wake Up</em> is the heaviest record I have made &#8212; and the widest. Drawing from the groove-metal darkness of Korn, the righteous fury of Rage Against the Machine, the confessional hip-hop intensity of NF, the worship-metal conviction of Sleeping Giant, the theological ferocity of Oh Sleeper, and the genre-defying unpredictability of Falling in Reverse, this album moves between spoken word, rap, and full metal without asking permission. The production is confrontational throughout &#8212; dense, drop-tuned, and built to hit. This is music made for people who are awake and angry and refuse to be either alone.</p>
+      </div>
+    </section>
+
+    <!-- Track by Track -->
+    <section class="alb-section" data-section>
+      <div class="section-bar" data-reveal>
+        <h2>Track by Track</h2>
+      </div>
+      <ol class="alb-tracklist">
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">Wake Up</span>
+          <span class="alb-track-desc">The album&#8217;s opening manifesto, delivered as cinematic spoken word. A documented, clear-eyed account of how power actually works &#8212; campaign finance, media consolidation, algorithmic manipulation, elite networks, military information operations &#8212; and a direct plea to the listener to stop letting these systems divide them from their neighbors. Not a conspiracy. A map. Sets the tone for everything that follows.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">Astroturfing</span>
+          <span class="alb-track-desc">A direct breakdown of manufactured division: how rage is engineered, packaged, and streamed back to us with ads on top. About cutting the cord, refusing the script, and choosing truth over the tribal role they&#8217;ve assigned you.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">Yahweh Surround Me</span>
+          <span class="alb-track-desc">A spiritual warfare prayer set against a backdrop of systemic corruption. When the systems of power are too large to dismantle alone, I call on something larger. Yahweh as shield, as fortress, as the one constant that doesn&#8217;t bend to lobbying or corporate capture.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">Epstein Island &#8212; Let Them Rot</span>
+          <span class="alb-track-desc">The album&#8217;s most unflinching track. A direct address to everyone who knew, everyone who looked away, and everyone who is still protecting themselves with silence. Written for the survivors first. Justice &#8212; not vengeance &#8212; is the demand.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">Illusion of Choice</span>
+          <span class="alb-track-desc">About the way political and religious systems create the appearance of options while controlling the menu. Two sides of the same blade. The cage dressed as freedom. About seeing the seam and refusing to pretend it isn&#8217;t there.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">Divide and Rule</span>
+          <span class="alb-track-desc">The oldest playbook in history applied to the present moment. About how the fractures between us are not organic &#8212; they are engineered, funded, and maintained. About choosing not to be a pawn in someone else&#8217;s war.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">Real Talk With Jordan</span>
+          <span class="alb-track-desc">A direct, documented breakdown of how astroturfing, computational propaganda, and coordinated inauthentic behavior actually work &#8212; with sources cited and tactics named. Not fear. Information. Go research.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">764</span>
+          <span class="alb-track-desc">Named for a network that has been used to exploit and harm children online. A direct confrontation with digital predation and the systems that enable it. Written because silence about it has never protected anyone.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">JP 3-13.2</span>
+          <span class="alb-track-desc">Named for the U.S. Department of Defense&#8217;s Military Information Support Operations doctrine. About the use of psychological operations and information warfare &#8212; not just by foreign adversaries, but domestically. About knowing the tactics so they can&#8217;t work on you.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">The Two Party Gravity Well</span>
+          <span class="alb-track-desc">The album&#8217;s rap track and its most detailed political statement. A documented breakdown of how control happens before you ever step into a voting booth &#8212; through campaign finance, media access, debate qualification rules, ballot access laws, and gerrymandering. Not a conspiracy. An architecture.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">State Power, War Propaganda, and Religious Control</span>
+          <span class="alb-track-desc">About the three systems that have historically been used in concert to manufacture consent and send people to die for interests that aren&#8217;t theirs. About the moment you stop kneeling to the machine and start asking who built it and why.</span>
+        </li>
+        <li class="alb-track" data-reveal>
+          <span class="alb-track-title">Rebuild</span>
+          <span class="alb-track-desc">The album&#8217;s closing track and its only answer. A prayer and a call to action in equal measure, drawing on the four Hebrew names of God &#8212; Yahweh, Ruach HaKodesh, Immanuel, Ruach Elohim &#8212; and a commitment to rebuild with hands that know how to plant and heal. Not with fury. With fierce, relentless, neighborly love.</span>
+        </li>
+      </ol>
+    </section>
+
+  </div><!-- /alb-content -->
+</main>
+
+<script>
+// ── COUNTDOWN / RELEASE STATE ──
+(function() {
+  var RELEASE = new Date(2026, 6, 4); // July 4, 2026 00:00:00 local
+  var countdown = document.getElementById('alb-countdown');
+  var releaseEl = document.getElementById('alb-release');
+  var content   = document.querySelector('.alb-content');
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tick() {
+    var diff = RELEASE - Date.now();
+    if (diff <= 0) {
+      if (countdown) countdown.style.display = 'none';
+      if (releaseEl) { releaseEl.style.display = ''; releaseEl.classList.add('visible'); }
+      if (content)   content.style.display = '';
+      return;
+    }
+    if (countdown) countdown.style.display = '';
+    var days  = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var mins  = Math.floor((diff % 3600000) / 60000);
+    var secs  = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = pad(days);
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-min').textContent   = pad(mins);
+    document.getElementById('cd-sec').textContent   = pad(secs);
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
+</script>
+
+<script>
+// ── PARTICLES ──
+requestAnimationFrame(function() {
+  var container = document.getElementById('alb-particles');
+  if (!container) return;
+  var isMobile = window.matchMedia('(max-width: 767px)').matches;
+  var frag = document.createDocumentFragment();
+  var dustCount = isMobile ? 16 : 32;
+  for (var i = 0; i < dustCount; i++) {
+    var p = document.createElement('span');
+    p.className = 'bio-dust';
+    var size  = 1 + Math.random() * 2.5;
+    var drift = (Math.random() - 0.5) * 120;
+    var dur   = 18 + Math.random() * 32;
+    var delay = -(Math.random() * dur);
+    var op    = 0.08 + Math.random() * 0.14;
+    var isTeal = Math.random() < 0.3;
+    p.style.cssText = [
+      'left:' + (Math.random() * 100) + '%',
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      '--drift:' + drift + 'px',
+      '--op:' + op,
+      'animation-duration:' + dur + 's',
+      'animation-delay:' + delay + 's',
+      isTeal ? 'background:rgba(133,150,170,1)' : ''
+    ].join(';');
+    frag.appendChild(p);
+  }
+  var orbCount = isMobile ? 4 : 8;
+  for (var j = 0; j < orbCount; j++) {
+    var o = document.createElement('span');
+    o.className = 'bio-particle-orb';
+    var oSize  = 5 + Math.random() * 10;
+    var oDrift = (Math.random() - 0.5) * 160;
+    var oDur   = 28 + Math.random() * 40;
+    var oDelay = -(Math.random() * oDur);
+    var oOp    = 0.25 + Math.random() * 0.3;
+    o.style.cssText = [
+      'left:' + (Math.random() * 100) + '%',
+      'width:' + oSize + 'px',
+      'height:' + oSize + 'px',
+      '--drift:' + oDrift + 'px',
+      '--op:' + oOp,
+      'animation-duration:' + oDur + 's',
+      'animation-delay:' + oDelay + 's'
+    ].join(';');
+    frag.appendChild(o);
+  }
+  container.appendChild(frag);
+});
+
+// ── EYELID OPEN ──
+(function() {
+  var top = document.getElementById('eyelid-top');
+  var bot = document.getElementById('eyelid-bottom');
+  if (!top || !bot) return;
+  setTimeout(function() {
+    top.classList.add('open');
+    bot.classList.add('open');
+    setTimeout(function() {
+      top.style.display = 'none';
+      bot.style.display = 'none';
+    }, 2500);
+  }, 350);
+})();
+
+// ── PAGE TRANSITIONS ──
+(function() {
+  var CLOSE_MS = 650;
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href[0] === '#' || a.target === '_blank' ||
+        /^https?:\/\//.test(href)) return;
+    var destPage = href.split('#')[0];
+    if (!destPage || destPage === window.location.pathname.split('/').pop()) return;
+    e.preventDefault();
+    var top = document.getElementById('eyelid-top');
+    var bot = document.getElementById('eyelid-bottom');
+    if (!top || !bot) { window.location.href = href; return; }
+    top.style.display = bot.style.display = '';
+    top.style.transition = bot.style.transition = 'none';
+    top.classList.add('open'); bot.classList.add('open');
+    void top.offsetWidth;
+    top.style.transition = bot.style.transition =
+      'transform ' + CLOSE_MS + 'ms cubic-bezier(0.85, 0, 0.15, 1)';
+    top.classList.remove('open'); bot.classList.remove('open');
+    setTimeout(function() { window.location.href = href; }, CLOSE_MS + 60);
+  });
+})();
+
+// ── SCROLL REVEAL ──
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (!entry.isIntersecting) return;
+    var items = entry.target.querySelectorAll('[data-reveal]');
+    items.forEach(function(el, i) {
+      setTimeout(function() { el.classList.add('visible'); }, i * 120);
+    });
+    revealObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('[data-section]').forEach(function(s) {
+  revealObserver.observe(s);
+});
+
+// ── HAMBURGER MENU ──
+(function() {
+  var nav = document.getElementById('site-nav');
+  var btn = document.getElementById('nav-hamburger');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    var open = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  nav.querySelectorAll('.nav-links a:not(.nav-has-dropdown a)').forEach(function(a) {
+    a.addEventListener('click', function() {
+      nav.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+  nav.querySelectorAll('.nav-has-dropdown > a').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      if (window.innerWidth > 520) return;
+      e.preventDefault();
+      var li = a.closest('.nav-has-dropdown');
+      li.classList.toggle('mobile-open');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
