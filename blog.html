@@ -69,7 +69,39 @@
 </nav>
 <main class="page-body">
   <h1 class="visually-hidden">Lazarus Grimm — Blog</h1>
+  <div class="coming-soon-wrap">
+    <p class="coming-soon-label">Coming Soon</p>
+    <p class="coming-soon-body">Words are coming. Check back after July 4.</p>
+  </div>
 </main>
+
+<style>
+.coming-soon-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 2rem;
+}
+.coming-soon-label {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #8596aa;
+  margin: 0 0 1.25rem;
+}
+.coming-soon-body {
+  font-family: 'Cormorant', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  color: #c8bfb0;
+  margin: 0;
+  line-height: 1.5;
+}
+</style>
 
 <script>
 // ── NAV LOGO ──
