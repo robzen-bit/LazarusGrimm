@@ -57,10 +57,7 @@
   margin: 0 0 1.5rem;
   text-align: center;
 }
-/* Hidden by default; JS reveals correct element */
-#alb-countdown { display: none; }
-#alb-release   { display: none; }
-.alb-content   { display: none; }
+/* Countdown/release line initial states set by JS inline to allow override */
 
 .alb-countdown {
   display: flex;
@@ -190,9 +187,7 @@
     <h1 class="alb-title" data-reveal>Wake Up</h1>
     <p class="alb-subtitle" data-reveal>The Album They Don&#8217;t Want You to Hear</p>
     <div class="alb-links" data-reveal>
-      <!-- Streaming links active on release day, July 4 2026 -->
-      <a class="disco-row-link" href="#" target="_blank" rel="noopener" aria-label="Spotify — Wake Up">Spotify</a>
-      <a class="disco-row-link" href="#" target="_blank" rel="noopener" aria-label="Apple Music — Wake Up">Apple Music</a>
+      <a class="disco-row-link" href="index.html" aria-label="Pre-Save — Wake Up">Pre-Save</a>
       <a class="disco-row-link" href="lyrics-wake-up.html" aria-label="Lyrics — Wake Up">Lyrics</a>
     </div>
     <!-- Countdown: visible pre-release -->
@@ -316,17 +311,18 @@
   var RELEASE = new Date(2026, 6, 4); // July 4, 2026 00:00:00 local
   var countdown = document.getElementById('alb-countdown');
   var releaseEl = document.getElementById('alb-release');
-  var content   = document.querySelector('.alb-content');
+  // Establish hidden states via inline style so JS can override them
+  if (countdown) countdown.style.display = 'none';
+  if (releaseEl) releaseEl.style.display = 'none';
   function pad(n) { return n < 10 ? '0' + n : String(n); }
   function tick() {
     var diff = RELEASE - Date.now();
     if (diff <= 0) {
       if (countdown) countdown.style.display = 'none';
-      if (releaseEl) { releaseEl.style.display = ''; releaseEl.classList.add('visible'); }
-      if (content)   content.style.display = '';
+      if (releaseEl) { releaseEl.style.display = 'block'; releaseEl.classList.add('visible'); }
       return;
     }
-    if (countdown) countdown.style.display = '';
+    if (countdown) countdown.style.display = 'flex';
     var days  = Math.floor(diff / 86400000);
     var hours = Math.floor((diff % 86400000) / 3600000);
     var mins  = Math.floor((diff % 3600000) / 60000);
