@@ -21,7 +21,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lazarusgrimm.com/blog.html</loc>
+    <loc>https://lazarusgrimm.com/blog/index.html</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -88,6 +88,88 @@
     <loc>https://lazarusgrimm.com/lyrics-wake-up.html</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog index -->
+  <url>
+    <loc>https://lazarusgrimm.com/blog.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Blog posts -->
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-to-i-am-lazarus-grimm/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-of-cast-the-first-stone/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-behind-connected-through-all-things/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-to-thank-you/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-of-you-called-her-out/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-of-serpent-of-control/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-of-vanish-in-the-mist/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-of-voices-in-the-mirror/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-of-destroying-your-legacy/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-of-god-is-with-us/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-of-the-greatest-of-these/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lazarusgrimm.com/blog/breaking-down-the-lyrics-of-just-as-you-are/index.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
