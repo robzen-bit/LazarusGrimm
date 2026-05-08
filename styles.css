@@ -76,7 +76,7 @@ body::after {
 
 .nav-wordmark {
   font-family: var(--font-caps);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 400;
   letter-spacing: 8px;
   color: var(--teal);
@@ -94,7 +94,7 @@ body::after {
 }
 .nav-links a {
   font-family: var(--font-caps);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 3px;
   color: var(--dim);
   text-decoration: none;
@@ -105,7 +105,7 @@ body::after {
 .nav-links a.active { color: var(--white); }
 .nav-cta {
   font-family: var(--font-caps);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 3px;
   color: var(--teal);
   text-decoration: none;
@@ -1075,14 +1075,14 @@ footer {
 
 .footer-wordmark {
   font-family: var(--font-caps);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 6px;
   color: var(--teal);
 }
 
 .footer-url {
   font-family: var(--font-caps);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 4px;
   color: var(--teal);
   text-decoration: none;
@@ -1098,7 +1098,7 @@ footer {
 
 .footer-links a {
   font-family: var(--font-caps);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 4px;
   color: var(--teal);
   text-decoration: none;
@@ -1108,7 +1108,7 @@ footer {
 
 .footer-copy {
   font-family: var(--font-caps);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 4px;
   color: var(--teal);
 }
@@ -1178,9 +1178,9 @@ footer {
 .bio-section-label {
   display: block;
   font-family: var(--font-caps);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   color: var(--dim);
   text-transform: uppercase;
   margin-bottom: 36px;
@@ -1189,7 +1189,7 @@ footer {
 
 .bio-p {
   font-family: var(--font-serif);
-  font-size: clamp(17px, 1.75vw, 19px);
+  font-size: clamp(18px, 1.9vw, 20px);
   font-weight: 400;
   color: var(--teal);
   line-height: 1.92;
@@ -1391,7 +1391,7 @@ footer {
 
 .bio-genre-tags {
   font-family: var(--font-caps);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 4px;
   color: var(--teal);
   text-transform: uppercase;
@@ -1421,7 +1421,7 @@ footer {
 
 .bio-thesis {
   font-family: var(--font-serif);
-  font-size: clamp(17px, 1.8vw, 20px);
+  font-size: clamp(18px, 1.9vw, 21px);
   font-weight: 400;
   color: var(--teal);
   line-height: 1.88;
@@ -1471,9 +1471,9 @@ footer {
 
 .section-bar h2 {
   font-family: var(--font-caps);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 8px;
+  letter-spacing: 7px;
   color: var(--white);
   text-transform: uppercase;
   margin: 0;
@@ -1481,7 +1481,7 @@ footer {
 
 .section-nav-link {
   font-family: var(--font-caps);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--teal);
@@ -1501,7 +1501,7 @@ footer {
 .bio-quote {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(17px, 1.85vw, 20px);
+  font-size: clamp(18px, 1.95vw, 21px);
   font-weight: 300;
   color: var(--white);
   line-height: 1.82;
@@ -1553,7 +1553,7 @@ footer {
 .disco-row-year {
   display: block;
   font-family: var(--font-caps);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 3px;
   color: var(--dim);
   opacity: 0.45;
@@ -1564,7 +1564,7 @@ footer {
 .disco-row-title {
   display: block;
   font-family: var(--font-serif);
-  font-size: clamp(19px, 2vw, 22px);
+  font-size: clamp(20px, 2.1vw, 23px);
   font-weight: 400;
   color: var(--white);
   line-height: 1.25;
@@ -1574,7 +1574,7 @@ footer {
 .disco-row-desc {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(14px, 1.5vw, 16px);
+  font-size: clamp(15px, 1.65vw, 17px);
   font-weight: 300;
   color: var(--dim);
   line-height: 1.88;
@@ -1589,7 +1589,7 @@ footer {
 
 .disco-row-link {
   font-family: var(--font-caps);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 3px;
   color: var(--dim);
   text-decoration: none;
@@ -1646,7 +1646,7 @@ footer {
   .bio-col     { padding: 0 24px 56px; }
   .section-bar { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; margin-top: 56px; gap: 8px 20px; }
   .section-sticky-nav { gap: 6px 18px; padding: 10px 24px; }
-  .section-nav-link { font-size: 8px; letter-spacing: 2px; }
+  .section-nav-link { font-size: 10px; letter-spacing: 2px; }
   .section-nav-link.active { letter-spacing: 3px; }
   .open-letter-cta-wrap { padding: 8px 24px 80px; }
 }
@@ -1674,7 +1674,7 @@ footer {
   .bio-col     { padding: 0 20px 48px; }
   .section-bar { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; margin-top: 44px; margin-bottom: 36px; gap: 8px 16px; }
   .section-sticky-nav { gap: 6px 14px; padding: 10px 20px; }
-  .section-nav-link { font-size: 7px; letter-spacing: 1.5px; }
+  .section-nav-link { font-size: 9px; letter-spacing: 1.5px; }
   .section-nav-link.active { letter-spacing: 2px; }
   .bio-photo-wrap { width: 170px; height: 170px; }
   .bio-impact  { font-size: clamp(20px, 5vw, 26px); padding: 24px 0; }
@@ -1799,7 +1799,7 @@ footer {
 .lyr-album-nav-inner::-webkit-scrollbar { display: none; }
 .lyr-album-nav-link {
   font-family: var(--font-caps);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--teal);
@@ -1819,7 +1819,7 @@ footer {
 .lyr-album-nav-sep {
   color: var(--ghost);
   flex-shrink: 0;
-  font-size: 10px;
+  font-size: 11px;
   user-select: none;
   padding: 0 2px;
 }
@@ -1849,7 +1849,7 @@ footer {
 }
 .lyr-album-year {
   font-family: var(--font-caps);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 6px;
   color: var(--dim);
   text-transform: uppercase;
@@ -1905,7 +1905,7 @@ footer {
 .lyr-track-header:hover .lyr-track-title { color: var(--white); }
 .lyr-track-num {
   font-family: var(--font-caps);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 3px;
   color: var(--dim);
   flex-shrink: 0;
@@ -1914,7 +1914,7 @@ footer {
 }
 .lyr-track-title {
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 400;
   color: var(--teal);
   transition: color 0.2s;
@@ -1971,9 +1971,9 @@ footer {
 }
 .lyr-lyrics p {
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: 18px;
   color: var(--dim);
-  line-height: 1.65;
+  line-height: 1.7;
   margin: 0;
 }
 .lyr-lyrics p.lyr-blank {
@@ -2068,8 +2068,8 @@ footer {
 }
 @media (max-width: 480px) {
   .lyr-content { padding: 48px 20px 80px; }
-  .lyr-track-title { font-size: 18px; }
-  .lyr-lyrics p { font-size: 15px; }
+  .lyr-track-title { font-size: 19px; }
+  .lyr-lyrics p { font-size: 17px; }
 }
 
 /* ── ALBUM PAGE ── */
@@ -2105,7 +2105,7 @@ footer {
 
 .alb-release {
   font-family: var(--font-caps);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 4px;
   color: var(--dim);
   text-transform: uppercase;
@@ -2134,7 +2134,7 @@ footer {
 
 .alb-body p {
   font-family: var(--font-serif);
-  font-size: 17px;
+  font-size: 18px;
   color: var(--dim);
   line-height: 1.85;
   margin-bottom: 1.4em;
@@ -2152,7 +2152,7 @@ footer {
 .alb-track-title {
   display: block;
   font-family: var(--font-caps);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--teal);
@@ -2161,15 +2161,15 @@ footer {
 .alb-track-desc {
   display: block;
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: 17px;
   color: var(--dim);
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 @media (max-width: 768px) {
   .alb-cover { width: 160px; height: 160px; }
   .alb-content { padding: 0 24px 100px; }
-  .alb-body p { font-size: 16px; }
+  .alb-body p { font-size: 17px; }
 }
 @media (max-width: 480px) {
   .alb-cover { width: 130px; height: 130px; }
