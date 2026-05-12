@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MZC4EBSS0M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MZC4EBSS0M');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>You&#8217;re In · Lazarus Grimm</title>
+
+<!-- Search engine exclusion — this page must not be indexed -->
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+
+<link rel="preload" href="fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cormorant-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.min.css">
+
+<style>
+/* ── CONFIRMATION PAGE LAYOUT ── */
+.confirm-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm-wrap {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 72px) 32px 96px;
+  text-align: center;
+}
+
+/* Headline */
+.confirm-headline {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 9vw, 68px);
+  line-height: 1.05;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 44px;
+}
+
+/* Decorative rule */
+.confirm-rule {
+  width: 56px;
+  height: 1px;
+  background: var(--teal);
+  margin: 0 auto 44px;
+  opacity: 0.6;
+}
+
+/* Body paragraphs */
+.confirm-body {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2.6vw, 21px);
+  line-height: 1.8;
+  color: var(--white);
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+/* Email link */
+.confirm-email {
+  display: inline-block;
+  font-family: var(--font-caps);
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--teal);
+  text-decoration: none;
+  margin: 12px 0 48px;
+  transition: color 0.25s;
+}
+.confirm-email:hover {
+  color: var(--white);
+}
+
+/* Section divider */
+.confirm-divider {
+  width: 56px;
+  height: 1px;
+  background: var(--ghost);
+  margin: 0 auto 44px;
+}
+
+/* Subheading */
+.confirm-subhead {
+  font-family: var(--font-caps);
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 36px;
+}
+
+/* Button stack */
+.confirm-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.confirm-btn {
+  display: inline-block;
+  background: var(--white);
+  color: #0a0a0a;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 44px;
+  border: 1px solid var(--white);
+  min-width: 280px;
+  cursor: pointer;
+  transition: background 0.35s, color 0.35s, letter-spacing 0.35s;
+}
+.confirm-btn:hover {
+  background: transparent;
+  color: var(--white);
+  letter-spacing: 6px;
+}
+
+/* Closing */
+.confirm-closing {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2.6vw, 21px);
+  line-height: 1.8;
+  color: var(--white);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.confirm-sig {
+  font-family: var(--font-caps);
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-top: 20px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .confirm-wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .confirm-btn {
+    min-width: 100%;
+  }
+}
+</style>
+</head>
+<body class="confirm-page">
+
+<!-- ── EYELIDS ── -->
+<div class="eyelid eyelid-top" id="eyelid-top"></div>
+<div class="eyelid eyelid-bottom" id="eyelid-bottom"></div>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav" id="site-nav">
+  <a href="index.html" class="nav-brand">
+    <img class="nav-logo" id="nav-logo" src="images/sigil-nav.png" width="42" height="42" alt="Lazarus Grimm logo">
+  </a>
+  <span class="nav-wordmark">Lazarus Grimm</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li class="nav-has-dropdown">
+      <a>Music</a>
+      <div class="nav-dropdown">
+        <a href="destroying-your-legacy.html">Destroying Your Legacy</a>
+        <a href="quiet-place.html">The Quiet Place &#8212; Psalms For Today</a>
+        <a href="shadowwork.html">ShadowWork</a>
+        <a href="lanterns-to-the-line.html">Lanterns to the Line</a>
+        <a href="wake-up.html">Wake Up</a>
+      </div>
+    </li>
+    <li class="nav-has-dropdown">
+      <a>Lyrics</a>
+      <div class="nav-dropdown">
+        <a href="lyrics-destroying-your-legacy.html">Destroying Your Legacy</a>
+        <a href="lyrics-quiet-place.html">Quiet Place &#8212; Psalms For Today</a>
+        <a href="lyrics-shadowwork.html">ShadowWork</a>
+        <a href="lyrics-lanterns-to-the-line.html">Lanterns to the Line</a>
+        <a href="lyrics-wake-up.html">Wake Up</a>
+      </div>
+    </li>
+    <li><a href="blog/index.html">Blog</a></li>
+    <li class="nav-mobile-cta"><a href="wake-up.html" class="nav-cta">Wake Up</a></li>
+  </ul>
+  <a href="wake-up.html" class="nav-cta nav-cta-desktop">Wake Up</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── MAIN CONTENT ── -->
+<main>
+<div class="confirm-wrap">
+
+  <h1 class="confirm-headline">You&#8217;re in. And that took courage.</h1>
+
+  <div class="confirm-rule" aria-hidden="true"></div>
+
+  <p class="confirm-body">Signing up for something like this is not a small thing. In a world that profits from your distraction, choosing to go deeper is an act of quiet rebellion. I do not take that lightly and I am grateful you are here.</p>
+
+  <p class="confirm-body">What you have stepped into is not a solo journey. There are people just like you, across every background, every belief, every corner of this country, who feel what you feel and are done pretending everything is fine. You are not alone in this. Not even close.</p>
+
+  <p class="confirm-body">Over the coming weeks I am going to walk you through Wake Up one song at a time. The music, the research behind it, and the rabbit holes worth going down. Check your inbox for your first email.</p>
+
+  <p class="confirm-body">In the meantime, if you have questions, thoughts, or just want to talk, reach out directly. I read everything.</p>
+
+  <a class="confirm-email" href="mailto:xlazarusgrimmx@gmail.com">xlazarusgrimmx@gmail.com</a>
+
+  <div class="confirm-divider" aria-hidden="true"></div>
+
+  <p class="confirm-subhead">While you wait, go deeper.</p>
+
+  <div class="confirm-buttons">
+    <a class="confirm-btn" href="wake-up.html">Learn About Wake Up</a>
+    <a class="confirm-btn" href="lyrics-wake-up.html">Read the Lyrics</a>
+    <a class="confirm-btn" href="music.html">Explore My Other Music</a>
+  </div>
+
+  <div class="confirm-divider" aria-hidden="true"></div>
+
+  <p class="confirm-closing">Thank you. Genuinely. Now let&#8217;s wake up together.</p>
+  <p class="confirm-sig">Lazarus Grimm</p>
+
+</div>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p class="footer-wordmark">LG · V · MMXXVI</p>
+  <a class="footer-url" href="https://lazarusgrimm.com">lazarusgrimm.com</a>
+  <ul class="footer-links">
+    <li><a href="https://www.youtube.com/@lazarusgrimm" target="_blank" rel="noopener">YouTube</a></li>
+    <li><a href="https://www.instagram.com/lazarusgrimm" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://www.facebook.com/61577565363509" target="_blank" rel="noopener">Facebook</a></li>
+  </ul>
+  <p class="footer-copy">&#169; 2026 Lazarus Grimm. All rights reserved.</p>
+</footer>
+
+<script>
+// ── EYELID OPEN (page entrance) ──
+(function() {
+  var top = document.getElementById('eyelid-top');
+  var bot = document.getElementById('eyelid-bottom');
+  if (!top || !bot) return;
+  setTimeout(function() {
+    top.classList.add('open');
+    bot.classList.add('open');
+    setTimeout(function() {
+      top.style.display = 'none';
+      bot.style.display = 'none';
+    }, 2500);
+  }, 350);
+})();
+
+// ── PAGE TRANSITIONS (close eyes → navigate) ──
+(function() {
+  var CLOSE_MS = 650;
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href[0] === '#' || a.target === '_blank' ||
+        /^https?:\/\//.test(href)) return;
+    var destPage = href.split('#')[0];
+    if (!destPage || destPage === window.location.pathname.split('/').pop()) return;
+    e.preventDefault();
+    var top = document.getElementById('eyelid-top');
+    var bot = document.getElementById('eyelid-bottom');
+    if (!top || !bot) { window.location.href = href; return; }
+    top.style.display = bot.style.display = '';
+    top.style.transition = bot.style.transition = 'none';
+    top.classList.add('open'); bot.classList.add('open');
+    void top.offsetWidth;
+    top.style.transition = bot.style.transition =
+      'transform ' + CLOSE_MS + 'ms cubic-bezier(0.85, 0, 0.15, 1)';
+    top.classList.remove('open'); bot.classList.remove('open');
+    setTimeout(function() { window.location.href = href; }, CLOSE_MS + 60);
+  });
+})();
+
+// ── HAMBURGER MENU ──
+(function() {
+  var nav = document.getElementById('site-nav');
+  var btn = document.getElementById('nav-hamburger');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    var open = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  nav.querySelectorAll('.nav-links a:not(.nav-has-dropdown a)').forEach(function(a) {
+    a.addEventListener('click', function() {
+      nav.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+  nav.querySelectorAll('.nav-has-dropdown > a').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      if (window.innerWidth > 520) return;
+      e.preventDefault();
+      var li = a.closest('.nav-has-dropdown');
+      li.classList.toggle('mobile-open');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
